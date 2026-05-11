@@ -1,0 +1,22 @@
+[build-system]
+requires = [
+  "setuptools>=64",
+  "wheel",
+  "pybind11>=2.12",
+  "numpy>=1.22"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sketchmap-cpp"
+version = "0.1.0"
+description = "Python bindings for the sketch-map C++ dimensionality-reduction core"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "GPL-3.0-or-later"
+authors = [
+  { name = "Sketch-map authors and contributors" }
+]
+dependencies = [
+  "numpy>=1.22"
+]
