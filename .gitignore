@@ -1,0 +1,63 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environments
+.venv/
+venv/
+ENV/
+.env
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+dimredpy.egg-info/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Data archives and large binaries
+*.tar
+*.tar.gz
+*.zip
+*.7z
+*.rar
+
+# Scientific Data Caches
+*.npy
+*.npz
+experiments/results/*.npy
+experiments/results/*.npz
+
+# # Plots and local outputs
+# *.png
+# *.pdf
+# *.svg
+# dimredpy_vs_others/**/*.png
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+tmp/
+temp/
+experiments/old_experiment.txt
+experiments/reproduce_paper.py
+experiments/full_trajectory.xyz.CN_for_SketchMap
