@@ -183,9 +183,9 @@ def _cpu_project_all_batched(
     # We use the fine grid resolution (g2) directly for maximum accuracy
     # g2xG2 scan is much faster in NumPy batches than Bicubic + Fine scan in Python loops
     res_grid = g2
-    gx = np.linspace(-gwidth, gwidth, res_grid)
-    gy = np.linspace(-gwidth, gwidth, res_grid)
-    grid_pts = np.stack(np.meshgrid(gx, gy, indexing='ij'), axis=-1).reshape(-1, 2)
+    gx = np.linspace(-gwidth, gwidth, res_grid).astype(np.float32)
+    gy = np.linspace(-gwidth, gwidth, res_grid).astype(np.float32)
+    grid_pts = np.stack(np.meshgrid(gx, gy, indexing='ij'), axis=-1).reshape(-1, 2).astype(np.float32)
     G = grid_pts.shape[0]
     
     if verbose:
@@ -193,12 +193,12 @@ def _cpu_project_all_batched(
 
     # Pairwise distances from grid points to landmarks: (G, K)
     from scipy.spatial.distance import cdist
-    dist_grid_lm = cdist(grid_pts, landmarks_ld)
-    f_ld_grid = tf_ld.f(dist_grid_lm) # (G, K)
+    dist_grid_lm = cdist(grid_pts, landmarks_ld.astype(np.float32))
+    f_ld_grid = tf_ld.f(dist_grid_lm).astype(np.float32) # (G, K)
     
     # 2. Batch Processing
-    # Smaller batch size for high-res grid to keep memory safe (~400MB)
-    batch_size = 500
+    # Reduced batch size to 100 to prevent MemoryErrors on low-RAM systems
+    batch_size = 100
     all_pos = np.zeros((M, d))
     all_err = np.zeros(M)
     all_near = np.zeros(M)
@@ -220,18 +220,18 @@ def _cpu_project_all_batched(
         all_near[b_idx] = hd_dists.min(axis=1)
         
         # F_hd: (B, K)
-        f_hd = tf_hd.f(hd_dists)
+        f_hd = tf_hd.f(hd_dists).astype(np.float32)
         
         # Stress matrix: (B, G)
         # Expansion: Σ w * (F-f)^2 = Σ w*F^2 + Σ w*f^2 - 2 * Σ w*F*f
         # term1: (B, 1)
-        term1 = (f_hd**2 @ weights)[:, np.newaxis]
+        term1 = (f_hd**2 @ weights.astype(np.float32))[:, np.newaxis]
         # term2: (1, G)
-        term2 = (f_ld_grid**2 @ weights)[np.newaxis, :]
+        term2 = (f_ld_grid**2 @ weights.astype(np.float32))[np.newaxis, :]
         # term3: (B, G)
-        term3 = (f_hd * weights) @ f_ld_grid.T
+        term3 = (f_hd * weights.astype(np.float32)) @ f_ld_grid.T
         
-        stress_mat = (term1 + term2 - 2.0 * term3) / tw
+        stress_mat = (term1 + term2 - 2.0 * term3) / tw.astype(np.float32)
         
         # Find best grid points
         best_g_idx = np.argmin(stress_mat, axis=1)

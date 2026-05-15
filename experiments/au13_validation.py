@@ -294,7 +294,9 @@ def run_fitsne(
     from dimredpy.fitsne import fit_sne
 
     if results_dir is not None:
-        cache_path = Path(results_dir) / "fitsne_embedding.npy"
+        results_dir = Path(results_dir)
+        results_dir.mkdir(parents=True, exist_ok=True)
+        cache_path = results_dir / "fitsne_embedding.npy"
         if cache_path.exists():
             if verbose: print("  [cache] Loading FIt-SNE embedding …")
             return np.load(cache_path)
@@ -343,7 +345,9 @@ def run_umap(
     from dimredpy.umap_embed import umap_embed
 
     if results_dir is not None:
-        cache_path = Path(results_dir) / "umap_embedding.npy"
+        results_dir = Path(results_dir)
+        results_dir.mkdir(parents=True, exist_ok=True)
+        cache_path = results_dir / "umap_embedding.npy"
         if cache_path.exists():
             if verbose: print("  [cache] Loading UMAP embedding …")
             return np.load(cache_path)
