@@ -1,0 +1,28 @@
+name: test
+channels:
+  - conda-forge
+  - conda-forge/label/python_rc
+dependencies:
+    # Base depends
+  - python
+  - pip
+  - numpy >=1.12
+  - scipy
+  - numexpr
+  - jaxlib
+  - jax
+  - numba
+    # Testing
+  - pytest
+  - pytest-cov
+  - flaky
+  - codecov
+  - statsmodels
+  - scikit-learn  # Provides the sklearn module
+  - matplotlib-base
+  - xlrd
+    # Docs
+  - numpydoc
+  - sphinx
+  - sphinx-rtd-theme
+  - sphinxcontrib-bibtex

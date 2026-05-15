@@ -1,0 +1,1756 @@
+Gaussian widths:
+[0.2        0.25       0.33333333 0.5        1.         1.        ]
+Computing dimensionless free energies analytically...
+This script will perform 200 replicates of an experiment where samples are drawn from 6 harmonic oscillators.
+The harmonic oscillators have equilibrium positions
+[0 1 2 3 4 5]
+and spring constants
+[25 16  9  4  1  1]
+and the following number of samples will be drawn from each (can be zero if no samples drawn):
+[2000 2000 2000 2000 2000    0]
+
+Performing replicate 1 / 200
+INFO:pymbar.mbar:Explicitly overwriting maxiter=10000 with maximum_iterations=10000
+INFO:pymbar.mbar:Explicitly overwriting maxiter=10000 with maximum_iterations=10000
+WARNING:pymbar.mbar_solvers:
+******* JAX 64-bit mode is now on! *******
+*     JAX is now set to 64-bit mode!     *
+*   This MAY cause problems with other   *
+*      uses of JAX in the same code.     *
+******************************************
+
+INFO:absl:Remote TPU is not linked into jax; skipping remote TPU.
+INFO:absl:Unable to initialize backend 'tpu_driver': Could not initialize backend 'tpu_driver'
+INFO:absl:Unable to initialize backend 'cuda': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+INFO:absl:Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+INFO:absl:Unable to initialize backend 'tpu': module 'jaxlib.xla_extension' has no attribute 'get_tpu_client'
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03975702  1.06089938  4.15772256  9.2692962  17.27135584 26.08738426]
+[0.00127191 0.01101887 0.02573263 0.04955805 0.17669491 0.48088857]
+Performing replicate 2 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03917819  1.03483151  4.08832227  9.24339671 16.83740492 26.7608673 ]
+[0.00118675 0.01060477 0.02551253 0.04938048 0.1780329  0.7321336 ]
+Performing replicate 3 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.09e-12
+[ 0.04055724  1.06874178  4.08892222  9.2340339  16.84226148 25.66223138]
+[0.00122743 0.01085683 0.0258039  0.04863907 0.17568319 0.46901425]
+Performing replicate 4 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03859996  1.04319894  4.07635159  9.2704043  17.02365352 25.7952182 ]
+[0.00118064 0.01067002 0.02573458 0.04935639 0.17344164 0.679355  ]
+Performing replicate 5 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03999851  1.0581945   4.10142542  9.12112493 16.76162058 25.29394191]
+[0.00126098 0.01080304 0.02574235 0.04837199 0.17156425 0.52544919]
+Performing replicate 6 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.041259    1.06963024  4.13498272  9.23802983 17.28424224 25.63355068]
+[0.00128916 0.0110855  0.02590312 0.04896417 0.1746822  0.41399842]
+Performing replicate 7 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.03998083  1.05360812  4.15578022  9.2317178  16.86969683 26.28916118]
+[0.00125697 0.01091931 0.02603321 0.04961309 0.17438609 0.67755995]
+Performing replicate 8 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04034359  1.06466163  4.09885153  9.2462794  16.96509658 26.03139988]
+[0.0012728  0.01086498 0.0253186  0.04981314 0.17643884 0.54609721]
+Performing replicate 9 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03827445  1.0696382   4.08177677  9.23257688 16.68740565 25.63095153]
+[0.00116849 0.01092243 0.02583004 0.04874015 0.17440486 0.49292946]
+Performing replicate 10 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03952777  1.06343587  4.15480868  9.25953574 17.27640783 26.29958404]
+[0.00115818 0.01094069 0.02534381 0.04939131 0.1774903  0.51067183]
+Performing replicate 11 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04254579  1.06233906  4.11197514  9.30154172 16.95132393 26.09176338]
+[0.00129279 0.01089794 0.02639181 0.04849168 0.17521874 0.53253179]
+Performing replicate 12 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04046828  1.06779345  4.12316785  9.2144211  16.86481569 25.40279876]
+[0.00123747 0.01094135 0.02563493 0.04897413 0.17386576 0.4258853 ]
+Performing replicate 13 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.55e-12
+[ 0.04099892  1.05880623  4.12562008  9.20952558 16.77615539 25.29570702]
+[0.00123927 0.01108925 0.02569523 0.04881061 0.17428858 0.40893383]
+Performing replicate 14 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.0389926   1.06484681  4.13849916  9.20016077 17.22484414 26.82485627]
+[0.00123789 0.01087692 0.02592645 0.04918875 0.18099647 0.5793371 ]
+Performing replicate 15 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04098728  1.0636233   4.14960165  9.2277248  16.8589865  25.3040073 ]
+[0.00123771 0.01099136 0.02585176 0.04872039 0.1702846  0.50315912]
+Performing replicate 16 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03923365  1.06870702  4.14508531  9.24062163 17.43467359 26.9107548 ]
+[0.00119932 0.01091245 0.02550141 0.05070653 0.18124351 0.55588466]
+Performing replicate 17 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04066468  1.05613288  4.13959897  9.22756101 16.79427048 25.76637338]
+[0.00125339 0.01084751 0.02593038 0.04898718 0.17259343 0.61412782]
+Performing replicate 18 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04007358  1.052336    4.12959595  9.26827986 17.02631146 25.85213568]
+[0.00122838 0.01108661 0.02590686 0.04886313 0.17569385 0.47852126]
+Performing replicate 19 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04006776  1.05958605  4.1035124   9.23026567 17.041872   26.64703671]
+[0.00123073 0.01066059 0.0260152  0.04879449 0.17911898 0.61418207]
+Performing replicate 20 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.0406548   1.06954475  4.11681392  9.21439386 17.15610343 26.54183819]
+[0.00124471 0.01088371 0.0253197  0.04956307 0.17889697 0.72991734]
+Performing replicate 21 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04049427  1.03817909  4.10857467  9.21315947 17.01920751 25.83964872]
+[0.00121153 0.01078787 0.02540604 0.04946169 0.17563293 0.50729575]
+Performing replicate 22 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04048135  1.05300501  4.07589649  9.19926947 16.89512108 25.21236681]
+[0.00122891 0.01072923 0.02541592 0.04943366 0.17233233 0.40822652]
+Performing replicate 23 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04018128  1.06153561  4.09577817  9.26513979 17.09166103 26.01713156]
+[0.00125902 0.01082566 0.02643073 0.04909324 0.17731166 0.45066092]
+Performing replicate 24 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03911189  1.04776702  4.12374546  9.22281215 17.14060401 26.52209084]
+[0.00116586 0.01073569 0.02658485 0.04904049 0.17745086 0.61378532]
+Performing replicate 25 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04076984  1.05042164  4.12561296  9.19035734 17.03753787 26.3690878 ]
+[0.00124476 0.01110278 0.02505696 0.04895399 0.17827157 0.58499507]
+Performing replicate 26 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03898449  1.0546573   4.15180381  9.2626973  16.84376007 25.59697552]
+[0.00115487 0.01085495 0.02606065 0.04797529 0.17361287 0.46441599]
+Performing replicate 27 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03999522  1.09303557  4.10408993  9.29081769 17.14832343 26.00134637]
+[0.00120718 0.01082247 0.02600826 0.04983042 0.17559717 0.56912693]
+Performing replicate 28 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.02e-12
+[ 0.03940443  1.06044634  4.10938349  9.23038296 16.91251349 25.7359186 ]
+[0.00116005 0.01078888 0.02591056 0.04780177 0.17374039 0.70441365]
+Performing replicate 29 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.09e-12
+[ 0.04096845  1.04503172  4.09211164  9.29293921 17.12211553 26.24559952]
+[0.00123564 0.01064254 0.02565263 0.0497363  0.17688862 0.5317508 ]
+Performing replicate 30 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03895806  1.06483468  4.15005824  9.26166183 16.80550488 24.82327146]
+[0.00115856 0.01092314 0.02625955 0.04871588 0.16926657 0.38646173]
+Performing replicate 31 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04238008  1.05743743  4.1056308   9.32651482 16.92192634 25.39458344]
+[0.00127338 0.01089547 0.02630208 0.0496117  0.1706588  0.47758793]
+Performing replicate 32 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04159484  1.05071225  4.12666821  9.26660577 16.81424835 25.9618781 ]
+[0.00124964 0.01064769 0.02557691 0.05018687 0.17240914 0.66972394]
+Performing replicate 33 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04114856  1.08268687  4.12299115  9.24390106 16.85243354 25.35284803]
+[0.00126143 0.01082248 0.02576048 0.04938534 0.17348859 0.42136653]
+Performing replicate 34 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04116927  1.07259926  4.15824019  9.27528849 16.94791638 25.73293514]
+[0.00130898 0.01130228 0.02553292 0.04890238 0.17299947 0.59897261]
+Performing replicate 35 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.2e-12
+[ 0.03998254  1.06717449  4.14399697  9.23972496 16.9624028  26.96435759]
+[0.00121966 0.0108802  0.02620668 0.04891376 0.17943201 0.65080366]
+Performing replicate 36 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 2.04e-12
+[ 0.04264123  1.05767547  4.11653449  9.20769141 17.04500785 26.10842793]
+[0.00131076 0.01087422 0.02565996 0.04929654 0.17639253 0.52582893]
+Performing replicate 37 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04045021  1.06887039  4.11249878  9.23298414 17.00163821 26.54896778]
+[0.00121786 0.01088548 0.02588108 0.04842863 0.17858701 0.5923331 ]
+Performing replicate 38 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03993204  1.05563989  4.13946936  9.17553932 16.98970347 25.99006797]
+[0.00121329 0.0107906  0.02626776 0.04774212 0.17667996 0.50637292]
+Performing replicate 39 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04086752  1.06424092  4.09857977  9.18226761 16.89390769 26.05426704]
+[0.00127276 0.01061977 0.02580727 0.04910851 0.17532733 0.6752216 ]
+Performing replicate 40 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04092222  1.05957368  4.12101868  9.20050245 16.89137484 25.83559166]
+[0.00131931 0.01091978 0.02611108 0.04812313 0.17558518 0.53834034]
+Performing replicate 41 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04151071  1.06513282  4.14839983  9.19586848 16.95203126 25.77890756]
+[0.00120184 0.01122049 0.02581584 0.04866411 0.17564218 0.48069513]
+Performing replicate 42 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.09e-12
+[ 0.03894117  1.06248328  4.10691162  9.237179   17.25767297 26.58383127]
+[0.00116467 0.01090227 0.02522051 0.04984708 0.17973117 0.57114519]
+Performing replicate 43 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.03893747  1.08998322  4.11294521  9.27011107 16.82152613 25.69162369]
+[0.00119889 0.01080592 0.02559094 0.04974843 0.173105   0.54165814]
+Performing replicate 44 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.09e-12
+[ 0.03969406  1.07588721  4.07855096  9.2164793  16.81727107 26.99420726]
+[0.00121327 0.0111927  0.02550437 0.04889684 0.17977323 0.75025091]
+Performing replicate 45 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.0409628   1.0498194   4.0570913   9.15863763 16.95732627 25.81274175]
+[0.0012538  0.01087767 0.02555359 0.04913447 0.17661516 0.47995671]
+Performing replicate 46 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03784128  1.05376079  4.14024376  9.20812591 16.99591019 27.63504139]
+[0.00118904 0.0109167  0.02527668 0.04916967 0.18216441 1.18168139]
+Performing replicate 47 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04072759  1.07355921  4.07755443  9.23753614 17.10142911 26.99060011]
+[0.00124392 0.01095825 0.02589432 0.04923171 0.17872629 0.76186565]
+Performing replicate 48 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04099168  1.07061333  4.05300409  9.31466777 17.07636877 26.11788757]
+[0.001288   0.01131441 0.02553209 0.04922798 0.17707894 0.46873487]
+Performing replicate 49 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.33e-12
+[ 0.04061109  1.0583099   4.1262091   9.32764957 16.77489422 24.89577443]
+[0.00121727 0.01087055 0.02613011 0.04908808 0.16753859 0.45652736]
+Performing replicate 50 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03819336  1.04388309  4.06009309  9.23127245 16.83779946 26.03470382]
+[0.00115177 0.01070781 0.02585428 0.04860633 0.17578544 0.56278652]
+Performing replicate 51 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04296584  1.04995387  4.09454104  9.2908982  16.99548594 25.37116655]
+[0.00129242 0.01076949 0.02564604 0.04997884 0.17230372 0.43027189]
+Performing replicate 52 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04018633  1.05320304  4.10449686  9.32575202 16.94249606 25.35534363]
+[0.00122334 0.01101526 0.02538801 0.04877874 0.17110704 0.4582548 ]
+Performing replicate 53 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 2.48e-12
+[ 0.04051422  1.07560024  4.06923639  9.23086576 16.99229678 25.27871149]
+[0.00122544 0.01100907 0.02547858 0.05014651 0.17030146 0.49117984]
+Performing replicate 54 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.6e-12
+[ 0.03992816  1.07733951  4.11835866  9.2895425  17.07267027 26.34914377]
+[0.00120233 0.01077134 0.02585971 0.0492027  0.17513452 0.64654949]
+Performing replicate 55 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.4e-12
+[ 0.04115035  1.06903961  4.13083836  9.25936527 17.15358012 26.20000776]
+[0.00126149 0.01120576 0.02621346 0.04973738 0.17704942 0.52284951]
+Performing replicate 56 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03685002  1.0741703   4.11392391  9.21633026 16.99122725 26.11778758]
+[0.00113625 0.01126669 0.02586411 0.04927455 0.17573413 0.52366967]
+Performing replicate 57 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03911325  1.06385719  4.10390873  9.24473572 16.97504659 25.88141365]
+[0.00114384 0.01096787 0.0257023  0.04927856 0.17515362 0.52197954]
+Performing replicate 58 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04016675  1.05762963  4.09604062  9.2954218  16.91930423 25.21394622]
+[0.00122563 0.01091803 0.02575721 0.04919718 0.17185306 0.41612643]
+Performing replicate 59 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 4.97e-13
+[ 0.0410047   1.05192772  4.09051153  9.24844476 17.07723005 26.33006755]
+[0.00126101 0.0109102  0.02573663 0.04979432 0.1765535  0.64089134]
+Performing replicate 60 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04018384  1.06779432  4.10814664  9.25829043 16.73288108 25.3879595 ]
+[0.00125703 0.0109299  0.02593901 0.04918681 0.17149163 0.51496746]
+Performing replicate 61 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 9.16e-13
+[ 0.03848274  1.06734914  4.07897815  9.17060981 16.76165313 25.57105989]
+[0.00120044 0.01092374 0.02553448 0.04871647 0.1718974  0.60931151]
+Performing replicate 62 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03944376  1.06983228  4.13510527  9.27047291 16.97492616 26.24980573]
+[0.00125554 0.01114837 0.02559724 0.04906641 0.17522364 0.68179652]
+Performing replicate 63 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04223143  1.0399216   4.07712503  9.24027004 17.05437249 26.10321778]
+[0.00129543 0.01061344 0.02517787 0.04975664 0.17730922 0.54984479]
+Performing replicate 64 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 4.44e-13
+[ 0.03684021  1.07295583  4.14277152  9.23300616 16.9725578  25.71754873]
+[0.00114692 0.01096672 0.0259681  0.04904269 0.17243528 0.60742236]
+Performing replicate 65 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.02e-12
+[ 0.03780477  1.07253211  4.08190003  9.26547105 16.86577347 26.38977367]
+[0.00114406 0.01087566 0.02554689 0.04917291 0.17410123 0.79437419]
+Performing replicate 66 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.0401197   1.06244674  4.06151461  9.2801348  16.99890142 25.43138518]
+[0.00118019 0.01108739 0.02592773 0.04945637 0.17213388 0.45842425]
+Performing replicate 67 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03747782  1.0521345   4.11481637  9.24637551 16.90047345 25.7987785 ]
+[0.00113409 0.01082343 0.02623638 0.04860003 0.1751291  0.51218015]
+Performing replicate 68 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04066381  1.06937607  4.08621831  9.30465603 17.11315295 27.01104886]
+[0.00119873 0.01084634 0.02528301 0.04934373 0.18104588 0.58261039]
+Performing replicate 69 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04045144  1.08188797  4.0943604   9.24750022 16.98975397 26.21395278]
+[0.00125666 0.01105172 0.02650129 0.04884713 0.17232104 0.87316908]
+Performing replicate 70 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.03870965  1.07632687  4.10441094  9.28654289 16.68615709 25.32723236]
+[0.00119717 0.01119132 0.025579   0.04920554 0.17011347 0.49316719]
+Performing replicate 71 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.039386    1.06092591  4.09698883  9.27454209 16.74268043 25.81112868]
+[0.00126535 0.01070808 0.02500017 0.04951477 0.17237893 0.63573176]
+Performing replicate 72 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04041988  1.07607761  4.13212894  9.24934236 17.27963073 27.03782815]
+[0.00127993 0.01089502 0.02562989 0.04922584 0.1818504  0.59927437]
+Performing replicate 73 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04127929  1.06025579  4.12813558  9.26820445 17.21134527 26.47929213]
+[0.00129223 0.01107509 0.02544493 0.05007894 0.17567822 0.68876105]
+Performing replicate 74 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04004994  1.0618723   4.11166654  9.29885398 16.7933635  25.44362532]
+[0.00125764 0.01066891 0.02633063 0.04917732 0.17081283 0.52717857]
+Performing replicate 75 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04024531  1.05842191  4.06520495  9.29120638 16.89498188 25.3585223 ]
+[0.00121932 0.01109536 0.02543826 0.04984881 0.17390731 0.38379606]
+Performing replicate 76 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03990177  1.07198513  4.15316475  9.21020854 16.78139041 25.12109985]
+[0.00121383 0.01109648 0.0260966  0.04841383 0.17080527 0.44464204]
+Performing replicate 77 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03962819  1.07465776  4.06810035  9.18361782 16.87836588 26.08562736]
+[0.00115638 0.0112079  0.02514235 0.04962527 0.17354188 0.72858282]
+Performing replicate 78 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04020658  1.05935004  4.08847299  9.21219507 17.00925361 25.78227613]
+[0.00121536 0.01105801 0.02554771 0.0491247  0.17645846 0.47837605]
+Performing replicate 79 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03901763  1.07325807  4.10546415  9.18539543 17.24835558 26.12799148]
+[0.00121656 0.01102838 0.02539859 0.04954287 0.17725647 0.63038033]
+Performing replicate 80 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03772282  1.05135637  4.12105194  9.25839731 16.88947632 26.02692276]
+[0.00111679 0.01074593 0.02571016 0.04870125 0.1744918  0.55717131]
+Performing replicate 81 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04113095  1.07498998  4.13351432  9.29589947 17.24507685 25.69092776]
+[0.00126642 0.01098841 0.02603217 0.04910939 0.17458546 0.45797298]
+Performing replicate 82 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04029865  1.05870641  4.12277071  9.2852909  16.90164222 25.80287098]
+[0.0012529  0.01098668 0.02586294 0.04893893 0.17566426 0.45041842]
+Performing replicate 83 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04064571  1.06262115  4.13519108  9.21648576 17.07434298 26.4193471 ]
+[0.00127865 0.01086618 0.0260134  0.04779824 0.17970389 0.53661174]
+Performing replicate 84 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 2.04e-12
+[ 0.04075934  1.07784213  4.12345256  9.3411892  16.86490949 25.2841445 ]
+[0.00127673 0.01084731 0.02537164 0.04981869 0.17003347 0.52723186]
+Performing replicate 85 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03797752  1.06345571  4.12669393  9.25996554 17.1828226  26.16356859]
+[0.00116438 0.01103706 0.0256936  0.04924531 0.17782879 0.50250589]
+Performing replicate 86 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04049187  1.06699882  4.12169282  9.18043815 17.0033469  26.73044448]
+[0.00127624 0.01112024 0.02556946 0.04882608 0.18120119 0.56101813]
+Performing replicate 87 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.29e-12
+[ 0.0377928   1.05184561  4.13376216  9.31883317 17.32670932 26.16292849]
+[0.0011722  0.01088862 0.02623937 0.04991815 0.17661542 0.52676727]
+Performing replicate 88 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.03771418  1.07214751  4.13077042  9.24600658 17.01166339 26.60593503]
+[0.00117547 0.01123351 0.02609129 0.04839887 0.17481887 0.92303418]
+Performing replicate 89 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04090549  1.05584047  4.15149472  9.21704926 16.64378726 25.21268171]
+[0.00122963 0.01100725 0.02582475 0.04917159 0.17128015 0.46514184]
+Performing replicate 90 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03985388  1.07908627  4.09697946  9.18453296 16.98945641 26.72844428]
+[0.00121978 0.01107567 0.02523913 0.04934788 0.17722961 0.78307547]
+Performing replicate 91 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03803466  1.03544304  4.08860532  9.23777155 17.05713549 25.58193499]
+[0.00115501 0.01076071 0.02497495 0.04967383 0.17374451 0.4872352 ]
+Performing replicate 92 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 9.16e-13
+[ 0.04006347  1.04753573  4.14574212  9.23344396 17.48139416 26.61847895]
+[0.00122157 0.01102464 0.02648074 0.04905509 0.18128044 0.468383  ]
+Performing replicate 93 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.03872923  1.05476097  4.06366533  9.24674771 16.83094137 25.59076482]
+[0.00115099 0.01058947 0.02547795 0.04870884 0.17438749 0.50809601]
+Performing replicate 94 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.72e-12
+[ 0.04261512  1.0710742   4.06930434  9.14893023 16.56455583 24.98794174]
+[0.00133729 0.01129983 0.02499118 0.04830273 0.1721445  0.39420417]
+Performing replicate 95 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04111475  1.04710012  4.08189777  9.26389806 17.18444428 26.24120363]
+[0.00128206 0.01096107 0.02530173 0.04955747 0.17587679 0.55822492]
+Performing replicate 96 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.0394957   1.06438775  4.08469906  9.27085151 17.17478418 26.32068726]
+[0.00122771 0.01057243 0.02531828 0.04920897 0.17793623 0.5146069 ]
+Performing replicate 97 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03921839  1.06520555  4.11028003  9.25724806 17.09487629 26.51208104]
+[0.00118925 0.0105599  0.02588019 0.04949867 0.17707493 0.66313222]
+Performing replicate 98 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.02e-12
+[ 0.04032752  1.07070478  4.07819303  9.28741418 16.98281547 26.02644847]
+[0.00123312 0.01113446 0.02577189 0.05048048 0.17371148 0.62760602]
+Performing replicate 99 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04137904  1.07148857  4.10642452  9.25845353 16.83459289 25.26143481]
+[0.00129265 0.01085527 0.02629242 0.04884718 0.17024108 0.56396339]
+Performing replicate 100 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04080261  1.06565138  4.14621308  9.23741143 16.80942848 25.56848149]
+[0.00119377 0.01106742 0.02596423 0.04853808 0.17287324 0.53779613]
+Performing replicate 101 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03978013  1.05607595  4.13311754  9.25369428 16.87968506 26.53965032]
+[0.00122858 0.01101825 0.02562545 0.04959701 0.17755548 0.75236531]
+Performing replicate 102 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03974699  1.05780552  4.13175776  9.29190721 16.64104573 24.70888587]
+[0.00124861 0.01093375 0.0258383  0.04935298 0.16661574 0.46024764]
+Performing replicate 103 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03855655  1.05026406  4.11644115  9.29256212 16.80431068 25.31318868]
+[0.00117736 0.01065185 0.02648942 0.04880783 0.16993571 0.74053195]
+Performing replicate 104 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03957732  1.07284817  4.09490115  9.1343354  16.80342512 25.11514265]
+[0.00119039 0.01111583 0.02534771 0.04973067 0.17169597 0.45651428]
+Performing replicate 105 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04067764  1.05440673  4.0901626   9.23276269 16.79637418 25.97455848]
+[0.00124436 0.01107529 0.02623409 0.04803925 0.17574689 0.56412655]
+Performing replicate 106 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03898233  1.04732805  4.11130212  9.32657383 17.1688408  26.28303926]
+[0.00117093 0.01111487 0.02547272 0.04927551 0.17686225 0.49228761]
+Performing replicate 107 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03955718  1.06472468  4.11938321  9.23990651 16.87385903 26.43387135]
+[0.00122283 0.01093417 0.02589904 0.04935481 0.17792168 0.62450403]
+Performing replicate 108 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 2.51e-12
+[ 0.03969704  1.05198413  4.09605366  9.28220511 16.96117849 25.93311487]
+[0.00121722 0.0107081  0.02611258 0.04877787 0.1751717  0.52120009]
+Performing replicate 109 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04070641  1.06283547  4.0917313   9.24848488 17.06413444 26.05554485]
+[0.00123605 0.01111822 0.02584615 0.0495416  0.17681684 0.48197416]
+Performing replicate 110 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.09e-12
+[ 0.04067367  1.05260032  4.07163454  9.22974058 16.85616976 25.21889182]
+[0.00125346 0.0105616  0.02612463 0.04934689 0.17127147 0.46938113]
+Performing replicate 111 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04035482  1.04090992  4.08679139  9.23546774 17.25817909 26.14352913]
+[0.0012295  0.01070532 0.02594349 0.04961055 0.17741344 0.54740953]
+Performing replicate 112 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 4.97e-13
+[ 0.03851721  1.06374754  4.12898974  9.22815738 17.32625948 27.13681444]
+[0.00117103 0.01088856 0.02546227 0.04930057 0.18009885 0.86785184]
+Performing replicate 113 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03975256  1.07684118  4.17131174  9.25676741 17.33894298 26.49662909]
+[0.0012304  0.01111145 0.02604939 0.0496227  0.17781969 0.53898784]
+Performing replicate 114 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03933926  1.06547972  4.11104166  9.2645009  17.06956076 25.30489389]
+[0.00121352 0.01117126 0.02570488 0.04891444 0.17389792 0.37255527]
+Performing replicate 115 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04082175  1.06947184  4.11489152  9.23544977 17.0222807  26.73544549]
+[0.00125021 0.01106241 0.02574139 0.0492689  0.1801875  0.60605367]
+Performing replicate 116 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03969111  1.05697663  4.13590081  9.23563459 16.689505   24.89829   ]
+[0.0012505  0.01073039 0.0257756  0.04798925 0.16868445 0.48805263]
+Performing replicate 117 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03899082  1.06118654  4.16664215  9.19085736 17.21477983 25.81952023]
+[0.0012246  0.01059931 0.02584278 0.04872755 0.17608251 0.4701872 ]
+Performing replicate 118 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03938932  1.04182525  4.13906231  9.22861148 16.73108122 25.82951928]
+[0.00122267 0.01074873 0.02551924 0.04798966 0.17680297 0.46121468]
+Performing replicate 119 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04085653  1.08523539  4.10752553  9.29106241 17.12397354 26.45965902]
+[0.00126275 0.01095167 0.02614668 0.04909208 0.17891643 0.57904427]
+Performing replicate 120 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03966784  1.05275393  4.06334652  9.24052813 16.96513471 26.0018254 ]
+[0.00125752 0.0109406  0.02580093 0.04954974 0.17610202 0.52701718]
+Performing replicate 121 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.0392278   1.0509059   4.14813816  9.27401765 16.95575595 25.65411279]
+[0.00124328 0.01095879 0.02579234 0.04980574 0.17335403 0.45269733]
+Performing replicate 122 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.49e-12
+[ 0.04030122  1.06736746  4.10581422  9.27326187 17.22882853 26.23765112]
+[0.00128936 0.0108582  0.02544977 0.04997193 0.17704064 0.53586202]
+Performing replicate 123 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04098913  1.07027915  4.1308825   9.17640299 16.59387907 25.29020727]
+[0.00126063 0.01104441 0.02555134 0.04796448 0.17176697 0.4881096 ]
+Performing replicate 124 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04062636  1.0738277   4.11539359  9.23544782 17.06929376 26.60251332]
+[0.00132629 0.01075991 0.0261117  0.0489554  0.18072907 0.52337566]
+Performing replicate 125 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.03937951  1.04991478  4.07657551  9.37451092 17.30034472 26.67726699]
+[0.00124574 0.01077056 0.02617023 0.05046814 0.1755068  0.6622275 ]
+Performing replicate 126 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04014618  1.06962094  4.13476275  9.27207376 17.01697019 25.94857751]
+[0.00122715 0.01086642 0.02608751 0.0490112  0.17526211 0.59631582]
+Performing replicate 127 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.84e-12
+[ 0.04012365  1.06959893  4.136795    9.30053741 16.81646147 25.59531474]
+[0.00120238 0.01066103 0.02626163 0.0496726  0.17102142 0.49455065]
+Performing replicate 128 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03907917  1.06535349  4.09006646  9.29775737 16.98873287 25.94891514]
+[0.0012042  0.0109542  0.02565464 0.04945527 0.17557739 0.496429  ]
+Performing replicate 129 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04007009  1.0665576   4.09885144  9.26820275 16.97261825 25.51556333]
+[0.00122057 0.01089746 0.02572118 0.04924192 0.17384807 0.41869537]
+Performing replicate 130 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03940556  1.06150568  4.124533    9.30757003 16.92021228 26.12372054]
+[0.00120674 0.01093973 0.02615613 0.04808091 0.17450865 0.63318736]
+Performing replicate 131 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03920296  1.08025181  4.10822698  9.27723336 17.24483201 25.98370511]
+[0.00123939 0.01104459 0.02560428 0.04956373 0.17458978 0.58584147]
+Performing replicate 132 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03858646  1.07799773  4.13255904  9.27317447 16.95468385 25.56091087]
+[0.00119266 0.01101825 0.02589311 0.04927594 0.17201834 0.54546328]
+Performing replicate 133 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03911504  1.06471426  4.07818217  9.29121857 17.32718995 27.10973772]
+[0.00122737 0.01112691 0.02537415 0.05077511 0.18009441 0.64181253]
+Performing replicate 134 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03993939  1.06159119  4.15834172  9.32156648 17.15021594 27.34403775]
+[0.00124575 0.01097182 0.02620751 0.04838349 0.18149691 0.70304715]
+Performing replicate 135 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03997742  1.04670652  4.10441351  9.24844055 16.88659783 25.57793852]
+[0.0012007  0.01062593 0.02601795 0.04978437 0.1709323  0.50156911]
+Performing replicate 136 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04227092  1.07948184  4.08094232  9.24616593 17.18148586 26.50789515]
+[0.00130684 0.01104017 0.02546124 0.04986266 0.17654614 0.72951383]
+Performing replicate 137 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04186856  1.05911993  4.08421965  9.22783168 17.20832579 27.54204858]
+[0.00126092 0.01083188 0.02558903 0.0498912  0.18237663 0.80552724]
+Performing replicate 138 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 2.31e-12
+[ 0.03830127  1.05652294  4.09234818  9.26098698 17.06382018 26.35469625]
+[0.00113282 0.01088066 0.02521804 0.04924227 0.17654489 0.55652125]
+Performing replicate 139 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03931839  1.05496684  4.11669925  9.28456829 16.91975186 25.78198815]
+[0.00117346 0.01066347 0.02586121 0.04907783 0.17525836 0.45948119]
+Performing replicate 140 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03889085  1.05844308  4.10712845  9.21635591 17.19083339 26.03355946]
+[0.00122652 0.01071796 0.02597344 0.04941993 0.1767484  0.55869732]
+Performing replicate 141 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03899333  1.05838529  4.10508641  9.20548026 16.95892104 26.60010583]
+[0.00120943 0.01082774 0.02536828 0.049502   0.17858898 0.62024083]
+Performing replicate 142 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03876535  1.07044924  4.10229425  9.25400499 17.29433168 26.3273031 ]
+[0.00117899 0.01090084 0.02487081 0.05012054 0.17807981 0.51088585]
+Performing replicate 143 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.03965197  1.07068087  4.07476155  9.28150572 16.96241989 25.56316921]
+[0.0012036  0.01108448 0.02594581 0.04986659 0.17247068 0.51616133]
+Performing replicate 144 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03782186  1.04819365  4.08654462  9.19758351 17.08139035 26.73805951]
+[0.00123128 0.01076974 0.02528505 0.04940238 0.17878989 0.75919779]
+Performing replicate 145 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 2.59e-12
+[ 0.03955792  1.06748669  4.12274755  9.2876324  16.84191376 25.88427357]
+[0.00122025 0.01097262 0.02566806 0.04836106 0.17422019 0.51345935]
+Performing replicate 146 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.73e-12
+[ 0.04090624  1.07061657  4.12248787  9.22129461 17.13767388 25.7251652 ]
+[0.00124265 0.01090442 0.02619221 0.04934468 0.17545381 0.4455065 ]
+Performing replicate 147 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04247263  1.06088521  4.09710023  9.25313333 16.94604727 25.34985036]
+[0.00130544 0.01107241 0.02547975 0.04953334 0.17200736 0.44466769]
+Performing replicate 148 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03948504  1.0417179   4.13473866  9.21575116 16.67783787 25.04794447]
+[0.00122683 0.01074013 0.02610383 0.04831819 0.17180627 0.4315699 ]
+Performing replicate 149 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.03967424  1.03616867  4.16001326  9.27205735 17.03401188 25.14820512]
+[0.00119554 0.01086735 0.02583886 0.04975345 0.17223631 0.39545792]
+Performing replicate 150 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.0402514   1.07549166  4.08710382  9.18316922 17.21452912 27.39192443]
+[0.00125881 0.01079044 0.02507131 0.04979174 0.18320188 0.73624437]
+Performing replicate 151 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04075875  1.06446981  4.12598608  9.18657692 17.00410277 26.12698844]
+[0.00124183 0.01094237 0.02523711 0.04957501 0.17589965 0.5859568 ]
+Performing replicate 152 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04101345  1.04763512  4.12009443  9.33151172 16.95590024 25.65889519]
+[0.00122857 0.01056484 0.02617427 0.04952269 0.17279317 0.4897494 ]
+Performing replicate 153 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03963724  1.04923664  4.1293401   9.19422398 16.7462357  26.54123029]
+[0.00119871 0.01100298 0.02539898 0.04932843 0.17533782 1.09747299]
+Performing replicate 154 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.0396528   1.05154947  4.12766231  9.1728756  16.97018007 27.61954165]
+[1.15938542e-03 1.07849564e-02 2.57724853e-02 4.88200586e-02
+ 1.79156984e-01 1.65805535e+00]
+Performing replicate 155 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.09e-12
+[ 0.03900252  1.06805543  4.11252292  9.23330868 17.30291588 27.15713116]
+[1.16619814e-03 1.08636843e-02 2.55805027e-02 5.05067515e-02
+ 1.79027988e-01 1.28821076e+00]
+Performing replicate 156 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.83e-12
+[ 0.03825126  1.05068269  4.12024422  9.26866967 17.29864136 25.28958687]
+[0.00117603 0.01084838 0.02592029 0.04892434 0.17292209 0.38506866]
+Performing replicate 157 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04074161  1.05983631  4.12708568  9.30425151 16.92876987 25.27429218]
+[0.00122668 0.01126359 0.02658345 0.04887155 0.16952013 0.4885423 ]
+Performing replicate 158 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03952316  1.06076929  4.09873444  9.2072707  16.99238426 26.99255113]
+[0.0011724  0.01109218 0.02559123 0.04922654 0.17896665 0.84293768]
+Performing replicate 159 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04013869  1.0586082   4.12627944  9.24362618 17.18610273 26.64651113]
+[0.00120888 0.01085788 0.02516004 0.05004442 0.17832514 0.59038519]
+Performing replicate 160 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.0413015   1.0667056   4.12340787  9.19371776 16.79472638 25.86591302]
+[0.00127358 0.01074239 0.02564696 0.04852287 0.1764254  0.55926236]
+Performing replicate 161 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03988714  1.0546929   4.04783104  9.19355724 16.85821701 25.17722503]
+[0.00119341 0.01093701 0.02571522 0.04821304 0.17349739 0.39659871]
+Performing replicate 162 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03922439  1.0758835   4.14769951  9.29178673 17.15649697 26.37184533]
+[0.00126954 0.01115485 0.02541799 0.0497061  0.178426   0.52659086]
+Performing replicate 163 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03887405  1.0648428   4.14152851  9.28511942 16.8002774  25.32637094]
+[0.00119245 0.01085298 0.02565599 0.04912642 0.17267789 0.45782726]
+Performing replicate 164 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03835591  1.04481619  4.0999079   9.27746767 16.94448182 25.70249017]
+[0.00118826 0.01078933 0.02588856 0.04983371 0.17477258 0.42534349]
+Performing replicate 165 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03985571  1.06205082  4.10466417  9.28596488 16.80142765 25.07881475]
+[0.00126311 0.01093044 0.02551212 0.05029934 0.17011149 0.41537416]
+Performing replicate 166 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04085501  1.06088217  4.1127687   9.27350857 16.83044789 25.36641665]
+[0.00124942 0.01108553 0.02551076 0.0492831  0.17092589 0.49817389]
+Performing replicate 167 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.0417479   1.06398196  4.09452888  9.09345488 16.81847848 25.02200611]
+[0.00132671 0.01086001 0.02557125 0.04891484 0.17269353 0.42676554]
+Performing replicate 168 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04132402  1.06306073  4.14543788  9.22425213 16.909052   25.88161833]
+[0.00123794 0.01096245 0.02594427 0.04909392 0.17622597 0.49658656]
+Performing replicate 169 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04334952  1.07472803  4.11907721  9.23708481 16.93965848 25.5696248 ]
+[0.00133345 0.01095409 0.02557324 0.04970075 0.17279429 0.52423431]
+Performing replicate 170 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03914368  1.04005093  4.11601888  9.20718734 17.33242682 26.4266945 ]
+[0.0011637  0.01082222 0.02562728 0.05031351 0.1787362  0.49123531]
+Performing replicate 171 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.03997725  1.0628203   4.13770212  9.3071347  16.75367996 26.2006745 ]
+[0.00123121 0.01090087 0.02541468 0.04923955 0.1742997  0.70244597]
+Performing replicate 172 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04065934  1.06302232  4.12713853  9.26509301 17.2235768  26.33786598]
+[0.00123969 0.010962   0.02565631 0.04938522 0.1754707  0.82666499]
+Performing replicate 173 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03914283  1.05229203  4.14504394  9.33218867 17.01584477 25.97850581]
+[0.00122253 0.0108431  0.02639148 0.04915235 0.17476396 0.57407044]
+Performing replicate 174 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 2.43e-12
+[ 0.04074304  1.07693259  4.10627348  9.22829772 16.84683766 25.82375379]
+[0.00122681 0.01131475 0.02554377 0.04910134 0.17469788 0.54660858]
+Performing replicate 175 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03967976  1.05561579  4.10602651  9.20229081 16.8768591  25.57468398]
+[0.00120809 0.01097673 0.02580072 0.04863555 0.17517975 0.47655956]
+Performing replicate 176 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03765345  1.06348833  4.13476548  9.22768176 16.75002859 25.67408393]
+[0.00112222 0.01109048 0.0260727  0.04909964 0.17279091 0.568084  ]
+Performing replicate 177 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03964787  1.07404957  4.08347621  9.25861092 17.23642968 25.99004317]
+[0.00124437 0.01112153 0.02536146 0.05069958 0.17697784 0.46042888]
+Performing replicate 178 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04218991  1.04929403  4.12309822  9.19991365 16.86064208 25.55290092]
+[0.00131511 0.01075854 0.02576016 0.04882433 0.17394164 0.47489437]
+Performing replicate 179 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04113675  1.05677132  4.07609167  9.27176595 16.91881427 25.51713621]
+[0.00126032 0.01034274 0.02543807 0.0498377  0.17093882 0.6084041 ]
+Performing replicate 180 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04050788  1.05553897  4.1765127   9.19951095 17.13882675 26.16725938]
+[0.00120329 0.01103227 0.02582179 0.04964033 0.17752509 0.49837713]
+Performing replicate 181 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03922528  1.03847993  4.07477377  9.24126504 17.01294043 25.85593086]
+[0.00121071 0.01086685 0.02554272 0.04916098 0.17527238 0.48923393]
+Performing replicate 182 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.03917716  1.0628745   4.0761117   9.30997285 17.06776714 25.92724437]
+[0.00125504 0.01088776 0.02579925 0.05033104 0.1762384  0.45361692]
+Performing replicate 183 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.26e-12
+[ 0.04034922  1.06076492  4.11632747  9.33255042 17.12372612 25.71913407]
+[0.00128512 0.01105564 0.02548206 0.05015886 0.17262883 0.57342372]
+Performing replicate 184 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03883601  1.05516603  4.03578921  9.22865944 16.69866365 25.0440894 ]
+[0.0011963  0.01085288 0.02561758 0.04875598 0.17139263 0.41026031]
+Performing replicate 185 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04255949  1.0548528   4.12206072  9.20923324 16.9765651  25.76771089]
+[0.00123714 0.01074133 0.02660145 0.04932054 0.17356895 0.62180151]
+Performing replicate 186 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03786707  1.0842681   4.1139317   9.26646697 16.89970607 25.64714825]
+[0.00118771 0.01120414 0.02516133 0.04969422 0.17199565 0.56021551]
+Performing replicate 187 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03885175  1.06401962  4.0953245   9.22816814 17.15613398 26.26410598]
+[0.00117114 0.01084865 0.02598598 0.04936978 0.17778601 0.49034042]
+Performing replicate 188 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 2.08e-12
+[ 0.03916907  1.06195567  4.09631427  9.20990299 17.15550258 26.2847235 ]
+[0.00118885 0.01079848 0.02587778 0.04907878 0.18019443 0.44079388]
+Performing replicate 189 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03778221  1.0496314   4.14973278  9.33390347 17.35876632 26.06781097]
+[0.0011929  0.01081494 0.0260036  0.04993709 0.17287074 0.65602686]
+Performing replicate 190 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.78e-12
+[ 0.04107742  1.08007828  4.08829975  9.14858776 16.81771564 26.13745563]
+[0.00123871 0.01115557 0.02513659 0.0491685  0.17612711 0.86093237]
+Performing replicate 191 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.03964298  1.06450389  4.10744734  9.27163908 17.22632445 26.61916102]
+[0.00122403 0.01101905 0.02528958 0.04988069 0.17977885 0.58241499]
+Performing replicate 192 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 9.42e-13
+[ 0.0398146   1.05284374  4.08416859  9.27625284 17.07926581 25.25671039]
+[0.00123174 0.01092759 0.02558197 0.04874624 0.17273435 0.39190106]
+Performing replicate 193 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.68e-12
+[ 0.03846028  1.05082904  4.12306679  9.30995412 17.26432513 25.90934975]
+[0.00118513 0.01067334 0.02554032 0.04956267 0.17369254 0.51562942]
+Performing replicate 194 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04241041  1.06226337  4.14106477  9.19670241 17.10338225 26.20609885]
+[0.00130314 0.01102521 0.02514543 0.05043752 0.17725599 0.51428122]
+Performing replicate 195 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.0389781   1.0717443   4.06721461  9.156016   17.15954345 25.9435764 ]
+[0.00120403 0.0108145  0.02534289 0.04982075 0.17844693 0.4502166 ]
+Performing replicate 196 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04040425  1.08273101  4.04965734  9.28964361 16.81022322 25.57520469]
+[0.00121953 0.01078653 0.02594205 0.0485129  0.1747217  0.44656067]
+Performing replicate 197 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 1.6e-12
+[ 0.04225357  1.08785083  4.13716652  9.26753743 17.04926272 25.41591015]
+[0.00131668 0.01092811 0.02585182 0.04985847 0.17281623 0.4083112 ]
+Performing replicate 198 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 2.51e-12
+[ 0.04080864  1.05578917  4.12542644  9.26846494 17.2013009  26.12837111]
+[0.00125068 0.01089593 0.02535943 0.04918443 0.17650576 0.51148002]
+Performing replicate 199 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04037436  1.0602233   4.12043147  9.30622192 16.90120418 26.38462644]
+[0.00126113 0.01079958 0.0262764  0.04862392 0.17454117 1.07843245]
+Performing replicate 200 / 200
+INFO:pymbar.mbar_solvers:Reached a solution to within tolerance with adaptive
+INFO:pymbar.mbar_solvers:Solution found within tolerance!
+INFO:pymbar.mbar_solvers:Final gradient norm: 0
+[ 0.04202009  1.04714895  4.11384316  9.22402556 16.73935212 25.20267944]
+[0.0012903  0.01061105 0.02615075 0.04939276 0.17100542 0.4336926 ]
+Free energies
+Anderson-Darling Metrics (see README.md)
+[[0.         0.63948233 0.64238618 0.56374172 0.5247762  0.62654248]
+ [0.49202939 0.         0.57771277 0.64306131 0.50730763 0.81995768]
+ [0.4305121  0.40320521 0.         0.50130062 0.49338421 0.58437865]
+ [0.37731585 0.49778176 0.53050247 0.         0.93139412 1.16545921]
+ [0.28301623 0.28782605 0.33423671 0.59964086 0.         1.81114272]
+ [0.32242773 0.51940134 0.29650744 0.77617482 1.46701154 0.        ]]
+INFO:pymbar.confidenceintervals:The uncertainty estimates are tested in this section.
+If the error is normally distributed, the actual error will be less than a
+multiplier 'alpha' times the computed uncertainty 'sigma' a fraction of
+time given by:
+P(error < alpha sigma) = erf(alpha / sqrt(2))
+For example, the true error should be less than 1.0 * sigma
+(one standard deviation) a total of 68% of the time, and
+less than 2.0 * sigma (two standard deviations) 95% of the time.
+The observed fraction of the time that error < alpha sigma, and its
+uncertainty, is given as 'obs' (with uncertainty 'obs err') below.
+This should be compared to the column labeled 'normal'.
+A weak lower bound that holds regardless of how the error is distributed is given
+by Chebyshev's inequality, and is listed as 'cheby' below.
+Uncertainty estimates are tested for both free energy differences and expectations.
+
+INFO:pymbar.confidenceintervals:Error vs. alpha
+INFO:pymbar.confidenceintervals:alpha cheby      obs        obs err          normal           
+INFO:pymbar.confidenceintervals:  0.1 -99.000000   0.075949 (  0.066745,  0.085688)   0.079656
+INFO:pymbar.confidenceintervals:  0.2 -24.000000   0.147568 (  0.135108,  0.160473)   0.158519
+INFO:pymbar.confidenceintervals:  0.3 -10.111111   0.217855 (  0.203271,  0.232795)   0.235823
+INFO:pymbar.confidenceintervals:  0.4  -5.250000   0.287142 (  0.271096,  0.303456)   0.310843
+INFO:pymbar.confidenceintervals:  0.5  -3.000000   0.359094 (  0.342026,  0.376340)   0.382925
+INFO:pymbar.confidenceintervals:  0.6  -1.777778   0.431712 (  0.414041,  0.449469)   0.451494
+INFO:pymbar.confidenceintervals:  0.7  -1.040816   0.492672 (  0.474796,  0.510556)   0.516073
+INFO:pymbar.confidenceintervals:  0.8  -0.562500   0.558961 (  0.541167,  0.576680)   0.576289
+INFO:pymbar.confidenceintervals:  0.9  -0.234568   0.621252 (  0.603828,  0.638524)   0.631880
+INFO:pymbar.confidenceintervals:  1.0  -0.000000   0.681879 (  0.665108,  0.698420)   0.682689
+INFO:pymbar.confidenceintervals:  1.1   0.173554   0.731179 (  0.715178,  0.746888)   0.728668
+INFO:pymbar.confidenceintervals:  1.2   0.305556   0.766156 (  0.750851,  0.781125)   0.769861
+INFO:pymbar.confidenceintervals:  1.3   0.408284   0.810127 (  0.795905,  0.823956)   0.806399
+INFO:pymbar.confidenceintervals:  1.4   0.489796   0.842438 (  0.829194,  0.855251)   0.838487
+INFO:pymbar.confidenceintervals:  1.5   0.555556   0.868754 (  0.856447,  0.880596)   0.866386
+INFO:pymbar.confidenceintervals:  1.6   0.609375   0.888408 (  0.876904,  0.899421)   0.890401
+INFO:pymbar.confidenceintervals:  1.7   0.653979   0.901732 (  0.890835,  0.912122)   0.910869
+INFO:pymbar.confidenceintervals:  1.8   0.691358   0.919387 (  0.909389,  0.928856)   0.928139
+INFO:pymbar.confidenceintervals:  1.9   0.722992   0.932378 (  0.923129,  0.941083)   0.942567
+INFO:pymbar.confidenceintervals:  2.0   0.750000   0.945037 (  0.936609,  0.952903)   0.954500
+INFO:pymbar.confidenceintervals:  2.1   0.773243   0.956029 (  0.948413,  0.963070)   0.964271
+INFO:pymbar.confidenceintervals:  2.2   0.793388   0.968021 (  0.961439,  0.974013)   0.972193
+INFO:pymbar.confidenceintervals:  2.3   0.810964   0.974350 (  0.968404,  0.979699)   0.978552
+INFO:pymbar.confidenceintervals:  2.4   0.826389   0.981013 (  0.975836,  0.985583)   0.983605
+INFO:pymbar.confidenceintervals:  2.5   0.840000   0.984677 (  0.979986,  0.988757)   0.987581
+INFO:pymbar.confidenceintervals:  2.6   0.852071   0.989340 (  0.985369,  0.992695)   0.990678
+INFO:pymbar.confidenceintervals:  2.7   0.862826   0.993005 (  0.989726,  0.995663)   0.993066
+INFO:pymbar.confidenceintervals:  2.8   0.872449   0.993671 (  0.990537,  0.996184)   0.994890
+INFO:pymbar.confidenceintervals:  2.9   0.881094   0.996003 (  0.993451,  0.997932)   0.996268
+INFO:pymbar.confidenceintervals:  3.0   0.888889   0.997002 (  0.994754,  0.998628)   0.997300
+INFO:pymbar.confidenceintervals:  3.1   0.895942   0.998334 (  0.996591,  0.999459)   0.998065
+INFO:pymbar.confidenceintervals:  3.2   0.902344   0.999334 (  0.998145,  0.999919)   0.998626
+INFO:pymbar.confidenceintervals:  3.3   0.908173   0.999334 (  0.998145,  0.999919)   0.999033
+INFO:pymbar.confidenceintervals:  3.4   0.913495   0.999334 (  0.998145,  0.999919)   0.999326
+INFO:pymbar.confidenceintervals:  3.5   0.918367   0.999667 (  0.998772,  0.999992)   0.999535
+INFO:pymbar.confidenceintervals:  3.6   0.922840   0.999667 (  0.998772,  0.999992)   0.999682
+INFO:pymbar.confidenceintervals:  3.7   0.926954   0.999667 (  0.998772,  0.999992)   0.999784
+INFO:pymbar.confidenceintervals:  3.8   0.930748   0.999667 (  0.998772,  0.999992)   0.999855
+INFO:pymbar.confidenceintervals:  3.9   0.934254   0.999667 (  0.998772,  0.999992)   0.999904
+INFO:pymbar.confidenceintervals:  4.0   0.937500   0.999667 (  0.998772,  0.999992)   0.999937
+INFO:pymbar.confidenceintervals:
+INFO:pymbar.confidenceintervals:     i      average    bias      rms_error     stddev  ave_analyt_std
+INFO:pymbar.confidenceintervals:---------------------------------------------------------------------
+INFO:pymbar.confidenceintervals:      0     0.0000      0.0000      0.0000      0.0000     0.0000
+INFO:pymbar.confidenceintervals:      1    -0.2184      0.0047      0.1547      0.1546     0.1551
+INFO:pymbar.confidenceintervals:      2    -0.5048      0.0061      0.1802      0.1801     0.1765
+INFO:pymbar.confidenceintervals:      3    -0.9105      0.0058      0.1841      0.1840     0.1822
+INFO:pymbar.confidenceintervals:      4    -1.6024      0.0070      0.1840      0.1839     0.1835
+INFO:pymbar.confidenceintervals:      5    -1.6010      0.0084      0.1885      0.1883     0.1879
+INFO:pymbar.confidenceintervals:Totals:    -1.6010      0.0084      0.1885      0.1883     0.1879
+Standard ensemble averaged observables
+INFO:pymbar.confidenceintervals:The uncertainty estimates are tested in this section.
+If the error is normally distributed, the actual error will be less than a
+multiplier 'alpha' times the computed uncertainty 'sigma' a fraction of
+time given by:
+P(error < alpha sigma) = erf(alpha / sqrt(2))
+For example, the true error should be less than 1.0 * sigma
+(one standard deviation) a total of 68% of the time, and
+less than 2.0 * sigma (two standard deviations) 95% of the time.
+The observed fraction of the time that error < alpha sigma, and its
+uncertainty, is given as 'obs' (with uncertainty 'obs err') below.
+This should be compared to the column labeled 'normal'.
+A weak lower bound that holds regardless of how the error is distributed is given
+by Chebyshev's inequality, and is listed as 'cheby' below.
+Uncertainty estimates are tested for both free energy differences and expectations.
+
+INFO:pymbar.confidenceintervals:Error vs. alpha
+INFO:pymbar.confidenceintervals:alpha cheby      obs        obs err          normal           
+INFO:pymbar.confidenceintervals:  0.1 -99.000000   0.076846 (  0.061180,  0.094111)   0.079656
+INFO:pymbar.confidenceintervals:  0.2 -24.000000   0.158683 (  0.136727,  0.181928)   0.158519
+INFO:pymbar.confidenceintervals:  0.3 -10.111111   0.234531 (  0.208820,  0.261245)   0.235823
+INFO:pymbar.confidenceintervals:  0.4  -5.250000   0.308383 (  0.280172,  0.337319)   0.310843
+INFO:pymbar.confidenceintervals:  0.5  -3.000000   0.389222 (  0.359264,  0.419598)   0.382925
+INFO:pymbar.confidenceintervals:  0.6  -1.777778   0.438124 (  0.407542,  0.468940)   0.451494
+INFO:pymbar.confidenceintervals:  0.7  -1.040816   0.509980 (  0.479030,  0.540892)   0.516073
+INFO:pymbar.confidenceintervals:  0.8  -0.562500   0.568862 (  0.538090,  0.599374)   0.576289
+INFO:pymbar.confidenceintervals:  0.9  -0.234568   0.632735 (  0.602658,  0.662310)   0.631880
+INFO:pymbar.confidenceintervals:  1.0  -0.000000   0.690619 (  0.661660,  0.718857)   0.682689
+INFO:pymbar.confidenceintervals:  1.1   0.173554   0.732535 (  0.704710,  0.759480)   0.728668
+INFO:pymbar.confidenceintervals:  1.2   0.305556   0.779441 (  0.753263,  0.804563)   0.769861
+INFO:pymbar.confidenceintervals:  1.3   0.408284   0.819361 (  0.794959,  0.842556)   0.806399
+INFO:pymbar.confidenceintervals:  1.4   0.489796   0.851297 (  0.828627,  0.872640)   0.838487
+INFO:pymbar.confidenceintervals:  1.5   0.555556   0.874251 (  0.853038,  0.894050)   0.866386
+INFO:pymbar.confidenceintervals:  1.6   0.609375   0.893214 (  0.873372,  0.911569)   0.890401
+INFO:pymbar.confidenceintervals:  1.7   0.653979   0.912176 (  0.893897,  0.928897)   0.910869
+INFO:pymbar.confidenceintervals:  1.8   0.691358   0.926148 (  0.909176,  0.941510)   0.928139
+INFO:pymbar.confidenceintervals:  1.9   0.722992   0.944112 (  0.929079,  0.957467)   0.942567
+INFO:pymbar.confidenceintervals:  2.0   0.750000   0.954092 (  0.940306,  0.966163)   0.954500
+INFO:pymbar.confidenceintervals:  2.1   0.773243   0.965070 (  0.952857,  0.975527)   0.964271
+INFO:pymbar.confidenceintervals:  2.2   0.793388   0.974052 (  0.963352,  0.982964)   0.972193
+INFO:pymbar.confidenceintervals:  2.3   0.810964   0.980040 (  0.970517,  0.987754)   0.978552
+INFO:pymbar.confidenceintervals:  2.4   0.826389   0.987026 (  0.979153,  0.993067)   0.983605
+INFO:pymbar.confidenceintervals:  2.5   0.840000   0.991018 (  0.984314,  0.995881)   0.987581
+INFO:pymbar.confidenceintervals:  2.6   0.852071   0.993014 (  0.987000,  0.997184)   0.990678
+INFO:pymbar.confidenceintervals:  2.7   0.862826   0.995010 (  0.989801,  0.998376)   0.993066
+INFO:pymbar.confidenceintervals:  2.8   0.872449   0.998004 (  0.994447,  0.999758)   0.994890
+INFO:pymbar.confidenceintervals:  2.9   0.881094   0.999002 (  0.996322,  0.999975)   0.996268
+INFO:pymbar.confidenceintervals:  3.0   0.888889   0.999002 (  0.996322,  0.999975)   0.997300
+INFO:pymbar.confidenceintervals:  3.1   0.895942   0.999002 (  0.996322,  0.999975)   0.998065
+INFO:pymbar.confidenceintervals:  3.2   0.902344   0.999002 (  0.996322,  0.999975)   0.998626
+INFO:pymbar.confidenceintervals:  3.3   0.908173   0.999002 (  0.996322,  0.999975)   0.999033
+INFO:pymbar.confidenceintervals:  3.4   0.913495   0.999002 (  0.996322,  0.999975)   0.999326
+INFO:pymbar.confidenceintervals:  3.5   0.918367   0.999002 (  0.996322,  0.999975)   0.999535
+INFO:pymbar.confidenceintervals:  3.6   0.922840   0.999002 (  0.996322,  0.999975)   0.999682
+INFO:pymbar.confidenceintervals:  3.7   0.926954   0.999002 (  0.996322,  0.999975)   0.999784
+INFO:pymbar.confidenceintervals:  3.8   0.930748   0.999002 (  0.996322,  0.999975)   0.999855
+INFO:pymbar.confidenceintervals:  3.9   0.934254   0.999002 (  0.996322,  0.999975)   0.999904
+INFO:pymbar.confidenceintervals:  4.0   0.937500   0.999002 (  0.996322,  0.999975)   0.999937
+INFO:pymbar.confidenceintervals:
+INFO:pymbar.confidenceintervals:     i      average    bias      rms_error     stddev  ave_analyt_std
+INFO:pymbar.confidenceintervals:---------------------------------------------------------------------
+INFO:pymbar.confidenceintervals:      0     0.0400     -0.0000      0.0012      0.0012     0.0013
+INFO:pymbar.confidenceintervals:      1     1.0616     -0.0009      0.0116      0.0115     0.0113
+INFO:pymbar.confidenceintervals:      2     4.1124      0.0013      0.0298      0.0298     0.0301
+INFO:pymbar.confidenceintervals:      3     9.2495     -0.0005      0.0593      0.0593     0.0675
+INFO:pymbar.confidenceintervals:      4    16.9911     -0.0089      0.1877      0.1875     0.1817
+INFO:pymbar.confidenceintervals:Totals:    16.9911     -0.0089      0.1877      0.1875     0.1817
+Anderson-Darling Metrics (see README.md)
+[0.41460745 0.44599936 0.93761647 1.3195594  0.68606603]
+MBAR ensemble averaged observables
+INFO:pymbar.confidenceintervals:The uncertainty estimates are tested in this section.
+If the error is normally distributed, the actual error will be less than a
+multiplier 'alpha' times the computed uncertainty 'sigma' a fraction of
+time given by:
+P(error < alpha sigma) = erf(alpha / sqrt(2))
+For example, the true error should be less than 1.0 * sigma
+(one standard deviation) a total of 68% of the time, and
+less than 2.0 * sigma (two standard deviations) 95% of the time.
+The observed fraction of the time that error < alpha sigma, and its
+uncertainty, is given as 'obs' (with uncertainty 'obs err') below.
+This should be compared to the column labeled 'normal'.
+A weak lower bound that holds regardless of how the error is distributed is given
+by Chebyshev's inequality, and is listed as 'cheby' below.
+Uncertainty estimates are tested for both free energy differences and expectations.
+
+INFO:pymbar.confidenceintervals:Error vs. alpha
+INFO:pymbar.confidenceintervals:alpha cheby      obs        obs err          normal           
+INFO:pymbar.confidenceintervals:  0.1 -99.000000   0.079035 (  0.064466,  0.094930)   0.079656
+INFO:pymbar.confidenceintervals:  0.2 -24.000000   0.155574 (  0.135644,  0.176589)   0.158519
+INFO:pymbar.confidenceintervals:  0.3 -10.111111   0.237937 (  0.214294,  0.262405)   0.235823
+INFO:pymbar.confidenceintervals:  0.4  -5.250000   0.306988 (  0.281234,  0.333351)   0.310843
+INFO:pymbar.confidenceintervals:  0.5  -3.000000   0.386023 (  0.358698,  0.413708)   0.382925
+INFO:pymbar.confidenceintervals:  0.6  -1.777778   0.437604 (  0.409674,  0.465731)   0.451494
+INFO:pymbar.confidenceintervals:  0.7  -1.040816   0.501664 (  0.473412,  0.529911)   0.516073
+INFO:pymbar.confidenceintervals:  0.8  -0.562500   0.562396 (  0.534269,  0.590326)   0.576289
+INFO:pymbar.confidenceintervals:  0.9  -0.234568   0.634775 (  0.607360,  0.661766)   0.631880
+INFO:pymbar.confidenceintervals:  1.0  -0.000000   0.682196 (  0.655603,  0.708215)   0.682689
+INFO:pymbar.confidenceintervals:  1.1   0.173554   0.727121 (  0.701599,  0.751928)   0.728668
+INFO:pymbar.confidenceintervals:  1.2   0.305556   0.766223 (  0.741894,  0.789713)   0.769861
+INFO:pymbar.confidenceintervals:  1.3   0.408284   0.797837 (  0.774681,  0.820055)   0.806399
+INFO:pymbar.confidenceintervals:  1.4   0.489796   0.830283 (  0.808558,  0.850966)   0.838487
+INFO:pymbar.confidenceintervals:  1.5   0.555556   0.864393 (  0.844481,  0.883156)   0.866386
+INFO:pymbar.confidenceintervals:  1.6   0.609375   0.882696 (  0.863920,  0.900265)   0.890401
+INFO:pymbar.confidenceintervals:  1.7   0.653979   0.898502 (  0.880821,  0.914928)   0.910869
+INFO:pymbar.confidenceintervals:  1.8   0.691358   0.915973 (  0.899654,  0.930982)   0.928139
+INFO:pymbar.confidenceintervals:  1.9   0.722992   0.942596 (  0.928770,  0.955027)   0.942567
+INFO:pymbar.confidenceintervals:  2.0   0.750000   0.955075 (  0.942672,  0.966045)   0.954500
+INFO:pymbar.confidenceintervals:  2.1   0.773243   0.965058 (  0.953971,  0.974682)   0.964271
+INFO:pymbar.confidenceintervals:  2.2   0.793388   0.969218 (  0.958742,  0.978218)   0.972193
+INFO:pymbar.confidenceintervals:  2.3   0.810964   0.976705 (  0.967459,  0.984453)   0.978552
+INFO:pymbar.confidenceintervals:  2.4   0.826389   0.982529 (  0.974398,  0.989144)   0.983605
+INFO:pymbar.confidenceintervals:  2.5   0.840000   0.985857 (  0.978455,  0.991733)   0.987581
+INFO:pymbar.confidenceintervals:  2.6   0.852071   0.990849 (  0.984741,  0.995419)   0.990678
+INFO:pymbar.confidenceintervals:  2.7   0.862826   0.993344 (  0.988028,  0.997120)   0.993066
+INFO:pymbar.confidenceintervals:  2.8   0.872449   0.995008 (  0.990311,  0.998164)   0.994890
+INFO:pymbar.confidenceintervals:  2.9   0.881094   0.996672 (  0.992718,  0.999092)   0.996268
+INFO:pymbar.confidenceintervals:  3.0   0.888889   0.997504 (  0.993998,  0.999485)   0.997300
+INFO:pymbar.confidenceintervals:  3.1   0.895942   0.998336 (  0.995370,  0.999798)   0.998065
+INFO:pymbar.confidenceintervals:  3.2   0.902344   0.998336 (  0.995370,  0.999798)   0.998626
+INFO:pymbar.confidenceintervals:  3.3   0.908173   0.999168 (  0.996933,  0.999979)   0.999033
+INFO:pymbar.confidenceintervals:  3.4   0.913495   0.999168 (  0.996933,  0.999979)   0.999326
+INFO:pymbar.confidenceintervals:  3.5   0.918367   0.999168 (  0.996933,  0.999979)   0.999535
+INFO:pymbar.confidenceintervals:  3.6   0.922840   0.999168 (  0.996933,  0.999979)   0.999682
+INFO:pymbar.confidenceintervals:  3.7   0.926954   0.999168 (  0.996933,  0.999979)   0.999784
+INFO:pymbar.confidenceintervals:  3.8   0.930748   0.999168 (  0.996933,  0.999979)   0.999855
+INFO:pymbar.confidenceintervals:  3.9   0.934254   0.999168 (  0.996933,  0.999979)   0.999904
+INFO:pymbar.confidenceintervals:  4.0   0.937500   0.999168 (  0.996933,  0.999979)   0.999937
+INFO:pymbar.confidenceintervals:
+INFO:pymbar.confidenceintervals:     i      average    bias      rms_error     stddev  ave_analyt_std
+INFO:pymbar.confidenceintervals:---------------------------------------------------------------------
+INFO:pymbar.confidenceintervals:      0     0.0400     -0.0000      0.0012      0.0012     0.0012
+INFO:pymbar.confidenceintervals:      1     1.0619     -0.0006      0.0111      0.0110     0.0109
+INFO:pymbar.confidenceintervals:      2     4.1114      0.0003      0.0266      0.0266     0.0257
+INFO:pymbar.confidenceintervals:      3     9.2475     -0.0025      0.0446      0.0446     0.0493
+INFO:pymbar.confidenceintervals:      4    16.9938     -0.0062      0.1791      0.1790     0.1752
+INFO:pymbar.confidenceintervals:      5    25.9694     -0.0306      0.5802      0.5794     0.5879
+INFO:pymbar.confidenceintervals:Totals:    25.9694     -0.0306      0.5802      0.5794     0.5879
+Anderson-Darling Metrics (see README.md)
+[0.6901644  0.1987652  0.63184093 0.91454922 1.07566274 3.77360317]
+
+ ==== State 1 alone with MBAR ===== 
+INFO:pymbar.confidenceintervals:The uncertainty estimates are tested in this section.
+If the error is normally distributed, the actual error will be less than a
+multiplier 'alpha' times the computed uncertainty 'sigma' a fraction of
+time given by:
+P(error < alpha sigma) = erf(alpha / sqrt(2))
+For example, the true error should be less than 1.0 * sigma
+(one standard deviation) a total of 68% of the time, and
+less than 2.0 * sigma (two standard deviations) 95% of the time.
+The observed fraction of the time that error < alpha sigma, and its
+uncertainty, is given as 'obs' (with uncertainty 'obs err') below.
+This should be compared to the column labeled 'normal'.
+A weak lower bound that holds regardless of how the error is distributed is given
+by Chebyshev's inequality, and is listed as 'cheby' below.
+Uncertainty estimates are tested for both free energy differences and expectations.
+
+INFO:pymbar.confidenceintervals:Error vs. alpha
+INFO:pymbar.confidenceintervals:alpha cheby      obs        obs err          normal           
+INFO:pymbar.confidenceintervals:  0.1 -99.000000   0.064356 (  0.034884,  0.101964)   0.079656
+INFO:pymbar.confidenceintervals:  0.2 -24.000000   0.148515 (  0.103022,  0.200592)   0.158519
+INFO:pymbar.confidenceintervals:  0.3 -10.111111   0.227723 (  0.172689,  0.287861)   0.235823
+INFO:pymbar.confidenceintervals:  0.4  -5.250000   0.316832 (  0.254634,  0.382465)   0.310843
+INFO:pymbar.confidenceintervals:  0.5  -3.000000   0.391089 (  0.325057,  0.459164)   0.382925
+INFO:pymbar.confidenceintervals:  0.6  -1.777778   0.470297 (  0.401989,  0.539163)   0.451494
+INFO:pymbar.confidenceintervals:  0.7  -1.040816   0.509901 (  0.441113,  0.578503)   0.516073
+INFO:pymbar.confidenceintervals:  0.8  -0.562500   0.589109 (  0.520668,  0.655878)   0.576289
+INFO:pymbar.confidenceintervals:  0.9  -0.234568   0.658416 (  0.591774,  0.722087)   0.631880
+INFO:pymbar.confidenceintervals:  1.0  -0.000000   0.698020 (  0.633092,  0.759233)   0.682689
+INFO:pymbar.confidenceintervals:  1.1   0.173554   0.752475 (  0.690837,  0.809379)   0.728668
+INFO:pymbar.confidenceintervals:  1.2   0.305556   0.762376 (  0.701466,  0.818367)   0.769861
+INFO:pymbar.confidenceintervals:  1.3   0.408284   0.811881 (  0.755313,  0.862603)   0.806399
+INFO:pymbar.confidenceintervals:  1.4   0.489796   0.831683 (  0.777230,  0.879921)   0.838487
+INFO:pymbar.confidenceintervals:  1.5   0.555556   0.856436 (  0.804997,  0.901197)   0.866386
+INFO:pymbar.confidenceintervals:  1.6   0.609375   0.896040 (  0.850513,  0.934154)   0.890401
+INFO:pymbar.confidenceintervals:  1.7   0.653979   0.900990 (  0.856322,  0.938155)   0.910869
+INFO:pymbar.confidenceintervals:  1.8   0.691358   0.920792 (  0.879901,  0.953817)   0.928139
+INFO:pymbar.confidenceintervals:  1.9   0.722992   0.935644 (  0.898036,  0.965116)   0.942567
+INFO:pymbar.confidenceintervals:  2.0   0.750000   0.945545 (  0.910411,  0.972368)   0.954500
+INFO:pymbar.confidenceintervals:  2.1   0.773243   0.950495 (  0.916705,  0.975888)   0.964271
+INFO:pymbar.confidenceintervals:  2.2   0.793388   0.955446 (  0.923085,  0.979324)   0.972193
+INFO:pymbar.confidenceintervals:  2.3   0.810964   0.965347 (  0.936163,  0.985886)   0.978552
+INFO:pymbar.confidenceintervals:  2.4   0.826389   0.975248 (  0.949833,  0.991875)   0.983605
+INFO:pymbar.confidenceintervals:  2.5   0.840000   0.980198 (  0.957004,  0.994552)   0.987581
+INFO:pymbar.confidenceintervals:  2.6   0.852071   0.990099 (  0.972594,  0.998793)   0.990678
+INFO:pymbar.confidenceintervals:  2.7   0.862826   0.990099 (  0.972594,  0.998793)   0.993066
+INFO:pymbar.confidenceintervals:  2.8   0.872449   0.990099 (  0.972594,  0.998793)   0.994890
+INFO:pymbar.confidenceintervals:  2.9   0.881094   0.990099 (  0.972594,  0.998793)   0.996268
+INFO:pymbar.confidenceintervals:  3.0   0.888889   0.990099 (  0.972594,  0.998793)   0.997300
+INFO:pymbar.confidenceintervals:  3.1   0.895942   0.995050 (  0.981815,  0.999874)   0.998065
+INFO:pymbar.confidenceintervals:  3.2   0.902344   0.995050 (  0.981815,  0.999874)   0.998626
+INFO:pymbar.confidenceintervals:  3.3   0.908173   0.995050 (  0.981815,  0.999874)   0.999033
+INFO:pymbar.confidenceintervals:  3.4   0.913495   0.995050 (  0.981815,  0.999874)   0.999326
+INFO:pymbar.confidenceintervals:  3.5   0.918367   0.995050 (  0.981815,  0.999874)   0.999535
+INFO:pymbar.confidenceintervals:  3.6   0.922840   0.995050 (  0.981815,  0.999874)   0.999682
+INFO:pymbar.confidenceintervals:  3.7   0.926954   0.995050 (  0.981815,  0.999874)   0.999784
+INFO:pymbar.confidenceintervals:  3.8   0.930748   0.995050 (  0.981815,  0.999874)   0.999855
+INFO:pymbar.confidenceintervals:  3.9   0.934254   0.995050 (  0.981815,  0.999874)   0.999904
+INFO:pymbar.confidenceintervals:  4.0   0.937500   0.995050 (  0.981815,  0.999874)   0.999937
+INFO:pymbar.confidenceintervals:
+INFO:pymbar.confidenceintervals:     i      average    bias      rms_error     stddev  ave_analyt_std
+INFO:pymbar.confidenceintervals:---------------------------------------------------------------------
+INFO:pymbar.confidenceintervals:Totals:    -0.2184      0.0047      0.1547      0.1546     0.1551
+
+ ==== State 2 alone with MBAR ===== 
+INFO:pymbar.confidenceintervals:The uncertainty estimates are tested in this section.
+If the error is normally distributed, the actual error will be less than a
+multiplier 'alpha' times the computed uncertainty 'sigma' a fraction of
+time given by:
+P(error < alpha sigma) = erf(alpha / sqrt(2))
+For example, the true error should be less than 1.0 * sigma
+(one standard deviation) a total of 68% of the time, and
+less than 2.0 * sigma (two standard deviations) 95% of the time.
+The observed fraction of the time that error < alpha sigma, and its
+uncertainty, is given as 'obs' (with uncertainty 'obs err') below.
+This should be compared to the column labeled 'normal'.
+A weak lower bound that holds regardless of how the error is distributed is given
+by Chebyshev's inequality, and is listed as 'cheby' below.
+Uncertainty estimates are tested for both free energy differences and expectations.
+
+INFO:pymbar.confidenceintervals:Error vs. alpha
+INFO:pymbar.confidenceintervals:alpha cheby      obs        obs err          normal           
+INFO:pymbar.confidenceintervals:  0.1 -99.000000   0.064356 (  0.034884,  0.101964)   0.079656
+INFO:pymbar.confidenceintervals:  0.2 -24.000000   0.118812 (  0.078022,  0.166738)   0.158519
+INFO:pymbar.confidenceintervals:  0.3 -10.111111   0.202970 (  0.150535,  0.260973)   0.235823
+INFO:pymbar.confidenceintervals:  0.4  -5.250000   0.272277 (  0.213271,  0.335554)   0.310843
+INFO:pymbar.confidenceintervals:  0.5  -3.000000   0.361386 (  0.296680,  0.428692)   0.382925
+INFO:pymbar.confidenceintervals:  0.6  -1.777778   0.420792 (  0.353697,  0.489373)   0.451494
+INFO:pymbar.confidenceintervals:  0.7  -1.040816   0.475248 (  0.406855,  0.544104)   0.516073
+INFO:pymbar.confidenceintervals:  0.8  -0.562500   0.559406 (  0.490628,  0.627069)   0.576289
+INFO:pymbar.confidenceintervals:  0.9  -0.234568   0.618812 (  0.550964,  0.684431)   0.631880
+INFO:pymbar.confidenceintervals:  1.0  -0.000000   0.688119 (  0.622712,  0.749997)   0.682689
+INFO:pymbar.confidenceintervals:  1.1   0.173554   0.727723 (  0.664446,  0.786729)   0.728668
+INFO:pymbar.confidenceintervals:  1.2   0.305556   0.767327 (  0.706797,  0.822844)   0.769861
+INFO:pymbar.confidenceintervals:  1.3   0.408284   0.816832 (  0.760770,  0.866955)   0.806399
+INFO:pymbar.confidenceintervals:  1.4   0.489796   0.851485 (  0.799408,  0.896978)   0.838487
+INFO:pymbar.confidenceintervals:  1.5   0.555556   0.866337 (  0.816237,  0.909575)   0.866386
+INFO:pymbar.confidenceintervals:  1.6   0.609375   0.881188 (  0.833262,  0.921978)   0.890401
+INFO:pymbar.confidenceintervals:  1.7   0.653979   0.881188 (  0.833262,  0.921978)   0.910869
+INFO:pymbar.confidenceintervals:  1.8   0.691358   0.900990 (  0.856322,  0.938155)   0.928139
+INFO:pymbar.confidenceintervals:  1.9   0.722992   0.920792 (  0.879901,  0.953817)   0.942567
+INFO:pymbar.confidenceintervals:  2.0   0.750000   0.935644 (  0.898036,  0.965116)   0.954500
+INFO:pymbar.confidenceintervals:  2.1   0.773243   0.940594 (  0.904191,  0.968774)   0.964271
+INFO:pymbar.confidenceintervals:  2.2   0.793388   0.970297 (  0.942906,  0.988968)   0.972193
+INFO:pymbar.confidenceintervals:  2.3   0.810964   0.980198 (  0.957004,  0.994552)   0.978552
+INFO:pymbar.confidenceintervals:  2.4   0.826389   0.985149 (  0.964520,  0.996911)   0.983605
+INFO:pymbar.confidenceintervals:  2.5   0.840000   0.985149 (  0.964520,  0.996911)   0.987581
+INFO:pymbar.confidenceintervals:  2.6   0.852071   0.990099 (  0.972594,  0.998793)   0.990678
+INFO:pymbar.confidenceintervals:  2.7   0.862826   0.990099 (  0.972594,  0.998793)   0.993066
+INFO:pymbar.confidenceintervals:  2.8   0.872449   0.990099 (  0.972594,  0.998793)   0.994890
+INFO:pymbar.confidenceintervals:  2.9   0.881094   0.995050 (  0.981815,  0.999874)   0.996268
+INFO:pymbar.confidenceintervals:  3.0   0.888889   0.995050 (  0.981815,  0.999874)   0.997300
+INFO:pymbar.confidenceintervals:  3.1   0.895942   0.995050 (  0.981815,  0.999874)   0.998065
+INFO:pymbar.confidenceintervals:  3.2   0.902344   0.995050 (  0.981815,  0.999874)   0.998626
+INFO:pymbar.confidenceintervals:  3.3   0.908173   0.995050 (  0.981815,  0.999874)   0.999033
+INFO:pymbar.confidenceintervals:  3.4   0.913495   0.995050 (  0.981815,  0.999874)   0.999326
+INFO:pymbar.confidenceintervals:  3.5   0.918367   0.995050 (  0.981815,  0.999874)   0.999535
+INFO:pymbar.confidenceintervals:  3.6   0.922840   0.995050 (  0.981815,  0.999874)   0.999682
+INFO:pymbar.confidenceintervals:  3.7   0.926954   0.995050 (  0.981815,  0.999874)   0.999784
+INFO:pymbar.confidenceintervals:  3.8   0.930748   0.995050 (  0.981815,  0.999874)   0.999855
+INFO:pymbar.confidenceintervals:  3.9   0.934254   0.995050 (  0.981815,  0.999874)   0.999904
+INFO:pymbar.confidenceintervals:  4.0   0.937500   0.995050 (  0.981815,  0.999874)   0.999937
+INFO:pymbar.confidenceintervals:
+INFO:pymbar.confidenceintervals:     i      average    bias      rms_error     stddev  ave_analyt_std
+INFO:pymbar.confidenceintervals:---------------------------------------------------------------------
+INFO:pymbar.confidenceintervals:Totals:    -0.5048      0.0061      0.1802      0.1801     0.1765
+
+ ==== State 3 alone with MBAR ===== 
+INFO:pymbar.confidenceintervals:The uncertainty estimates are tested in this section.
+If the error is normally distributed, the actual error will be less than a
+multiplier 'alpha' times the computed uncertainty 'sigma' a fraction of
+time given by:
+P(error < alpha sigma) = erf(alpha / sqrt(2))
+For example, the true error should be less than 1.0 * sigma
+(one standard deviation) a total of 68% of the time, and
+less than 2.0 * sigma (two standard deviations) 95% of the time.
+The observed fraction of the time that error < alpha sigma, and its
+uncertainty, is given as 'obs' (with uncertainty 'obs err') below.
+This should be compared to the column labeled 'normal'.
+A weak lower bound that holds regardless of how the error is distributed is given
+by Chebyshev's inequality, and is listed as 'cheby' below.
+Uncertainty estimates are tested for both free energy differences and expectations.
+
+INFO:pymbar.confidenceintervals:Error vs. alpha
+INFO:pymbar.confidenceintervals:alpha cheby      obs        obs err          normal           
+INFO:pymbar.confidenceintervals:  0.1 -99.000000   0.059406 (  0.031226,  0.095809)   0.079656
+INFO:pymbar.confidenceintervals:  0.2 -24.000000   0.133663 (  0.090425,  0.183763)   0.158519
+INFO:pymbar.confidenceintervals:  0.3 -10.111111   0.227723 (  0.172689,  0.287861)   0.235823
+INFO:pymbar.confidenceintervals:  0.4  -5.250000   0.277228 (  0.217831,  0.340803)   0.310843
+INFO:pymbar.confidenceintervals:  0.5  -3.000000   0.351485 (  0.287281,  0.418475)   0.382925
+INFO:pymbar.confidenceintervals:  0.6  -1.777778   0.440594 (  0.372931,  0.509372)   0.451494
+INFO:pymbar.confidenceintervals:  0.7  -1.040816   0.534653 (  0.465785,  0.602871)   0.516073
+INFO:pymbar.confidenceintervals:  0.8  -0.562500   0.579208 (  0.510627,  0.646303)   0.576289
+INFO:pymbar.confidenceintervals:  0.9  -0.234568   0.613861 (  0.545896,  0.679691)   0.631880
+INFO:pymbar.confidenceintervals:  1.0  -0.000000   0.678218 (  0.612367,  0.740726)   0.682689
+INFO:pymbar.confidenceintervals:  1.1   0.173554   0.742574 (  0.680251,  0.800349)   0.728668
+INFO:pymbar.confidenceintervals:  1.2   0.305556   0.772277 (  0.712139,  0.827311)   0.769861
+INFO:pymbar.confidenceintervals:  1.3   0.408284   0.787129 (  0.728235,  0.840640)   0.806399
+INFO:pymbar.confidenceintervals:  1.4   0.489796   0.816832 (  0.760770,  0.866955)   0.838487
+INFO:pymbar.confidenceintervals:  1.5   0.555556   0.846535 (  0.793837,  0.892740)   0.866386
+INFO:pymbar.confidenceintervals:  1.6   0.609375   0.886139 (  0.838985,  0.926064)   0.890401
+INFO:pymbar.confidenceintervals:  1.7   0.653979   0.905941 (  0.862162,  0.942125)   0.910869
+INFO:pymbar.confidenceintervals:  1.8   0.691358   0.910891 (  0.868037,  0.946060)   0.928139
+INFO:pymbar.confidenceintervals:  1.9   0.722992   0.925743 (  0.885897,  0.957632)   0.942567
+INFO:pymbar.confidenceintervals:  2.0   0.750000   0.945545 (  0.910411,  0.972368)   0.954500
+INFO:pymbar.confidenceintervals:  2.1   0.773243   0.955446 (  0.923085,  0.979324)   0.964271
+INFO:pymbar.confidenceintervals:  2.2   0.793388   0.960396 (  0.929565,  0.982663)   0.972193
+INFO:pymbar.confidenceintervals:  2.3   0.810964   0.980198 (  0.957004,  0.994552)   0.978552
+INFO:pymbar.confidenceintervals:  2.4   0.826389   0.985149 (  0.964520,  0.996911)   0.983605
+INFO:pymbar.confidenceintervals:  2.5   0.840000   0.985149 (  0.964520,  0.996911)   0.987581
+INFO:pymbar.confidenceintervals:  2.6   0.852071   0.985149 (  0.964520,  0.996911)   0.990678
+INFO:pymbar.confidenceintervals:  2.7   0.862826   0.990099 (  0.972594,  0.998793)   0.993066
+INFO:pymbar.confidenceintervals:  2.8   0.872449   0.990099 (  0.972594,  0.998793)   0.994890
+INFO:pymbar.confidenceintervals:  2.9   0.881094   0.995050 (  0.981815,  0.999874)   0.996268
+INFO:pymbar.confidenceintervals:  3.0   0.888889   0.995050 (  0.981815,  0.999874)   0.997300
+INFO:pymbar.confidenceintervals:  3.1   0.895942   0.995050 (  0.981815,  0.999874)   0.998065
+INFO:pymbar.confidenceintervals:  3.2   0.902344   0.995050 (  0.981815,  0.999874)   0.998626
+INFO:pymbar.confidenceintervals:  3.3   0.908173   0.995050 (  0.981815,  0.999874)   0.999033
+INFO:pymbar.confidenceintervals:  3.4   0.913495   0.995050 (  0.981815,  0.999874)   0.999326
+INFO:pymbar.confidenceintervals:  3.5   0.918367   0.995050 (  0.981815,  0.999874)   0.999535
+INFO:pymbar.confidenceintervals:  3.6   0.922840   0.995050 (  0.981815,  0.999874)   0.999682
+INFO:pymbar.confidenceintervals:  3.7   0.926954   0.995050 (  0.981815,  0.999874)   0.999784
+INFO:pymbar.confidenceintervals:  3.8   0.930748   0.995050 (  0.981815,  0.999874)   0.999855
+INFO:pymbar.confidenceintervals:  3.9   0.934254   0.995050 (  0.981815,  0.999874)   0.999904
+INFO:pymbar.confidenceintervals:  4.0   0.937500   0.995050 (  0.981815,  0.999874)   0.999937
+INFO:pymbar.confidenceintervals:
+INFO:pymbar.confidenceintervals:     i      average    bias      rms_error     stddev  ave_analyt_std
+INFO:pymbar.confidenceintervals:---------------------------------------------------------------------
+INFO:pymbar.confidenceintervals:Totals:    -0.9105      0.0058      0.1841      0.1840     0.1822
+
+ ==== State 4 alone with MBAR ===== 
+INFO:pymbar.confidenceintervals:The uncertainty estimates are tested in this section.
+If the error is normally distributed, the actual error will be less than a
+multiplier 'alpha' times the computed uncertainty 'sigma' a fraction of
+time given by:
+P(error < alpha sigma) = erf(alpha / sqrt(2))
+For example, the true error should be less than 1.0 * sigma
+(one standard deviation) a total of 68% of the time, and
+less than 2.0 * sigma (two standard deviations) 95% of the time.
+The observed fraction of the time that error < alpha sigma, and its
+uncertainty, is given as 'obs' (with uncertainty 'obs err') below.
+This should be compared to the column labeled 'normal'.
+A weak lower bound that holds regardless of how the error is distributed is given
+by Chebyshev's inequality, and is listed as 'cheby' below.
+Uncertainty estimates are tested for both free energy differences and expectations.
+
+INFO:pymbar.confidenceintervals:Error vs. alpha
+INFO:pymbar.confidenceintervals:alpha cheby      obs        obs err          normal           
+INFO:pymbar.confidenceintervals:  0.1 -99.000000   0.084158 (  0.050042,  0.126051)   0.079656
+INFO:pymbar.confidenceintervals:  0.2 -24.000000   0.148515 (  0.103022,  0.200592)   0.158519
+INFO:pymbar.confidenceintervals:  0.3 -10.111111   0.242574 (  0.186122,  0.303854)   0.235823
+INFO:pymbar.confidenceintervals:  0.4  -5.250000   0.306931 (  0.245381,  0.372102)   0.310843
+INFO:pymbar.confidenceintervals:  0.5  -3.000000   0.371287 (  0.306109,  0.438879)   0.382925
+INFO:pymbar.confidenceintervals:  0.6  -1.777778   0.440594 (  0.372931,  0.509372)   0.451494
+INFO:pymbar.confidenceintervals:  0.7  -1.040816   0.509901 (  0.441113,  0.578503)   0.516073
+INFO:pymbar.confidenceintervals:  0.8  -0.562500   0.574257 (  0.505617,  0.641505)   0.576289
+INFO:pymbar.confidenceintervals:  0.9  -0.234568   0.623762 (  0.556038,  0.689165)   0.631880
+INFO:pymbar.confidenceintervals:  1.0  -0.000000   0.693069 (  0.627898,  0.754619)   0.682689
+INFO:pymbar.confidenceintervals:  1.1   0.173554   0.747525 (  0.685539,  0.804869)   0.728668
+INFO:pymbar.confidenceintervals:  1.2   0.305556   0.767327 (  0.706797,  0.822844)   0.769861
+INFO:pymbar.confidenceintervals:  1.3   0.408284   0.811881 (  0.755313,  0.862603)   0.806399
+INFO:pymbar.confidenceintervals:  1.4   0.489796   0.821782 (  0.766242,  0.871292)   0.838487
+INFO:pymbar.confidenceintervals:  1.5   0.555556   0.861386 (  0.810607,  0.905396)   0.866386
+INFO:pymbar.confidenceintervals:  1.6   0.609375   0.876238 (  0.827563,  0.917867)   0.890401
+INFO:pymbar.confidenceintervals:  1.7   0.653979   0.881188 (  0.833262,  0.921978)   0.910869
+INFO:pymbar.confidenceintervals:  1.8   0.691358   0.910891 (  0.868037,  0.946060)   0.928139
+INFO:pymbar.confidenceintervals:  1.9   0.722992   0.930693 (  0.891940,  0.961400)   0.942567
+INFO:pymbar.confidenceintervals:  2.0   0.750000   0.945545 (  0.910411,  0.972368)   0.954500
+INFO:pymbar.confidenceintervals:  2.1   0.773243   0.960396 (  0.929565,  0.982663)   0.964271
+INFO:pymbar.confidenceintervals:  2.2   0.793388   0.970297 (  0.942906,  0.988968)   0.972193
+INFO:pymbar.confidenceintervals:  2.3   0.810964   0.975248 (  0.949833,  0.991875)   0.978552
+INFO:pymbar.confidenceintervals:  2.4   0.826389   0.985149 (  0.964520,  0.996911)   0.983605
+INFO:pymbar.confidenceintervals:  2.5   0.840000   0.985149 (  0.964520,  0.996911)   0.987581
+INFO:pymbar.confidenceintervals:  2.6   0.852071   0.990099 (  0.972594,  0.998793)   0.990678
+INFO:pymbar.confidenceintervals:  2.7   0.862826   0.990099 (  0.972594,  0.998793)   0.993066
+INFO:pymbar.confidenceintervals:  2.8   0.872449   0.990099 (  0.972594,  0.998793)   0.994890
+INFO:pymbar.confidenceintervals:  2.9   0.881094   0.990099 (  0.972594,  0.998793)   0.996268
+INFO:pymbar.confidenceintervals:  3.0   0.888889   0.995050 (  0.981815,  0.999874)   0.997300
+INFO:pymbar.confidenceintervals:  3.1   0.895942   0.995050 (  0.981815,  0.999874)   0.998065
+INFO:pymbar.confidenceintervals:  3.2   0.902344   0.995050 (  0.981815,  0.999874)   0.998626
+INFO:pymbar.confidenceintervals:  3.3   0.908173   0.995050 (  0.981815,  0.999874)   0.999033
+INFO:pymbar.confidenceintervals:  3.4   0.913495   0.995050 (  0.981815,  0.999874)   0.999326
+INFO:pymbar.confidenceintervals:  3.5   0.918367   0.995050 (  0.981815,  0.999874)   0.999535
+INFO:pymbar.confidenceintervals:  3.6   0.922840   0.995050 (  0.981815,  0.999874)   0.999682
+INFO:pymbar.confidenceintervals:  3.7   0.926954   0.995050 (  0.981815,  0.999874)   0.999784
+INFO:pymbar.confidenceintervals:  3.8   0.930748   0.995050 (  0.981815,  0.999874)   0.999855
+INFO:pymbar.confidenceintervals:  3.9   0.934254   0.995050 (  0.981815,  0.999874)   0.999904
+INFO:pymbar.confidenceintervals:  4.0   0.937500   0.995050 (  0.981815,  0.999874)   0.999937
+INFO:pymbar.confidenceintervals:
+INFO:pymbar.confidenceintervals:     i      average    bias      rms_error     stddev  ave_analyt_std
+INFO:pymbar.confidenceintervals:---------------------------------------------------------------------
+INFO:pymbar.confidenceintervals:Totals:    -1.6024      0.0070      0.1840      0.1839     0.1835
+
+ ==== State 5 alone with MBAR ===== 
+INFO:pymbar.confidenceintervals:The uncertainty estimates are tested in this section.
+If the error is normally distributed, the actual error will be less than a
+multiplier 'alpha' times the computed uncertainty 'sigma' a fraction of
+time given by:
+P(error < alpha sigma) = erf(alpha / sqrt(2))
+For example, the true error should be less than 1.0 * sigma
+(one standard deviation) a total of 68% of the time, and
+less than 2.0 * sigma (two standard deviations) 95% of the time.
+The observed fraction of the time that error < alpha sigma, and its
+uncertainty, is given as 'obs' (with uncertainty 'obs err') below.
+This should be compared to the column labeled 'normal'.
+A weak lower bound that holds regardless of how the error is distributed is given
+by Chebyshev's inequality, and is listed as 'cheby' below.
+Uncertainty estimates are tested for both free energy differences and expectations.
+
+INFO:pymbar.confidenceintervals:Error vs. alpha
+INFO:pymbar.confidenceintervals:alpha cheby      obs        obs err          normal           
+INFO:pymbar.confidenceintervals:  0.1 -99.000000   0.108911 (  0.069877,  0.155265)   0.079656
+INFO:pymbar.confidenceintervals:  0.2 -24.000000   0.158416 (  0.111516,  0.211716)   0.158519
+INFO:pymbar.confidenceintervals:  0.3 -10.111111   0.232673 (  0.177156,  0.293203)   0.235823
+INFO:pymbar.confidenceintervals:  0.4  -5.250000   0.301980 (  0.240767,  0.366908)   0.310843
+INFO:pymbar.confidenceintervals:  0.5  -3.000000   0.386139 (  0.320309,  0.454104)   0.382925
+INFO:pymbar.confidenceintervals:  0.6  -1.777778   0.450495 (  0.382589,  0.519329)   0.451494
+INFO:pymbar.confidenceintervals:  0.7  -1.040816   0.519802 (  0.450962,  0.588271)   0.516073
+INFO:pymbar.confidenceintervals:  0.8  -0.562500   0.579208 (  0.510627,  0.646303)   0.576289
+INFO:pymbar.confidenceintervals:  0.9  -0.234568   0.638614 (  0.571308,  0.703320)   0.631880
+INFO:pymbar.confidenceintervals:  1.0  -0.000000   0.698020 (  0.633092,  0.759233)   0.682689
+INFO:pymbar.confidenceintervals:  1.1   0.173554   0.747525 (  0.685539,  0.804869)   0.728668
+INFO:pymbar.confidenceintervals:  1.2   0.305556   0.787129 (  0.728235,  0.840640)   0.769861
+INFO:pymbar.confidenceintervals:  1.3   0.408284   0.816832 (  0.760770,  0.866955)   0.806399
+INFO:pymbar.confidenceintervals:  1.4   0.489796   0.836634 (  0.782749,  0.884211)   0.838487
+INFO:pymbar.confidenceintervals:  1.5   0.555556   0.851485 (  0.799408,  0.896978)   0.866386
+INFO:pymbar.confidenceintervals:  1.6   0.609375   0.871287 (  0.821889,  0.913732)   0.890401
+INFO:pymbar.confidenceintervals:  1.7   0.653979   0.876238 (  0.827563,  0.917867)   0.910869
+INFO:pymbar.confidenceintervals:  1.8   0.691358   0.896040 (  0.850513,  0.934154)   0.928139
+INFO:pymbar.confidenceintervals:  1.9   0.722992   0.915842 (  0.873949,  0.949958)   0.942567
+INFO:pymbar.confidenceintervals:  2.0   0.750000   0.940594 (  0.904191,  0.968774)   0.954500
+INFO:pymbar.confidenceintervals:  2.1   0.773243   0.965347 (  0.936163,  0.985886)   0.964271
+INFO:pymbar.confidenceintervals:  2.2   0.793388   0.980198 (  0.957004,  0.994552)   0.972193
+INFO:pymbar.confidenceintervals:  2.3   0.810964   0.980198 (  0.957004,  0.994552)   0.978552
+INFO:pymbar.confidenceintervals:  2.4   0.826389   0.980198 (  0.957004,  0.994552)   0.983605
+INFO:pymbar.confidenceintervals:  2.5   0.840000   0.980198 (  0.957004,  0.994552)   0.987581
+INFO:pymbar.confidenceintervals:  2.6   0.852071   0.985149 (  0.964520,  0.996911)   0.990678
+INFO:pymbar.confidenceintervals:  2.7   0.862826   0.985149 (  0.964520,  0.996911)   0.993066
+INFO:pymbar.confidenceintervals:  2.8   0.872449   0.990099 (  0.972594,  0.998793)   0.994890
+INFO:pymbar.confidenceintervals:  2.9   0.881094   0.995050 (  0.981815,  0.999874)   0.996268
+INFO:pymbar.confidenceintervals:  3.0   0.888889   0.995050 (  0.981815,  0.999874)   0.997300
+INFO:pymbar.confidenceintervals:  3.1   0.895942   0.995050 (  0.981815,  0.999874)   0.998065
+INFO:pymbar.confidenceintervals:  3.2   0.902344   0.995050 (  0.981815,  0.999874)   0.998626
+INFO:pymbar.confidenceintervals:  3.3   0.908173   0.995050 (  0.981815,  0.999874)   0.999033
+INFO:pymbar.confidenceintervals:  3.4   0.913495   0.995050 (  0.981815,  0.999874)   0.999326
+INFO:pymbar.confidenceintervals:  3.5   0.918367   0.995050 (  0.981815,  0.999874)   0.999535
+INFO:pymbar.confidenceintervals:  3.6   0.922840   0.995050 (  0.981815,  0.999874)   0.999682
+INFO:pymbar.confidenceintervals:  3.7   0.926954   0.995050 (  0.981815,  0.999874)   0.999784
+INFO:pymbar.confidenceintervals:  3.8   0.930748   0.995050 (  0.981815,  0.999874)   0.999855
+INFO:pymbar.confidenceintervals:  3.9   0.934254   0.995050 (  0.981815,  0.999874)   0.999904
+INFO:pymbar.confidenceintervals:  4.0   0.937500   0.995050 (  0.981815,  0.999874)   0.999937
+INFO:pymbar.confidenceintervals:
+INFO:pymbar.confidenceintervals:     i      average    bias      rms_error     stddev  ave_analyt_std
+INFO:pymbar.confidenceintervals:---------------------------------------------------------------------
+INFO:pymbar.confidenceintervals:Totals:    -1.6010      0.0084      0.1885      0.1883     0.1879

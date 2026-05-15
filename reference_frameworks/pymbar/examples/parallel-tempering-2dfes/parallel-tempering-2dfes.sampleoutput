@@ -1,0 +1,195 @@
+Reading potential energies...
+10000 lines read, processing 10000 snapshots
+Reading phi, psi trajectories...
+k = 0, 10000 phi lines read, 10000 psi lines read
+k = 1, 10000 phi lines read, 10000 psi lines read
+k = 2, 10000 phi lines read, 10000 psi lines read
+k = 3, 10000 phi lines read, 10000 psi lines read
+k = 4, 10000 phi lines read, 10000 psi lines read
+k = 5, 10000 phi lines read, 10000 psi lines read
+k = 6, 10000 phi lines read, 10000 psi lines read
+k = 7, 10000 phi lines read, 10000 psi lines read
+k = 8, 10000 phi lines read, 10000 psi lines read
+k = 9, 10000 phi lines read, 10000 psi lines read
+k = 10, 10000 phi lines read, 10000 psi lines read
+k = 11, 10000 phi lines read, 10000 psi lines read
+k = 12, 10000 phi lines read, 10000 psi lines read
+k = 13, 10000 phi lines read, 10000 psi lines read
+k = 14, 10000 phi lines read, 10000 psi lines read
+k = 15, 10000 phi lines read, 10000 psi lines read
+k = 16, 10000 phi lines read, 10000 psi lines read
+k = 17, 10000 phi lines read, 10000 psi lines read
+k = 18, 10000 phi lines read, 10000 psi lines read
+k = 19, 10000 phi lines read, 10000 psi lines read
+k = 20, 10000 phi lines read, 10000 psi lines read
+k = 21, 10000 phi lines read, 10000 psi lines read
+k = 22, 10000 phi lines read, 10000 psi lines read
+k = 23, 10000 phi lines read, 10000 psi lines read
+k = 24, 10000 phi lines read, 10000 psi lines read
+k = 25, 10000 phi lines read, 10000 psi lines read
+k = 26, 10000 phi lines read, 10000 psi lines read
+k = 27, 10000 phi lines read, 10000 psi lines read
+k = 28, 10000 phi lines read, 10000 psi lines read
+k = 29, 10000 phi lines read, 10000 psi lines read
+k = 30, 10000 phi lines read, 10000 psi lines read
+k = 31, 10000 phi lines read, 10000 psi lines read
+k = 32, 10000 phi lines read, 10000 psi lines read
+k = 33, 10000 phi lines read, 10000 psi lines read
+k = 34, 10000 phi lines read, 10000 psi lines read
+k = 35, 10000 phi lines read, 10000 psi lines read
+k = 36, 10000 phi lines read, 10000 psi lines read
+k = 37, 10000 phi lines read, 10000 psi lines read
+k = 38, 10000 phi lines read, 10000 psi lines read
+k = 39, 10000 phi lines read, 10000 psi lines read
+Reading replica indices...
+Replica indices for 500 iterations processed.
+Permuting data by replica...
+Computing statistical inefficiencies...
+g_cos(phi) = 5.6
+g_sin(phi) = 11.2
+g_cos(psi) = 149.7
+g_sin(psi) = 49.3
+Subsampling data...
+Using g = 149.7 to obtain 67 uncorrelated samples per temperature
+67 uncorrelated samples per temperature
+Computing reduced potential energies...
+Binning torsions...
+67 bins were populated:
+bin     0 (-162.0, -162.0)           73 conformations
+bin     1 (-162.0, -126.0)           14 conformations
+bin     2 (-162.0,  -90.0)           14 conformations
+bin     3 (-162.0,  -54.0)           27 conformations
+bin     4 (-162.0,  -18.0)            3 conformations
+bin     5 (-162.0,   18.0)            8 conformations
+bin     6 (-162.0,   54.0)           18 conformations
+bin     7 (-162.0,   90.0)           42 conformations
+bin     8 (-162.0,  126.0)          141 conformations
+bin     9 (-162.0,  162.0)          262 conformations
+bin    10 (-126.0, -162.0)           99 conformations
+bin    11 (-126.0, -126.0)           20 conformations
+bin    12 (-126.0,  -90.0)           32 conformations
+bin    13 (-126.0,  -54.0)           51 conformations
+bin    14 (-126.0,  -18.0)           20 conformations
+bin    15 (-126.0,   18.0)           18 conformations
+bin    16 (-126.0,   54.0)           15 conformations
+bin    17 (-126.0,   90.0)           46 conformations
+bin    18 (-126.0,  126.0)          187 conformations
+bin    19 (-126.0,  162.0)          306 conformations
+bin    20 ( -90.0, -162.0)           51 conformations
+bin    21 ( -90.0, -126.0)            8 conformations
+bin    22 ( -90.0,  -90.0)           22 conformations
+bin    23 ( -90.0,  -54.0)           43 conformations
+bin    24 ( -90.0,  -18.0)           24 conformations
+bin    25 ( -90.0,   18.0)            8 conformations
+bin    26 ( -90.0,   54.0)           18 conformations
+bin    27 ( -90.0,   90.0)           62 conformations
+bin    28 ( -90.0,  126.0)          164 conformations
+bin    29 ( -90.0,  162.0)          195 conformations
+bin    30 ( -54.0, -162.0)           14 conformations
+bin    31 ( -54.0, -126.0)            3 conformations
+bin    32 ( -54.0,  -90.0)           16 conformations
+bin    33 ( -54.0,  -54.0)           78 conformations
+bin    34 ( -54.0,  -18.0)           24 conformations
+bin    35 ( -54.0,   18.0)            1 conformations
+bin    36 ( -54.0,   54.0)            8 conformations
+bin    37 ( -54.0,   90.0)           40 conformations
+bin    38 ( -54.0,  126.0)          250 conformations
+bin    39 ( -54.0,  162.0)          174 conformations
+bin    40 ( -18.0,  -90.0)            4 conformations
+bin    41 ( -18.0,  -54.0)            5 conformations
+bin    42 ( -18.0,  -18.0)            1 conformations
+bin    43 ( -18.0,   90.0)            7 conformations
+bin    44 ( -18.0,  126.0)           12 conformations
+bin    45 ( -18.0,  162.0)            1 conformations
+bin    46 (  18.0, -126.0)            1 conformations
+bin    47 (  18.0,   90.0)            3 conformations
+bin    48 (  54.0, -162.0)            3 conformations
+bin    49 (  54.0, -126.0)            3 conformations
+bin    50 (  54.0,  -90.0)            5 conformations
+bin    51 (  54.0,  -54.0)            3 conformations
+bin    52 (  54.0,   18.0)            2 conformations
+bin    53 (  54.0,   54.0)            4 conformations
+bin    54 (  54.0,   90.0)            1 conformations
+bin    55 (  54.0,  126.0)            1 conformations
+bin    56 (  54.0,  162.0)            5 conformations
+bin    57 (  90.0, -126.0)            1 conformations
+bin    58 (  90.0,  -54.0)            3 conformations
+bin    59 ( 126.0,  -54.0)            1 conformations
+bin    60 ( 126.0,  126.0)            1 conformations
+bin    61 ( 162.0, -162.0)            1 conformations
+bin    62 ( 162.0, -126.0)            1 conformations
+bin    63 ( 162.0,  -54.0)            1 conformations
+bin    64 ( 162.0,   90.0)            2 conformations
+bin    65 ( 162.0,  126.0)            6 conformations
+bin    66 ( 162.0,  162.0)            3 conformations
+Computing potential of mean force...
+2D PMF
+
+     bin    phi    psi        N          f         df
+       0 -162.0 -162.0       73      1.977      0.459
+       1 -162.0 -126.0       14      4.928      1.018
+       2 -162.0  -90.0       14      2.976      0.775
+       3 -162.0  -54.0       27      3.620      0.703
+       4 -162.0  -18.0        3      5.846      1.000
+       5 -162.0   18.0        8      4.586      1.018
+       6 -162.0   54.0       18     33.383      1.057
+       7 -162.0   90.0       42      2.626      0.656
+       8 -162.0  126.0      141      1.261      0.361
+       9 -162.0  162.0      262      0.468      0.268
+      10 -126.0 -162.0       99      1.511      0.369
+      11 -126.0 -126.0       20      2.865      0.652
+      12 -126.0  -90.0       32      3.501      1.004
+      13 -126.0  -54.0       51      2.529      0.672
+      14 -126.0  -18.0       20      3.564      0.877
+      15 -126.0   18.0       18      3.759      0.893
+      16 -126.0   54.0       15      3.201      0.755
+      17 -126.0   90.0       46      2.406      0.565
+      18 -126.0  126.0      187      0.638      0.280
+      19 -126.0  162.0      306      0.000      0.000
+      20  -90.0 -162.0       51      3.452      0.856
+      21  -90.0 -126.0        8      8.074      1.026
+      22  -90.0  -90.0       22      3.291      0.737
+      23  -90.0  -54.0       43      2.214      0.485
+      24  -90.0  -18.0       24      5.407      1.022
+      25  -90.0   18.0        8     17.434      1.042
+      26  -90.0   54.0       18      9.484      1.029
+      27  -90.0   90.0       62      1.791      0.454
+      28  -90.0  126.0      164      0.762      0.285
+      29  -90.0  162.0      195      0.281      0.251
+      30  -54.0 -162.0       14      4.267      0.786
+      31  -54.0 -126.0        3    156.543      1.113
+      32  -54.0  -90.0       16      3.288      0.775
+      33  -54.0  -54.0       78      2.491      0.517
+      34  -54.0  -18.0       24      4.013      0.948
+      35  -54.0   18.0        1    410.768      1.164
+      36  -54.0   54.0        8     49.084      1.069
+      37  -54.0   90.0       40      2.770      0.691
+      38  -54.0  126.0      250      0.305      0.246
+      39  -54.0  162.0      174      1.131      0.312
+      40  -18.0  -90.0        4     26.016      1.051
+      41  -18.0  -54.0        5     76.061      1.084
+      42  -18.0  -18.0        1    290.049      1.144
+      43  -18.0   90.0        7      3.329      1.014
+      44  -18.0  126.0       12      7.701      1.022
+      45  -18.0  162.0        1    221.420      1.130
+      46   18.0 -126.0        1    265.057      1.140
+      47   18.0   90.0        3     70.372      1.081
+      48   54.0 -162.0        3    228.554      1.132
+      49   54.0 -126.0        3      3.502      0.963
+      50   54.0  -90.0        5    106.300      1.096
+      51   54.0  -54.0        3      6.231      1.025
+      52   54.0   18.0        2    218.088      1.129
+      53   54.0   54.0        4     30.542      1.055
+      54   54.0   90.0        1    179.266      1.120
+      55   54.0  126.0        1    343.080      1.154
+      56   54.0  162.0        5     91.627      1.090
+      57   90.0 -126.0        1    396.937      1.162
+      58   90.0  -54.0        3    222.664      1.130
+      59  126.0  -54.0        1    448.397      1.169
+      60  126.0  126.0        1    367.001      1.158
+      61  162.0 -162.0        1    226.688      1.131
+      62  162.0 -126.0        1    309.771      1.148
+      63  162.0  -54.0        1    431.276      1.167
+      64  162.0   90.0        2    230.870      1.132
+      65  162.0  126.0        6      7.949      0.929
+      66  162.0  162.0        3      8.772      1.031
