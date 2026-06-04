@@ -9,6 +9,7 @@ __pycache__/
 venv/
 ENV/
 .env
+.venv_wsl 
 
 # Distribution / packaging
 dist/
@@ -30,6 +31,9 @@ coverage.xml
 # Data archives and large binaries
 *.tar
 *.tar.gz
+*.gz
+*.tar*
+*full_trajectory*
 *.zip
 *.7z
 *.rar
@@ -37,8 +41,6 @@ coverage.xml
 # Scientific Data Caches
 *.npy
 *.npz
-experiments/results/*.npy
-experiments/results/*.npz
 
 # # Plots and local outputs
 # *.png
@@ -58,6 +60,4 @@ experiments/results/*.npz
 # Temporary files
 tmp/
 temp/
-experiments/old_experiment.txt
-experiments/reproduce_paper.py
-experiments/full_trajectory.xyz.CN_for_SketchMap
+mintlify_starter/
