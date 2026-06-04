@@ -12,6 +12,6 @@ Reference:
     243-245 (2019).
 """
 
-from .fitsne import fit_sne
+from .fitsne import fit_sne, fitsne_project
 
-__all__ = ["fit_sne"]
+__all__ = ["fit_sne", "fitsne_project"]

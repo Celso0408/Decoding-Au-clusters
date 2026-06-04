@@ -19,35 +19,10 @@ Backends
   GPU-accelerated UMAP. For Mahalanobis metric (not natively supported),
   data is pre-whitened so that Euclidean distance on the whitened data
   is mathematically equivalent to Mahalanobis distance on the original.
-
-Parameter guidance
-------------------
-The key hyperparameters and their effects:
-
-    n_neighbors : int (default 15)
-        Number of nearest neighbors for graph construction. Larger values
-        incorporate more global context; smaller values emphasize local
-        structure.
-
-    min_dist : float (default 0.1)
-        Minimum distance between points in the embedding. Smaller values
-        produce tighter clusters (down to 0.001); larger values spread
-        points more evenly.
-
-    metric : str (default "euclidean")
-        Distance metric in HD space. Common choices:
-        - "euclidean": standard L2 distance
-        - "mahalanobis": covariance-aware distance (good for correlated
-          or heterogeneously scaled features)
-        - "cosine", "manhattan", "correlation", etc.
-
-Reference
----------
-    github.com/lmcinnes/umap
 """
 
 import numpy as np
-from typing import Optional
+from typing import Optional, Dict, Any, Tuple
 
 try:
     import cuml
@@ -56,16 +31,13 @@ except ImportError:
     HAS_CUML = False
 
 
-def _mahalanobis_whiten(X: np.ndarray) -> np.ndarray:
+def _mahalanobis_whiten(X: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Pre-whiten data for Mahalanobis-equivalent Euclidean distance.
 
-    Transforms X such that Euclidean distance on the result equals
-    Mahalanobis distance on the original:
-
-        X_white = (X - mu) @ S^{-1/2}
-
-    where S = cov(X) and S^{-1/2} = V diag(1/sqrt(lambda)) V^T.
-    This is used for GPU backends that do not support Mahalanobis natively.
+    Returns:
+        X_white: Whitened data
+        mu: Mean of X
+        whitener: Whitening matrix
     """
     mu = X.mean(axis=0)
     cov = np.cov(X, rowvar=False)
@@ -73,7 +45,8 @@ def _mahalanobis_whiten(X: np.ndarray) -> np.ndarray:
     vals, vecs = np.linalg.eigh(cov)
     vals = np.maximum(vals, 1e-8)
     whitener = vecs @ np.diag(1.0 / np.sqrt(vals)) @ vecs.T
-    return (X - mu) @ whitener
+    X_white = (X - mu) @ whitener
+    return X_white, mu, whitener
 
 
 def umap_embed(
@@ -82,47 +55,25 @@ def umap_embed(
     metric: str = "euclidean",
     n_neighbors: int = 15,
     min_dist: float = 0.1,
+    y: Optional[np.ndarray] = None,
     seed: int = 42,
     n_jobs: int = -1,
     verbose: bool = False,
     use_gpu: bool = True,
     **kwargs,
-) -> np.ndarray:
-    """Run UMAP dimensionality reduction.
-
-    Supports GPU acceleration via cuML or CPU execution via umap-learn.
-    All default values follow the standard umap-learn conventions.
-    Users should tune parameters for their specific dataset and goals.
-
-    Parameters
-    ----------
-    data : (N, D) array
-        High-dimensional input data.
-    n_components : int
-        Number of embedding dimensions (default 2).
-    metric : str
-        Distance metric in the HD space (default "euclidean").
-        Use "mahalanobis" for covariance-aware distance.
-    n_neighbors : int
-        Number of nearest neighbors for graph construction (default 15).
-    min_dist : float
-        Minimum distance between embedded points (default 0.1).
-    seed : int
-        Random seed for reproducibility (default 42).
-    n_jobs : int
-        Number of CPU threads (-1 = all cores).
-    verbose : bool
-        Print progress information.
-    use_gpu : bool
-        Attempt GPU acceleration via cuML if available.
-    **kwargs
-        Additional keyword arguments passed to the UMAP constructor.
+) -> Dict[str, Any]:
+    """Run UMAP dimensionality reduction (Core Reduction & Supervised).
 
     Returns
     -------
-    embedding : (N, n_components) array
-        Low-dimensional embedding coordinates.
+    dict with keys:
+        - "embedding": (N, n_components) array of coordinates
+        - "model": The fitted UMAP model (umap-learn or cuML)
+        - "metric": The original metric requested
+        - "mahalanobis_params": (mu, whitener) if GPU Mahalanobis was used
     """
+    res = {"metric": metric, "mahalanobis_params": None}
+
     # --- GPU path via cuML ---
     if use_gpu and HAS_CUML:
         X = np.asarray(data, dtype=np.float32)
@@ -130,8 +81,10 @@ def umap_embed(
         if metric == "mahalanobis":
             if verbose:
                 print("   -> [GPU] cuML UMAP with Mahalanobis via pre-whitening")
-            X = _mahalanobis_whiten(X).astype(np.float32)
+            X, mu, whitener = _mahalanobis_whiten(X)
+            X = X.astype(np.float32)
             gpu_metric = "euclidean"
+            res["mahalanobis_params"] = (mu, whitener)
         else:
             if verbose:
                 print(f"   -> [GPU] cuML UMAP with metric={metric}")
@@ -148,13 +101,16 @@ def umap_embed(
                 verbose=verbose,
                 **kwargs,
             )
-            return model.fit_transform(X)
+            emb = model.fit_transform(X, y=y)
+            res["embedding"] = emb
+            res["model"] = model
+            return res
         except Exception as e:
             if verbose:
                 print(f"   -> [GPU] cuML UMAP failed ({e}). Falling back to CPU...")
 
-    if use_gpu and not HAS_CUML and verbose:
-        print("   -> [CPU] cuml not found. Falling back to umap-learn.")
+    if use_gpu and not HAS_CUML:
+        print("   -> [WARNING] GPU requested (use_gpu=True) but cuML not found. Falling back to CPU (umap-learn).")
 
     # --- CPU path via umap-learn ---
     try:
@@ -164,7 +120,6 @@ def umap_embed(
             "umap-learn is required for CPU UMAP. Install via: pip install umap-learn"
         )
 
-    # For Mahalanobis with umap-learn, pass the covariance matrix
     umap_kwargs = dict(kwargs)
     if metric == "mahalanobis":
         X = np.asarray(data, dtype=float)
@@ -184,7 +139,96 @@ def umap_embed(
     )
 
     if verbose:
-        print(f"   -> [umap-learn] metric={metric}, n_neighbors={n_neighbors}, "
-              f"min_dist={min_dist}")
+        print(f"   -> [umap-learn] metric={metric}, n_neighbors={n_neighbors}, min_dist={min_dist}")
 
-    return reducer.fit_transform(np.asarray(data, dtype=float))
+    emb = reducer.fit_transform(np.asarray(data, dtype=float), y=y)
+    res["embedding"] = emb
+    res["model"] = reducer
+    return res
+
+
+def umap_project(
+    model_dict: Dict[str, Any],
+    new_data: np.ndarray,
+    verbose: bool = False,
+) -> np.ndarray:
+    """Project out-of-sample data using a fitted UMAP model.
+    
+    Parameters
+    ----------
+    model_dict : dict
+        The result dictionary returned by `umap_embed()`.
+    new_data : (M, D) array
+        The out-of-sample data to project.
+        
+    Returns
+    -------
+    embedding : (M, n_components) array
+    """
+    model = model_dict["model"]
+    metric = model_dict["metric"]
+    mah_params = model_dict["mahalanobis_params"]
+    
+    X = np.asarray(new_data)
+    
+    # Check if this is a GPU model
+    if HAS_CUML and "cuml" in str(type(model)):
+        X = X.astype(np.float32)
+        if metric == "mahalanobis" and mah_params is not None:
+            mu, whitener = mah_params
+            X = (X - mu) @ whitener
+            X = X.astype(np.float32)
+            
+    if verbose:
+        print(f"   -> Projecting {X.shape[0]} out-of-sample points...")
+        
+    return model.transform(X)
+
+
+def umap_inverse_project(
+    model_dict: Dict[str, Any],
+    new_ld_data: np.ndarray,
+    verbose: bool = False,
+) -> np.ndarray:
+    """Project low-dimensional out-of-sample data back into the high-dimensional space.
+    
+    Parameters
+    ----------
+    model_dict : dict
+        The result dictionary returned by `umap_embed()`.
+    new_ld_data : (M, n_components) array
+        The low-dimensional data to inversely project.
+        
+    Returns
+    -------
+    embedding : (M, D) array
+        The reconstructed high-dimensional data.
+    """
+    model = model_dict["model"]
+    metric = model_dict["metric"]
+    mah_params = model_dict["mahalanobis_params"]
+    
+    # cuML UMAP historically does not support inverse_transform, or its support is limited.
+    if HAS_CUML and "cuml" in str(type(model)):
+        raise NotImplementedError(
+            "Inverse projection is not natively supported by the GPU (cuML) backend. "
+            "Please rerun `umap_embed` with `use_gpu=False` to use the CPU backend for inverse transformation."
+        )
+        
+    if not hasattr(model, "inverse_transform"):
+        raise NotImplementedError(
+            "The underlying UMAP model does not support inverse_transform. "
+            "Note that umap-learn typically only supports inverse_transform for Euclidean distances."
+        )
+        
+    X_ld = np.asarray(new_ld_data)
+    
+    if verbose:
+        print(f"   -> Inversely projecting {X_ld.shape[0]} low-dimensional points...")
+        
+    X_hd = model.inverse_transform(X_ld)
+    
+    # If mahalanobis was used on CPU, umap-learn handles it if the metric was provided appropriately.
+    # However, umap-learn's inverse_transform doesn't natively support arbitrary metrics.
+    # If the user successfully inverted it, we just return the output. 
+    return X_hd

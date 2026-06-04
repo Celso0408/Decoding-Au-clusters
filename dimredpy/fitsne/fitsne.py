@@ -88,7 +88,7 @@ def fit_sne(
     verbose: bool = False,
     use_gpu: bool = True,
     **kwargs,
-) -> np.ndarray:
+) -> dict:
     """Run FIt-SNE dimensionality reduction.
 
     Supports GPU acceleration via cuML or CPU execution via openTSNE.
@@ -128,14 +128,20 @@ def fit_sne(
         Print progress information.
     use_gpu : bool
         Attempt GPU acceleration via cuML if available.
+    **kwargs : dict
+        Advanced parameters forwarded directly to the TSNE constructor.
+        Examples include:
+        - `dof` : float (degrees of freedom for t-distribution)
+        - `initialization` : "pca" or "random"
+        - `perplexity_list` : list of floats for multi-scale embeddings
 
     Returns
     -------
-    embedding : (N, n_components) array
-        Low-dimensional embedding coordinates.
-    **kwargs
-        Additional keyword arguments passed to the underlying openTSNE or cuML TSNE constructor.
+    dict with keys:
+        - "embedding": (N, n_components) array of coordinates
+        - "model": The fitted TSNE model (openTSNE or cuML)
     """
+    res = {}
     lr_numeric = _resolve_learning_rate(learning_rate, len(data), early_exaggeration)
 
     # --- GPU path via cuML ---
@@ -156,13 +162,16 @@ def fit_sne(
                 verbose=verbose,
                 **kwargs,
             )
-            return model.fit_transform(np.asarray(data, dtype=np.float32))
+            emb = model.fit_transform(np.asarray(data, dtype=np.float32))
+            res["embedding"] = emb
+            res["model"] = model
+            return res
         except Exception as e:
             if verbose:
                 print(f"   -> [GPU] cuML t-SNE failed ({e}). Falling back to CPU...")
 
-    if use_gpu and not HAS_CUML and verbose:
-        print("   -> [CPU] cuml not found. Falling back to openTSNE.")
+    if use_gpu and not HAS_CUML:
+        print("   -> [WARNING] GPU requested (use_gpu=True) but cuML not found. Falling back to CPU (openTSNE).")
 
     # --- CPU path via openTSNE ---
     try:
@@ -197,4 +206,50 @@ def fit_sne(
               f"lr={lr_numeric:.1f}, min_intervals={min_num_intervals}, "
               f"n_iter={n_iter}, method={negative_gradient_method}")
 
-    return tsne.fit(np.asarray(data, dtype=float))
+    emb = tsne.fit(np.asarray(data, dtype=float))
+    res["embedding"] = np.asarray(emb)
+    res["model"] = emb  # openTSNE's TSNEEmbedding object acts as the model
+    return res
+
+
+def fitsne_project(
+    model_dict: dict,
+    new_data: np.ndarray,
+    verbose: bool = False,
+    **kwargs
+) -> np.ndarray:
+    """Project out-of-sample data using a fitted openTSNE model.
+    
+    Note: cuML's TSNE does not natively support out-of-sample projection
+    in the same way openTSNE does. If a GPU model was used, this will attempt
+    projection if supported by the cuML version, or raise an error.
+    
+    Parameters
+    ----------
+    model_dict : dict
+        The result dictionary returned by `fit_sne()`.
+    new_data : (M, D) array
+        The out-of-sample data to project.
+        
+    Returns
+    -------
+    embedding : (M, n_components) array
+    """
+    model = model_dict["model"]
+    
+    X = np.asarray(new_data)
+    
+    if HAS_CUML and "cuml" in str(type(model)):
+        if verbose:
+            print("   -> [GPU] Attempting cuML TSNE projection...")
+        # cuML might not support transform for TSNE. 
+        if hasattr(model, "transform"):
+            return model.transform(X.astype(np.float32))
+        else:
+            raise NotImplementedError("The cuML TSNE backend does not support out-of-sample projection.")
+            
+    if verbose:
+        print(f"   -> Projecting {X.shape[0]} out-of-sample points using openTSNE...")
+        
+    # openTSNE TSNEEmbedding supports transform directly
+    return model.transform(X, **kwargs)

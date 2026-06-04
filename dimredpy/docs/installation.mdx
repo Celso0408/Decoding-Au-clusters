@@ -1,0 +1,31 @@
+---
+title: "Installation"
+description: "How to install and test the DimRedPy framework."
+icon: "download"
+---
+
+The framework is packaged as a standard Python module.
+
+### Development Installation
+
+To install the framework in development mode (which allows you to edit the source code and have changes immediately reflected without reinstalling):
+
+```bash
+git clone https://github.com/Celso0408/Decoding-Au-clusters
+cd Decoding-Au-clusters
+pip install -e .
+```
+
+### Running Tests
+
+DimRedPy ships with a comprehensive test suite to ensure that numerical implementations, metrics, and distance calculations remain accurate.
+
+To run the full suite:
+
+```bash
+python -m pytest dimredpy/tests
+```
+
+<Tip>
+It's highly recommended to run the test suite if you make modifications to the `dimredpy.shared` utility functions (especially the custom `PBCMetric` or `SphericalMetric` distance functions).
+</Tip>

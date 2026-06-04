@@ -1,0 +1,114 @@
+---
+title: "Structural Descriptors"
+description: "Geometric analysis tools for 3D point clouds and atomic trajectories."
+icon: "cube"
+---
+
+The `descriptors` module provides highly optimized, invariant features that are highly useful for defining **Collective Variables (CVs)** or analyzing the structural evolution of a system.
+
+```python
+from dimredpy.shared.descriptors import (
+    coordination_histogram, coordination_histogram_trajectory,
+    effective_coordination_number, average_neighbor_distance,
+    radius_of_gyration, radial_distribution_function,
+    hausdorff_chirality_measure, compute_trajectory_descriptors
+)
+```
+
+## Functions
+
+### `coordination_histogram`
+Calculates the coordination number (neighbor count) histogram for a single 3D frame.
+
+<ParamField path="positions" type="np.ndarray" required>
+  `(N, 3)` spatial coordinates.
+</ParamField>
+<ParamField path="cutoff" type="float" default="3.4">
+  Distance cutoff for defining a neighbor bond.
+</ParamField>
+<ParamField path="max_neighbors" type="int" default="12">
+  Maximum neighbor count tracked in the histogram.
+</ParamField>
+**Returns:** `np.ndarray` of shape `(max_neighbors + 1,)` representing the fractional density of coordination states.
+
+### `coordination_histogram_trajectory`
+Computes neighbor count histograms for all frames in a trajectory.
+Accepts the same parameters as above but expects `trajectory` of shape `(T, N, 3)`.
+**Returns:** `np.ndarray` of shape `(T, max_neighbors + 1)`.
+
+### `effective_coordination_number`
+Computes the mean continuous Effective Coordination Number (ECN) for a single frame. ECN acts as a mathematically soft, continuous version of coordination numbers.
+
+<ParamField path="positions" type="np.ndarray" required>
+  `(N, 3)` coordinates.
+</ParamField>
+<ParamField path="cutoff" type="float" default="3.4">
+  Cutoff for defining the soft neighbor pairs.
+</ParamField>
+**Returns:** `float` representing the average ECN.
+
+### `average_neighbor_distance`
+Calculates the mean distance averaged over all pairs strictly within the `cutoff`.
+
+<ParamField path="positions" type="np.ndarray" required>
+  `(N, 3)` coordinates.
+</ParamField>
+<ParamField path="cutoff" type="float" default="3.4">
+  Distance cutoff.
+</ParamField>
+**Returns:** `float`.
+
+### `radius_of_gyration`
+Computes the geometric root-mean-square distance of points to their calculated center of mass.
+
+<ParamField path="positions" type="np.ndarray" required>
+  `(N, 3)` coordinates.
+</ParamField>
+**Returns:** `float`.
+
+### `radial_distribution_function`
+Computes the classic radial distribution function $g(r)$ for a trajectory.
+
+<ParamField path="trajectory" type="np.ndarray" required>
+  `(T, N, 3)` coordinates.
+</ParamField>
+<ParamField path="r_max" type="float" default="8.0">
+  Max distance for RDF computation.
+</ParamField>
+<ParamField path="n_bins" type="int" default="200">
+  Number of histogram bins.
+</ParamField>
+<ParamField path="cutoff" type="float" default="None">
+  If provided, hard-ignores pairs beyond this distance to save compute.
+</ParamField>
+**Returns:** `(r_centers, g_r)` where both are `np.ndarray` of shape `(n_bins,)`.
+
+### `hausdorff_chirality_measure`
+Quantifies structural chirality in range $[0, 1]$ using normalized Hausdorff distance to the PCA-reflected mirror image (where 0 indicates completely achiral).
+
+<ParamField path="positions" type="np.ndarray" required>
+  `(N, 3)` coordinates.
+</ParamField>
+**Returns:** `float`.
+
+### `projection_center`
+Computes the geometric center of gravity of a weighted distribution array.
+
+<ParamField path="values" type="np.ndarray" required>
+  `(M,)` sorted grid values.
+</ParamField>
+<ParamField path="weights" type="np.ndarray" required>
+  `(M,)` corresponding distribution weights.
+</ParamField>
+<ParamField path="threshold" type="float" default="0.0">
+  Upper bound value used to gracefully filter values before calculating the center.
+</ParamField>
+**Returns:** `float` representing the calculated center.
+
+### `compute_trajectory_descriptors`
+Batch-processes an entire trajectory, extracting multiple descriptors in a single, highly optimized pass.
+
+<ParamField path="trajectory" type="np.ndarray" required>
+  `(T, N, 3)` coordinates.
+</ParamField>
+**Returns:** A dictionary containing `"neighbor_histograms"`, `"ecn"`, `"d_av"`, `"rg"`, and `"hcm"` numpy arrays.

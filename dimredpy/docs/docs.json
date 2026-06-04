@@ -1,0 +1,73 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "DimRedPy",
+  "logo": {
+    "dark": "/logo/logo.png",
+    "light": "/logo/logo.png"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#16A34A",
+    "light": "#07C983",
+    "dark": "#15803D"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Celso0408/Decoding-Au-clusters"
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/Celso0408/Decoding-Au-clusters"
+    }
+  },
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "View on GitHub",
+          "href": "https://github.com/Celso0408/Decoding-Au-clusters",
+          "icon": "github"
+        }
+      ]
+    },
+    "pages": [
+      {
+        "group": "Getting Started",
+        "pages": [
+          "introduction",
+          "installation",
+          "advanced-usage"
+        ]
+      },
+      {
+        "group": "Dimensionality Reduction",
+        "pages": [
+          "modules/fitsne",
+          "modules/umap",
+          "modules/sketchmap"
+        ]
+      },
+      {
+        "group": "Thermodynamics",
+        "pages": [
+          "modules/mbar"
+        ]
+      },
+      {
+        "group": "Shared Utilities",
+        "pages": [
+          "modules/shared/descriptors",
+          "modules/shared/metrics",
+          "modules/shared/transfer",
+          "modules/shared/io",
+          "modules/shared/analysis"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,119 @@
+---
+title: "Transfer Functions"
+description: "Mathematical kernels used by the Sketch-map algorithm to transform distances."
+icon: "function"
+---
+
+Transfer functions are mathematical kernels that "squash" pairwise distances $R \to F(R) \in [0, 1]$. This non-linear transformation is what allows the Sketch-map algorithm to focus exclusively on intermediate-range topologies while ignoring extreme local noise and distant global fluctuations.
+
+```python
+from dimredpy.shared.transfer import (
+    Identity, Sigmoid, Compress, XSigmoid, Gamma, Warp, make_transfer
+)
+
+# Construct using helper function
+sigmoid = make_transfer((6.0, 8.0, 8.0))
+
+# Evaluate transfer value and derivative
+f_val, df_val = sigmoid.fdf(distances)
+```
+
+## API Interfaces
+
+All transfer functions inherit from `TransferFunction` and implement highly optimized methods:
+
+<ParamField path="f(x)" type="method">
+  Evaluates the function $F(R)$ on the NumPy array `x`.
+</ParamField>
+<ParamField path="df(x)" type="method">
+  Evaluates the analytical derivative $F'(R)$ on the NumPy array `x`.
+</ParamField>
+<ParamField path="fdf(x)" type="method">
+  Evaluates both simultaneously (drastically saving recomputation time compared to calling them separately).
+</ParamField>
+<ParamField path="f_torch(x)" type="method">
+  PyTorch equivalent for GPU-accelerated gradient graph execution.
+</ParamField>
+
+---
+
+## Transfer Classes
+
+### `Identity`
+No-op transfer mapping: $F(R) = R$. *(Takes no initialization parameters).*
+
+### `Sigmoid`
+Squared-Lorentzian sigmoid: $F(R) = 1 - \frac{1}{1 + (R/\sigma)^2}$.
+
+<ParamField path="sigma" type="float" required>
+  Inflection point scaling parameter. Determines where the transition occurs.
+</ParamField>
+
+### `Compress`
+Linear (Lorentzian) compression: $F(R) = 1 - \frac{1}{1 + R/\sigma}$.
+
+<ParamField path="sigma" type="float" required>
+  Inflection point scaling parameter.
+</ParamField>
+
+### `XSigmoid`
+The canonical Extended Sigmoid used by standard Sketch-map: $F(R) = 1 - \left[1 + (2^{A/B} - 1) (R/\sigma)^A\right]^{-B/A}$.
+
+<ParamField path="sigma" type="float" required>
+  Inflection point governing the center of the sigmoid transition.
+</ParamField>
+<ParamField path="A" type="float" required>
+  Exponential rate governing the short-range cutoff steepness.
+</ParamField>
+<ParamField path="B" type="float" required>
+  Exponential rate governing the long-range tail cutoff steepness.
+</ParamField>
+
+### `Gamma`
+Incomplete gamma function mapping: $F(R) = Q(N/2, (R/\sigma)^2/2)$. *(Note: Requires `scipy.special`)*.
+
+<ParamField path="sigma" type="float" required>
+  Scaling parameter.
+</ParamField>
+<ParamField path="N" type="float" required>
+  Shape parameter representing the degrees of freedom.
+</ParamField>
+
+### `Warp`
+Maps high-dimensional distances through an inverse low-dimensional mapping to match stress functions.
+
+<ParamField path="sigma" type="float" required>
+  Base parameter.
+</ParamField>
+<ParamField path="A" type="float" required>
+  Base parameter.
+</ParamField>
+<ParamField path="B" type="float" required>
+  Base parameter.
+</ParamField>
+<ParamField path="a" type="float" required>
+  Warping parameter $a$.
+</ParamField>
+<ParamField path="b" type="float" required>
+  Warping parameter $b$.
+</ParamField>
+
+---
+
+## Transfer Factory
+
+### `make_transfer`
+Instantiates the appropriate transfer function object based on a spec tuple string.
+
+<ParamField path="spec" type="tuple | float | str" required>
+  Tuple specifying the transfer function type and parameters.
+</ParamField>
+
+**Mapping Logic:**
+| Spec Format | Returned Transfer Object |
+|---|---|
+| `None` or `"identity"` | `Identity()` |
+| `(sigma,)` or `float` | `Sigmoid(sigma)` |
+| `(sigma, N)` | `Gamma(sigma, N)` |
+| `(sigma, A, B)` | `XSigmoid(sigma, A, B)` |
+| `(sigma, A, B, a, b)` | `Warp(sigma, A, B, a, b)` |

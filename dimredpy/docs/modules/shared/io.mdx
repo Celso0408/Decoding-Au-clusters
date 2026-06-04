@@ -1,0 +1,125 @@
+---
+title: "Data I/O"
+description: "Agnostic, memory-efficient loaders and writers for simulation trajectories, tabular data, and embedding outputs."
+icon: "folder-open"
+---
+
+The `io` module transparently supports reading and writing `.gz` compressed files, significantly saving disk space when dealing with huge atomic trajectories.
+
+```python
+from dimredpy.shared.io import (
+    load_spatial_coordinates, load_tabular_data, save_tabular_data,
+    load_point_set, save_point_set, save_grid_surface
+)
+
+# Load an XYZ trajectory (automatically handles .gz)
+traj = load_spatial_coordinates("trajectory.xyz.gz", format="xyz", label_filter="Au")
+
+# Save a free-energy surface in Gnuplot format
+save_grid_surface("fes.dat", surface_dict, gnuplot=True)
+```
+
+## Trajectories
+
+### `load_spatial_coordinates`
+Parses 3D atomic coordinates from a trajectory file (e.g. extended XYZ format) using a memory-efficient file iterator.
+
+<ParamField path="filepath" type="str | Path" required>
+  Path to the trajectory file.
+</ParamField>
+<ParamField path="format" type="str" default="xyz">
+  Format of the file.
+</ParamField>
+<ParamField path="label_filter" type="str" default="None">
+  If provided, rigorously filters the parsed coordinates by atom/point label (e.g. `"Au"`). Passed to underlying XYZ parser.
+</ParamField>
+**Returns:** `np.ndarray` of shape `(T, N, 3)` where `T` is the number of frames, `N` is the number of coordinates per frame, and `3` is the spatial dimensions.
+
+---
+
+## Tabular Data
+
+### `load_tabular_data`
+Loads 1D or 2D numerical arrays from plain-text tabular files (e.g., COLVAR or potential energy logs).
+
+<ParamField path="filepath" type="str | Path" required>
+  Path to the text file.
+</ParamField>
+<ParamField path="skip_header" type="int" default="0">
+  Number of lines to skip at the beginning of the file.
+</ParamField>
+<ParamField path="**kwargs" type="kwargs">
+  Additional keyword arguments safely forwarded to `numpy.loadtxt`.
+</ParamField>
+**Returns:** `np.ndarray` containing the numerical data.
+
+### `save_tabular_data`
+Saves a NumPy array to a text file. Automatically generates parent directories if they do not exist.
+
+<ParamField path="filepath" type="str | Path" required>
+  Destination path.
+</ParamField>
+<ParamField path="data" type="np.ndarray" required>
+  Array of data to save.
+</ParamField>
+<ParamField path="header" type="str" default="empty">
+  Header string placed at the top of the file.
+</ParamField>
+<ParamField path="**kwargs" type="kwargs">
+  Additional keyword arguments safely forwarded to `numpy.savetxt`.
+</ParamField>
+
+---
+
+## Point Sets
+
+### `load_point_set`
+Loads coordinates (and optional weights) representing high-dimensional and/or low-dimensional point sets (e.g. Sketch-map landmarks).
+
+<ParamField path="hd_path" type="str | Path" required>
+  Path to the high-dimensional point set file.
+</ParamField>
+<ParamField path="ld_path" type="str | Path" default="None">
+  Path to the low-dimensional point set file.
+</ParamField>
+<ParamField path="has_weights" type="bool" default="False">
+  If `True`, treats the final column in the high-dimensional file as the statistical weights.
+</ParamField>
+
+**Returns:** A dictionary containing:
+- `"points_hd"`: `np.ndarray` of high-dimensional points.
+- `"weights"`: `np.ndarray` of weights (or `None`).
+- `"points_ld"`: `np.ndarray` of low-dimensional points (if requested).
+
+### `save_point_set`
+Saves a point set with optional weights. Automatically constructs parent directories.
+
+<ParamField path="filepath" type="str | Path" required>
+  Destination path.
+</ParamField>
+<ParamField path="points" type="np.ndarray" required>
+  Coordinate matrix.
+</ParamField>
+<ParamField path="weights" type="np.ndarray" default="None">
+  Weight array. If provided, is gracefully column-stacked as the final column of the output.
+</ParamField>
+<ParamField path="**kwargs" type="kwargs">
+  Additional keyword arguments forwarded to `numpy.savetxt`.
+</ParamField>
+
+---
+
+## Output Surfaces
+
+### `save_grid_surface`
+Saves a 2D probability or free-energy grid surface.
+
+<ParamField path="filepath" type="str | Path" required>
+  Destination path.
+</ParamField>
+<ParamField path="surface" type="dict" required>
+  Dictionary containing keys `"bin_centers_x"`, `"bin_centers_y"`, `"probability"`, and `"free_energy"`.
+</ParamField>
+<ParamField path="gnuplot" type="bool" default="False">
+  If `True`, formats the output with a blank line separating blocks of constant X, making it fully compatible with Gnuplot's `splot` rendering command.
+</ParamField>

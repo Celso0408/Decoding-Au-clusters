@@ -106,24 +106,38 @@ def effective_coordination_number(
     """
     positions = np.asarray(positions, dtype=float)
     N = positions.shape[0]
+    
+    if N <= 1:
+        return 0.0
+
     diff = positions[:, np.newaxis] - positions[np.newaxis]
     dist = np.sqrt((diff ** 2).sum(axis=2))
+    
+    # Ignore self in distance calculations
     np.fill_diagonal(dist, np.inf)
 
     # Weighted average neighbor distance per point
     mask = dist < cutoff
+    counts = mask.sum(axis=1)
+    
     d_av_per_point = np.where(
-        mask.sum(axis=1) > 0,
-        np.sum(np.where(mask, dist, 0.0), axis=1) / mask.sum(axis=1).clip(min=1),
+        counts > 0,
+        np.sum(np.where(mask, dist, 0.0), axis=1) / np.maximum(counts, 1),
         0.0,
     )
 
-    # ECN calculation
-    ecn_per_point = np.zeros(N, dtype=float)
-    for i in range(N):
-        if d_av_per_point[i] > 0:
-            ecn_per_point[i] = np.exp(1.0 - (dist[i] / d_av_per_point[i]) ** 6).sum()
-            ecn_per_point[i] -= 1.0  # remove self-interaction
+    # Vectorized ECN calculation
+    valid = d_av_per_point > 0
+    safe_dav = np.where(valid, d_av_per_point, 1.0)[:, np.newaxis]
+    
+    # Calculate power, clipping to prevent overflow in exp
+    power = (dist / safe_dav) ** 6
+    power = np.clip(power, 0, 100)
+    
+    ecn_matrix = np.where(valid[:, np.newaxis], np.exp(1.0 - power), 0.0)
+    np.fill_diagonal(ecn_matrix, 0.0)
+    
+    ecn_per_point = ecn_matrix.sum(axis=1)
 
     return float(ecn_per_point.mean())
 

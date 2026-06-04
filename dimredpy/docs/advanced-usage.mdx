@@ -1,0 +1,41 @@
+---
+title: "Advanced GPU Usage"
+description: "Leveraging hardware acceleration and automated mathematical transforms in DimRedPy."
+icon: "rocket"
+---
+
+DimRedPy is optimized for high-performance scientific workflows, utilizing hardware acceleration to ensure both speed and accuracy.
+
+## 1. GPU Acceleration & Batching
+
+When handling millions of data points, DimRedPy leverages several specialized backends:
+
+<CardGroup cols={2}>
+  <Card title="cuML RAPIDS" icon="microchip">
+    **FIt-SNE** and **UMAP** leverage NVIDIA's `cuml` library for up to 100x speedups over CPU implementations.
+  </Card>
+  <Card title="PyTorch CUDA" icon="bolt">
+    **Sketch-map Projection** uses PyTorch CUDA batches to parallelize the grid search and Adam refinement for thousands of samples simultaneously.
+  </Card>
+</CardGroup>
+
+### Handling Massive Datasets (OOM Protection)
+When projecting massive out-of-sample trajectories (e.g. 2 million coordinate frames) using `project_out_of_sample`, you don't need to manually chunk the data.
+
+DimRedPy implements an **automatic VRAM/RAM batching system** internally to prevent Out-Of-Memory (OOM) errors. It safely divides the workload and streams the projections to your GPU in calculated chunks.
+
+## 2. Automated Mahalanobis Whitening
+
+A common limitation in GPU dimensionality reduction is that libraries like `cuML` do not natively support the Mahalanobis distance metric. 
+
+Because Mahalanobis is critical for structural descriptors (e.g. Coordination Histograms where dimensions have correlated variance), **DimRedPy implements a mathematical workaround for GPU execution:**
+
+1. It computes the sample covariance matrix $S$.
+2. It calculates the whitening transform $S^{-1/2}$.
+3. It globally transforms the high-dimensional data: $X_{white} = (X - \mu) S^{-1/2}$.
+
+<Check>
+Performing standard Euclidean UMAP on the whitened data $X_{white}$ is **mathematically identical** to performing Mahalanobis UMAP on the original data $X$. 
+</Check>
+
+This automated process ensures exactly 100% parity between the CPU backend (`umap-learn` with `"mahalanobis"`) and the GPU backend (`cuml` with automated whitening).

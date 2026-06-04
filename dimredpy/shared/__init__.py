@@ -15,7 +15,7 @@ from .io import (
     load_spatial_coordinates, load_tabular_data, save_tabular_data,
     load_point_set, save_point_set, save_grid_surface
 )
-from .analysis import distance_histogram, preservation_score
+from .analysis import distance_histogram, preservation_score, stress_per_pair
 from .descriptors import (
     coordination_histogram,
     coordination_histogram_trajectory,
@@ -33,7 +33,7 @@ __all__ = [
     "TransferFunction", "Sigmoid", "XSigmoid", "Identity", "Warp", "Compress", "Gamma", "make_transfer",
     "load_spatial_coordinates", "load_tabular_data", "save_tabular_data",
     "load_point_set", "save_point_set", "save_grid_surface",
-    "distance_histogram", "preservation_score",
+    "distance_histogram", "preservation_score", "stress_per_pair",
     "coordination_histogram", "coordination_histogram_trajectory",
     "effective_coordination_number", "average_neighbor_distance",
     "radius_of_gyration", "radial_distribution_function",

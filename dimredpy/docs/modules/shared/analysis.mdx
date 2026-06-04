@@ -1,0 +1,108 @@
+---
+title: "Analysis & Diagnostics"
+description: "Tools for measuring the quality of a dimensionality reduction mapping."
+icon: "chart-line"
+---
+
+The `analysis` module provides robust metrics by rigorously checking how well high-dimensional (HD) pairwise distances are preserved in the low-dimensional (LD) space.
+
+```python
+from dimredpy.shared.analysis import distance_histogram, preservation_score, stress_per_pair
+
+# Compute the final Sketch-map chi^2 stress (lower is better)
+stress = preservation_score(
+    landmarks_hd, landmarks_ld, 
+    fun_hd=(6.0, 8.0, 8.0), 
+    fun_ld=(6.0, 2.0, 8.0)
+)
+```
+
+## Functions
+
+### `distance_histogram`
+Computes a 1D (HD only) or 2D (HD vs LD) histogram of pairwise distances.
+
+<ParamField path="landmarks_hd" type="np.ndarray" required>
+  `(N, D)` high-dimensional points.
+</ParamField>
+<ParamField path="landmarks_ld" type="np.ndarray" default="None">
+  `(N, d)` low-dimensional points. If `None`, computes a 1D histogram of HD distances.
+</ParamField>
+<ParamField path="metric" type="Metric" default="EuclideanMetric">
+  Metric used for HD distances.
+</ParamField>
+<ParamField path="n_bins" type="int" default="100">
+  Number of histogram bins along each axis.
+</ParamField>
+<ParamField path="max_d" type="float" default="None">
+  Maximum distance to include. Auto-detected if not specified.
+</ParamField>
+<ParamField path="fun_hd" type="tuple" default="None">
+  Transfer function spec applied to HD distances.
+</ParamField>
+<ParamField path="fun_ld" type="tuple" default="None">
+  Transfer function spec applied to LD distances.
+</ParamField>
+<ParamField path="weights" type="np.ndarray" default="None">
+  `(N,)` per-point weights. Pair weights are computed as $w_i \cdot w_j$.
+</ParamField>
+
+**Returns:** A dictionary containing:
+- `"hd_distances"`: `np.ndarray` of upper-triangle HD pairwise distances.
+- `"ld_distances"`: `np.ndarray` of upper-triangle LD pairwise distances (if `landmarks_ld` is provided).
+- `"histogram_1d"`: `np.ndarray` of shape `(n_bins,)` containing counts.
+- `"histogram_2d"`: `np.ndarray` of shape `(n_bins, n_bins)` containing counts.
+- `"bin_edges_hd"`: `np.ndarray` of shape `(n_bins + 1,)` defining bin edges for the HD axis.
+- `"bin_edges_ld"`: `np.ndarray` of shape `(n_bins + 1,)` defining bin edges for the LD axis.
+
+---
+
+### `preservation_score`
+Computes the mean-squared Sketch-map stress $\chi^2$ as a scalar quality score representing overall distance preservation. **Lower values indicate better distance preservation.**
+
+<ParamField path="landmarks_hd" type="np.ndarray" required>
+  `(N, D)` high-dimensional points.
+</ParamField>
+<ParamField path="landmarks_ld" type="np.ndarray" required>
+  `(N, d)` low-dimensional points.
+</ParamField>
+<ParamField path="metric" type="Metric" default="EuclideanMetric">
+  Metric used for HD distances.
+</ParamField>
+<ParamField path="fun_hd" type="tuple" default="None">
+  Transfer function spec applied to HD distances.
+</ParamField>
+<ParamField path="fun_ld" type="tuple" default="None">
+  Transfer function spec applied to LD distances.
+</ParamField>
+<ParamField path="weights" type="np.ndarray" default="None">
+  `(N,)` per-point weights.
+</ParamField>
+
+**Returns:** `float` representing the final calculated $\chi^2$ stress.
+
+---
+
+### `stress_per_pair`
+Computes the full pair-wise stress matrix. Extremely useful for identifying and diagnosing exactly *which* high-dimensional distances are being incorrectly distorted during dimensionality reduction.
+
+<ParamField path="landmarks_hd" type="np.ndarray" required>
+  `(N, D)` high-dimensional points.
+</ParamField>
+<ParamField path="landmarks_ld" type="np.ndarray" required>
+  `(N, d)` low-dimensional points.
+</ParamField>
+<ParamField path="metric" type="Metric" default="EuclideanMetric">
+  Metric used for HD distances.
+</ParamField>
+<ParamField path="fun_hd" type="tuple" default="None">
+  Transfer function spec applied to HD distances.
+</ParamField>
+<ParamField path="fun_ld" type="tuple" default="None">
+  Transfer function spec applied to LD distances.
+</ParamField>
+<ParamField path="weights" type="np.ndarray" default="None">
+  `(N,)` per-point weights.
+</ParamField>
+
+**Returns:** `np.ndarray` of shape `(N, N)`, representing a symmetric matrix where entry $(i, j)$ is the weighted squared difference between the transformed high-dimensional distance and low-dimensional distance.

@@ -22,6 +22,7 @@ def _voronoi_weights(
     metric: Metric,
     input_weights: Optional[np.ndarray] = None,
     weight_gamma: float = 1.0,
+    batch_size: Optional[int] = None,
 ) -> np.ndarray:
     """
     Assign each data point to its nearest landmark (Voronoi tessellation)
@@ -39,8 +40,17 @@ def _voronoi_weights(
     if input_weights is None:
         input_weights = np.ones(N, dtype=float)
 
-    dist_matrix = metric.pairwise_vec(data, landmarks)  # (N, K)
-    nearest = np.argmin(dist_matrix, axis=1)             # (N,)
+    if batch_size is None:
+        # Original behaviour: full memory matrix
+        dist_matrix = metric.pairwise_vec(data, landmarks)
+        nearest = np.argmin(dist_matrix, axis=1)
+    else:
+        # Memory-efficient batched processing
+        nearest = np.zeros(N, dtype=int)
+        for i in range(0, N, batch_size):
+            end_idx = min(i + batch_size, N)
+            dist_batch = metric.pairwise_vec(data[i:end_idx], landmarks)
+            nearest[i:end_idx] = np.argmin(dist_batch, axis=1)
 
     raw = np.zeros(K, dtype=float)
     for j in range(N):
@@ -66,6 +76,7 @@ def select_landmarks(
     weight_gamma: float = 1.0,
     resample_gamma: float = 1.0,
     similarity: Optional[np.ndarray] = None,
+    batch_size: Optional[int] = None,
 ) -> Dict:
     """
     Select landmark points from a dataset.
@@ -84,6 +95,7 @@ def select_landmarks(
     weight_gamma  : exponent applied to Voronoi weights before normalising.
     resample_gamma: gamma parameter for resample / staged modes.
     similarity    : (N,N) pre-computed distance matrix (minmax only).
+    batch_size    : compute distances in chunks to save RAM (e.g. 50000). None uses all memory.
 
     Returns
     -------
@@ -235,6 +247,6 @@ def select_landmarks(
 
     weights = None
     if return_weights:
-        weights = _voronoi_weights(data, landmarks, metric, input_weights, weight_gamma)
+        weights = _voronoi_weights(data, landmarks, metric, input_weights, weight_gamma, batch_size)
 
     return {"landmarks": landmarks, "indices": indices, "weights": weights}

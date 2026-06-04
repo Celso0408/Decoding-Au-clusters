@@ -109,6 +109,58 @@ def distance_histogram(
     return result
 
 
+def stress_per_pair(
+    landmarks_hd: np.ndarray,
+    landmarks_ld: np.ndarray,
+    metric: Optional[Metric] = None,
+    fun_hd=None,
+    fun_ld=None,
+    weights: Optional[np.ndarray] = None,
+) -> np.ndarray:
+    """
+    Compute the full pair-wise stress matrix.
+
+    For each pair (i, j), computes the Sketch-map stress:
+        stress_ij = w_i * w_j * (F_HD(D_HD_ij) - F_LD(D_LD_ij))^2
+
+    Parameters
+    ----------
+    landmarks_hd : (N, D) high-dim landmarks.
+    landmarks_ld : (N, d) embedded landmark coordinates.
+    metric       : HD metric (default Euclidean).
+    fun_hd       : HD transfer function spec.
+    fun_ld       : LD transfer function spec.
+    weights      : (N,) per-point weights.
+
+    Returns
+    -------
+    (N, N) symmetric array of pairwise stress values.
+    """
+    if metric is None:
+        metric = EuclideanMetric()
+    tf_hd = make_transfer(fun_hd)
+    tf_ld = make_transfer(fun_ld)
+
+    hd_landmarks_arr = np.asarray(landmarks_hd, dtype=float)
+    ld_landmarks_arr = np.asarray(landmarks_ld, dtype=float)
+    if hd_landmarks_arr.shape[0] != ld_landmarks_arr.shape[0]:
+        raise ValueError("landmarks_hd and landmarks_ld must have the same number of points.")
+        
+    hd_mat = metric.pairwise(hd_landmarks_arr)
+    ld_mat = EuclideanMetric().pairwise(ld_landmarks_arr)
+
+    fhd = tf_hd.f(hd_mat)
+    fld = tf_ld.f(ld_mat)
+
+    diff_sq = (fhd - fld) ** 2
+
+    if weights is not None:
+        w = np.asarray(weights, dtype=float)
+        pw = w[:, None] * w[None, :]
+        return pw * diff_sq
+    return diff_sq
+
+
 def preservation_score(
     landmarks_hd: np.ndarray,
     landmarks_ld: np.ndarray,

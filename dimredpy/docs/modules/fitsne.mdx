@@ -1,0 +1,113 @@
+---
+title: "FIt-SNE"
+description: "FFT-accelerated interpolation-based t-SNE capable of scaling to millions of points."
+icon: "chart-scatter"
+---
+
+FIt-SNE accelerates the repulsive force calculations of standard t-SNE by using the negative gradient method with FFT interpolation on a grid, achieving $O(N \log N)$ complexity.
+
+## Embedding High-Dimensional Data
+
+The `fit_sne` function computes the lower-dimensional manifold.
+
+```python
+from dimredpy.fitsne import fit_sne
+
+result = fit_sne(data, n_components=2, perplexity=30.0, n_iter=1000, 
+                 early_exaggeration=12.0, early_exaggeration_iter=250, 
+                 learning_rate="auto", metric="euclidean", 
+                 min_num_intervals=50, negative_gradient_method="fft", 
+                 seed=42, n_jobs=-1, verbose=False, use_gpu=True, **kwargs)
+```
+
+### Parameters
+
+<ParamField path="data" type="np.ndarray" required>
+  High-dimensional input array of shape $(N, D)$.
+</ParamField>
+<ParamField path="n_components" type="int" default="2">
+  Dimensionality of the target embedding space.
+</ParamField>
+<ParamField path="perplexity" type="float" default="30.0">
+  Effective neighbors. Larger values emphasize global topology over local structure.
+</ParamField>
+<ParamField path="n_iter" type="int" default="1000">
+  Number of gradient descent iterations.
+</ParamField>
+<ParamField path="early_exaggeration" type="float" default="12.0">
+  Affinity multiplier for the early phase. Larger values create tighter, more separated clusters.
+</ParamField>
+<ParamField path="early_exaggeration_iter" type="int" default="250">
+  Duration (in steps) of the early exaggeration phase.
+</ParamField>
+<ParamField path="learning_rate" type="float | str" default="auto">
+  Step size. Setting to `"auto"` automatically calculates $max(200, N / early\_exag)$ for optimal stability.
+</ParamField>
+<ParamField path="metric" type="str" default="euclidean">
+  Distance metric used in the high-dimensional space.
+</ParamField>
+<ParamField path="min_num_intervals" type="int" default="50">
+  Grid resolution used for FFT force interpolation.
+</ParamField>
+<ParamField path="negative_gradient_method" type="str" default="fft">
+  Algorithm for repulsive forces: `"fft"` (FIt-SNE) or `"bh"` (Barnes-Hut).
+</ParamField>
+<ParamField path="seed" type="int" default="42">
+  Random seed for reproducible initializations.
+</ParamField>
+<ParamField path="n_jobs" type="int" default="-1">
+  Number of CPU threads for `openTSNE` (-1 uses all available cores).
+</ParamField>
+<ParamField path="verbose" type="bool" default="False">
+  If True, prints iteration logs and backend selection details.
+</ParamField>
+<ParamField path="use_gpu" type="bool" default="True">
+  Attempts to seamlessly use `cuml.TSNE` for massive GPU acceleration.
+</ParamField>
+<ParamField path="**kwargs" type="kwargs">
+  Advanced parameters forwarded to `openTSNE` (e.g., `dof` for t-distribution degrees of freedom, `initialization="pca"`, `perplexity_list` for multi-scale embeddings).
+</ParamField>
+
+### Returns
+
+Returns a dictionary containing the embedding and the trained model state for downstream projection.
+
+<ResponseField name="embedding" type="np.ndarray">
+  Projected coordinates of shape $(N, n\_components)$.
+</ResponseField>
+<ResponseField name="model" type="object">
+  Fitted `openTSNE` or `cuML` model object.
+</ResponseField>
+
+---
+
+## Out-of-Sample Projection
+
+You can map entirely new samples into the exact same embedding space without recalculating the manifold geometry.
+
+```python
+from dimredpy.fitsne import fitsne_project
+
+new_embedding = fitsne_project(result, new_data, verbose=False, **kwargs)
+```
+
+### Parameters
+
+<ParamField path="model_dict" type="dict" required>
+  The results dictionary returned by `fit_sne()`.
+</ParamField>
+<ParamField path="new_data" type="np.ndarray" required>
+  Out-of-sample data points of shape $(M, D)$ to project.
+</ParamField>
+<ParamField path="verbose" type="bool" default="False">
+  If True, prints projection progress.
+</ParamField>
+<ParamField path="**kwargs" type="kwargs">
+  Advanced parameters forwarded to the projection method.
+</ParamField>
+
+### Returns
+
+<ResponseField name="embedding" type="np.ndarray">
+  Projected coordinates of shape $(M, n\_components)$.
+</ResponseField>

@@ -1,0 +1,258 @@
+---
+title: "MBAR Thermodynamics"
+description: "High-level workflow for constructing free-energy surfaces (FES), extracting free energy differences, and computing observable expectations from multi-state simulation data."
+icon: "chart-area"
+---
+
+High-level workflow for constructing free-energy surfaces (FES), extracting free energy differences, and computing observable expectations from multi-state simulation data (e.g., Parallel Tempering / Replica Exchange). Wraps `pymbar` to ensure numerical consistency.
+
+## A. End-to-End Workflow: `mbar_free_energy_surface`
+
+The primary entry point for full surface construction.
+
+```python
+from dimredpy.mbar import mbar_free_energy_surface
+
+result = mbar_free_energy_surface(energies, temperatures, collective_vars, 
+                                  target_temperature=None, sample_assignments=None, 
+                                  n_bins=50, extent=None, kde=True, 
+                                  decorrelate=False, mbar_kwargs=None, **kwargs)
+```
+
+### Parameters
+
+<ParamField path="energies" type="np.ndarray" required>
+  `(N_total,)` array of potential energies across all replicas.
+</ParamField>
+<ParamField path="temperatures" type="np.ndarray" required>
+  `(K,)` array representing the temperature ladder $(K)$.
+</ParamField>
+<ParamField path="collective_vars" type="np.ndarray" required>
+  `(N_total, 2)` array of 2D projection coordinates.
+</ParamField>
+<ParamField path="target_temperature" type="float" default="None">
+  Temperature at which to evaluate the FES (defaults to ladder start).
+</ParamField>
+<ParamField path="sample_assignments" type="np.ndarray" default="None">
+  `(N_total,)` mapping of samples to originating replicas.
+</ParamField>
+<ParamField path="n_bins" type="int" default="50">
+  Grid resolution for the output surface.
+</ParamField>
+<ParamField path="extent" type="tuple" default="None">
+  Manual grid limits `(x_min, x_max, y_min, y_max)`.
+</ParamField>
+<ParamField path="kde" type="bool" default="True">
+  Use Kernel Density Estimation (KDE) for a smooth surface.
+</ParamField>
+<ParamField path="decorrelate" type="bool" default="False">
+  Automatically subsamples the time series for independence.
+</ParamField>
+<ParamField path="mbar_kwargs" type="dict" default="None">
+  Extra arguments passed directly to `pymbar.MBAR`.
+</ParamField>
+<ParamField path="**kwargs" type="kwargs">
+  Additional arguments forwarded to underlying methods.
+</ParamField>
+
+### Returns
+
+<ResponseField name="probability" type="np.ndarray">
+  `(n_bins, n_bins)` normalized probability surface.
+</ResponseField>
+<ResponseField name="free_energy" type="np.ndarray">
+  `(n_bins, n_bins)` free-energy surface in units of $k_B T$.
+</ResponseField>
+<ResponseField name="bin_centers_x" type="np.ndarray">
+  Coordinate axis along X.
+</ResponseField>
+<ResponseField name="bin_centers_y" type="np.ndarray">
+  Coordinate axis along Y.
+</ResponseField>
+<ResponseField name="mbar_weights" type="np.ndarray">
+  `(K, N_total)` matrix of statistical weights.
+</ResponseField>
+<ResponseField name="f_k" type="np.ndarray">
+  `(K,)` unitless reduced free energies.
+</ResponseField>
+<ResponseField name="N_eff" type="np.ndarray">
+  `(K,)` effective sample size for each state.
+</ResponseField>
+
+---
+
+## B. Preprocessing & Utilities
+
+For advanced workflows, you can use the internal MBAR data preparation components directly.
+
+```python
+from dimredpy.mbar import decorrelate_timeseries, build_u_kn, build_probability_surface
+```
+
+### `decorrelate_timeseries`
+Extracts independent samples from a correlated trajectory.
+
+<ParamField path="data" type="np.ndarray" required>
+  Trajectory data array.
+</ParamField>
+<ParamField path="energies" type="np.ndarray" default="None">
+  Energy array to calculate statistical inefficiency.
+</ParamField>
+<ParamField path="method" type="str" default="statistical_inefficiency">
+  Method used for decorrelation.
+</ParamField>
+<ParamField path="max_stride" type="int" default="500">
+  Maximum permitted stride.
+</ParamField>
+
+**Returns**: A dictionary with `"data"`, `"indices"`, and `"g"` (statistical inefficiency).
+
+### `build_u_kn`
+Constructs the reduced potential matrix.
+
+<ParamField path="energies" type="np.ndarray" required>
+  Potential energies array.
+</ParamField>
+<ParamField path="temperatures" type="np.ndarray" required>
+  Temperature ladder array.
+</ParamField>
+<ParamField path="sample_assignments" type="np.ndarray" default="None">
+  Originating replica assignments.
+</ParamField>
+
+**Returns**: `(u_kn, N_k)` where `u_kn` is the `(K, N_total)` matrix and `N_k` is sample counts per state.
+
+### `build_probability_surface`
+Grids the MBAR weights into a 2D surface.
+
+<ParamField path="collective_vars" type="np.ndarray" required>
+  2D projection coordinates.
+</ParamField>
+<ParamField path="mbar_weights" type="np.ndarray" required>
+  Statistical weights from MBAR.
+</ParamField>
+<ParamField path="state_index" type="int" default="0">
+  Index of the state to build the surface for.
+</ParamField>
+<ParamField path="n_bins" type="int" default="50">
+  Resolution of the generated grid.
+</ParamField>
+<ParamField path="extent" type="tuple" default="None">
+  Manual grid limits `(x_min, x_max, y_min, y_max)`.
+</ParamField>
+<ParamField path="kde" type="bool" default="False">
+  Whether to apply Kernel Density Estimation.
+</ParamField>
+<ParamField path="kde_bandwidth" type="float" default="None">
+  Bandwidth applied if `kde` is True.
+</ParamField>
+
+**Returns**: A dict containing `"probability"`, `"free_energy"`, and axis bin centers.
+
+---
+
+## C. Core MBAR Solver: `run_mbar`
+
+Solves the MBAR equations to find the unitless free energies $f_k$ and the statistical weights $W_{n,k}$ for all samples.
+
+```python
+from dimredpy.mbar import run_mbar
+
+mbar_dict = run_mbar(u_kn, N_k, solver="default")
+```
+
+### Parameters
+
+<ParamField path="u_kn" type="np.ndarray" required>
+  `(K, N)` matrix of reduced potentials $u_k(x_n)$.
+</ParamField>
+<ParamField path="N_k" type="np.ndarray" required>
+  `(K,)` array of sample counts per state.
+</ParamField>
+<ParamField path="solver" type="str" default="default">
+  Solver protocol (`"default"`, `"robust"`, `"jax"`).
+</ParamField>
+
+### Returns
+
+<ResponseField name="f_k" type="np.ndarray">
+  `(K,)` unitless reduced free energies per state.
+</ResponseField>
+<ResponseField name="weights" type="np.ndarray">
+  `(K, N)` matrix of statistical weights.
+</ResponseField>
+<ResponseField name="mbar" type="MBAR">
+  The raw fitted `pymbar.MBAR` object.
+</ResponseField>
+<ResponseField name="N_eff" type="np.ndarray">
+  `(K,)` effective sample size per state.
+</ResponseField>
+
+---
+
+## D. Free Energy Differences: `mbar_free_energy_differences`
+
+Computes the exact matrix of dimensionless free energy differences ($\Delta f_{ij}$) between all sampled states and their uncertainties.
+
+```python
+from dimredpy.mbar import mbar_free_energy_differences
+
+diffs = mbar_free_energy_differences(mbar_dict, compute_uncertainty=True)
+```
+
+### Parameters
+
+<ParamField path="mbar_dict" type="dict" required>
+  The results dictionary returned by `run_mbar()`.
+</ParamField>
+<ParamField path="compute_uncertainty" type="bool" default="True">
+  Calculate the uncertainties (standard errors).
+</ParamField>
+<ParamField path="uncertainty_method" type="str" default="None">
+  Method for uncertainty estimation (e.g., `"svd"`).
+</ParamField>
+
+### Returns
+
+<ResponseField name="Delta_f" type="np.ndarray">
+  `(K, K)` matrix of dimensionless free energy differences $f_j - f_i$.
+</ResponseField>
+<ResponseField name="dDelta_f" type="np.ndarray">
+  `(K, K)` matrix of standard errors in the estimates.
+</ResponseField>
+
+---
+
+## E. Observable Expectations: `mbar_compute_expectations`
+
+Estimates the expected average value of an observable $A$ across each thermodynamic state.
+
+```python
+from dimredpy.mbar import mbar_compute_expectations
+
+exp = mbar_compute_expectations(mbar_dict, A_kn, state_dependent=False, compute_uncertainty=True)
+```
+
+### Parameters
+
+<ParamField path="mbar_dict" type="dict" required>
+  The results dictionary returned by `run_mbar()`.
+</ParamField>
+<ParamField path="A_kn" type="np.ndarray" required>
+  The observable evaluated for each sample.
+</ParamField>
+<ParamField path="state_dependent" type="bool" default="False">
+  Whether $A_{kn}$ has a different functional form in each state.
+</ParamField>
+<ParamField path="compute_uncertainty" type="bool" default="True">
+  Calculate the standard errors of the expectations.
+</ParamField>
+
+### Returns
+
+<ResponseField name="mu" type="np.ndarray">
+  `(K,)` expected values of the observable in each state.
+</ResponseField>
+<ResponseField name="sigma" type="np.ndarray">
+  `(K,)` standard errors of the expectations.
+</ResponseField>

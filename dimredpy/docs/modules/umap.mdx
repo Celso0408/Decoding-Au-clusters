@@ -1,0 +1,126 @@
+---
+title: "UMAP"
+description: "Uniform Manifold Approximation and Projection."
+icon: "chart-network"
+---
+
+Uniform Manifold Approximation and Projection. Features specialized support for the **Mahalanobis** metric on both CPU and GPU backends.
+
+## Embedding High-Dimensional Data
+
+```python
+from dimredpy.umap_embed import umap_embed, umap_project, umap_inverse_project
+
+result = umap_embed(data, n_components=2, metric="euclidean", n_neighbors=15, 
+                    min_dist=0.1, y=None, seed=42, n_jobs=-1, verbose=False, 
+                    use_gpu=True, **kwargs)
+```
+
+### Parameters
+
+<ParamField path="data" type="np.ndarray" required>
+  High-dimensional input array of shape $(N, D)$.
+</ParamField>
+<ParamField path="n_components" type="int" default="2">
+  Dimensionality of the target embedding space.
+</ParamField>
+<ParamField path="metric" type="str" default="euclidean">
+  Distance metric. Supports `"mahalanobis"`, `"cosine"`, etc.
+</ParamField>
+<ParamField path="n_neighbors" type="int" default="15">
+  Local neighborhood size. Larger = more global structure.
+</ParamField>
+<ParamField path="min_dist" type="float" default="0.1">
+  Minimum distance in embedding space (0.001 to 0.5).
+</ParamField>
+<ParamField path="y" type="np.ndarray" default="None">
+  Target labels/values for supervised dimensionality reduction.
+</ParamField>
+<ParamField path="seed" type="int" default="42">
+  Random seed for reproducibility.
+</ParamField>
+<ParamField path="n_jobs" type="int" default="-1">
+  Number of CPU threads to use (-1 = all cores).
+</ParamField>
+<ParamField path="verbose" type="bool" default="False">
+  If True, prints progress and backend selection.
+</ParamField>
+<ParamField path="use_gpu" type="bool" default="True">
+  Attempts to use `cuml.UMAP` for massive GPU acceleration.
+</ParamField>
+<ParamField path="**kwargs" type="kwargs">
+  Additional arguments passed directly to the UMAP constructor.
+</ParamField>
+
+### Returns
+
+Returns a dictionary containing the embedding and the trained model state for downstream projection.
+
+<ResponseField name="embedding" type="np.ndarray">
+  Projected coordinates of shape $(N, n\_components)$.
+</ResponseField>
+<ResponseField name="model" type="object">
+  Fitted `umap-learn` or `cuML` model object.
+</ResponseField>
+<ResponseField name="metric" type="str">
+  Distance metric used.
+</ResponseField>
+<ResponseField name="mahalanobis_params" type="tuple">
+  Whitening states `(mu, whitener)` if GPU Mahalanobis was used.
+</ResponseField>
+
+---
+
+## Out-of-Sample Projection
+
+```python
+new_embedding = umap_project(result, new_data)
+```
+
+### Parameters
+
+<ParamField path="model_dict" type="dict" required>
+  The results dictionary returned by `umap_embed()`.
+</ParamField>
+<ParamField path="new_data" type="np.ndarray" required>
+  Out-of-sample data points of shape $(M, D)$ to project.
+</ParamField>
+<ParamField path="verbose" type="bool" default="False">
+  If True, prints projection progress.
+</ParamField>
+
+### Returns
+
+<ResponseField name="embedding" type="np.ndarray">
+  Projected coordinates of shape $(M, n\_components)$.
+</ResponseField>
+
+---
+
+## Inverse Projection
+
+<Warning>
+Inverse projection is currently only supported by the CPU backend (`umap-learn`). The underlying UMAP model must have been created with `use_gpu=False`.
+</Warning>
+
+```python
+reconstructed_data = umap_inverse_project(result, new_ld_data)
+```
+
+### Parameters
+
+<ParamField path="model_dict" type="dict" required>
+  The results dictionary returned by `umap_embed()`.
+</ParamField>
+<ParamField path="new_ld_data" type="np.ndarray" required>
+  Low-dimensional data points of shape $(M, n\_components)$.
+</ParamField>
+<ParamField path="verbose" type="bool" default="False">
+  If True, prints projection progress.
+</ParamField>
+
+### Returns
+
+<ResponseField name="embedding" type="np.ndarray">
+  Reconstructed high-dimensional coordinates of shape $(M, D)$.
+</ResponseField>

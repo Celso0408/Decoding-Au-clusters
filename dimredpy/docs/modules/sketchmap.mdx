@@ -1,0 +1,265 @@
+---
+title: "Sketch-map"
+description: "A comprehensive implementation of the Sketch-map algorithm, optimized for high-performance Python and PyTorch."
+icon: "map"
+---
+
+A comprehensive implementation of the Sketch-map algorithm, optimized for high-performance Python and PyTorch. This module handles the full lifecycle: selection, embedding, and out-of-sample projection.
+
+---
+
+## A. Landmark Selection: `select_landmarks`
+
+Selects a representative subset of points (landmarks) from a large dataset.
+
+```python
+from dimredpy.sketchmap import select_landmarks
+
+result = select_landmarks(data, n_landmarks, mode="minmax", metric=None, 
+                          input_weights=None, seed=12345, first=-1, 
+                          unique=False, return_weights=True, 
+                          weight_gamma=1.0, resample_gamma=1.0, similarity=None,
+                          batch_size=None)
+```
+
+### Parameters
+
+<ParamField path="data" type="np.ndarray" required>
+  High-dimensional input array of shape $(N, D)$.
+</ParamField>
+<ParamField path="n_landmarks" type="int" required>
+  Total number of landmarks $(K)$ to extract.
+</ParamField>
+<ParamField path="mode" type="str" default="minmax">
+  Strategy: `"minmax"` (FPS), `"random"`, `"stride"`, `"resample"`, or `"staged"`.
+</ParamField>
+<ParamField path="metric" type="Metric" default="None">
+  HD distance metric (defaults to Euclidean).
+</ParamField>
+<ParamField path="input_weights" type="np.ndarray" default="None">
+  Bias weights for `"resample"` or `"staged"` modes.
+</ParamField>
+<ParamField path="seed" type="int" default="12345">
+  Random seed for stochastic modes.
+</ParamField>
+<ParamField path="first" type="int" default="-1">
+  Index of the first landmark (defaults to random).
+</ParamField>
+<ParamField path="unique" type="bool" default="False">
+  If True, ensures all landmarks are unique indices.
+</ParamField>
+<ParamField path="return_weights" type="bool" default="True">
+  Compute Voronoi/density weights for each landmark.
+</ParamField>
+<ParamField path="weight_gamma" type="float" default="1.0">
+  Exponent for density-weight normalization.
+</ParamField>
+<ParamField path="resample_gamma" type="float" default="1.0">
+  Exponent for biased resampling in `"resample"` mode.
+</ParamField>
+<ParamField path="similarity" type="np.ndarray" default="None">
+  Pre-computed HD distance matrix (for `"minmax"` mode).
+</ParamField>
+<ParamField path="batch_size" type="int" default="None">
+  Optional chunk size for computing Voronoi weights (`return_weights=True`) to prevent Out-Of-Memory (OOM) errors on extremely large datasets.
+</ParamField>
+
+### Returns
+
+<ResponseField name="landmarks" type="np.ndarray">
+  High-dimensional coordinates of the selected $(K, D)$ points.
+</ResponseField>
+<ResponseField name="indices" type="np.ndarray">
+  Original indices of the selected points in the input data.
+</ResponseField>
+<ResponseField name="weights" type="np.ndarray">
+  Normalized Voronoi weights (if `return_weights=True`).
+</ResponseField>
+
+---
+
+## B. Classical MDS: `classical_mds`
+
+Standard linear dimensionality reduction, often used as the initialization for Sketch-map.
+
+```python
+from dimredpy.sketchmap import classical_mds
+
+result = classical_mds(data, n_components=2, metric=None, 
+                       dist_matrix=None, verbose=False)
+```
+
+### Parameters
+
+<ParamField path="data" type="np.ndarray" required>
+  Input data of shape $(N, D)$.
+</ParamField>
+<ParamField path="n_components" type="int" default="2">
+  Target embedding dimensionality.
+</ParamField>
+<ParamField path="metric" type="Metric" default="None">
+  Distance metric for MDS.
+</ParamField>
+<ParamField path="dist_matrix" type="np.ndarray" default="None">
+  If provided, computes MDS directly from pre-calculated distances.
+</ParamField>
+<ParamField path="verbose" type="bool" default="False">
+  If True, logs per-point errors.
+</ParamField>
+
+### Returns
+
+<ResponseField name="embedding" type="np.ndarray">
+  Low-dimensional coordinates of shape $(N, n\_components)$.
+</ResponseField>
+<ResponseField name="eigenvalues" type="np.ndarray">
+  Eigenvalues of the Gram matrix.
+</ResponseField>
+<ResponseField name="error" type="float">
+  Residual MDS stress.
+</ResponseField>
+<ResponseField name="per_point_errors" type="np.ndarray">
+  Per-point MDS errors (only if `verbose=True`).
+</ResponseField>
+
+---
+
+## C. Sketch-map Optimization: `sketch_map`
+
+The core optimization engine that uses sigmoid-transformed distances.
+
+```python
+from dimredpy.sketchmap import sketch_map
+
+result = sketch_map(data, n_components=2, weights=None, init=None, 
+                    metric=None, fun_hd=(6.0, 8.0, 8.0), fun_ld=(6.0, 2.0, 8.0), 
+                    preopt_steps=100, grid=None, global_steps=0, 
+                    imix=0.0, dist_matrix=None, verbose=False)
+```
+
+### Parameters
+
+<ParamField path="data" type="np.ndarray" required>
+  $(N, D)$ landmark coordinates.
+</ParamField>
+<ParamField path="n_components" type="int" default="2">
+  Number of dimensions in the embedding space.
+</ParamField>
+<ParamField path="weights" type="np.ndarray" default="None">
+  Per-point statistical weights (from selection).
+</ParamField>
+<ParamField path="init" type="np.ndarray" default="None">
+  Starting embedding (e.g., from MDS).
+</ParamField>
+<ParamField path="metric" type="Metric" default="None">
+  Distance metric (defaults to Euclidean).
+</ParamField>
+<ParamField path="fun_hd" type="tuple" default="(6.0, 8.0, 8.0)">
+  Sigmoid parameters $(\sigma, A, B)$ applied to high-dimensional distances.
+</ParamField>
+<ParamField path="fun_ld" type="tuple" default="(6.0, 2.0, 8.0)">
+  Sigmoid parameters $(\sigma, A, B)$ applied to low-dimensional distances.
+</ParamField>
+<ParamField path="preopt_steps" type="int" default="100">
+  Maximum Conjugate Gradient iterations.
+</ParamField>
+<ParamField path="grid" type="tuple" default="None">
+  Pointwise global spec: `(width, coarse, fine)`.
+</ParamField>
+<ParamField path="global_steps" type="int" default="0">
+  Steps of stochastic global search (uncommon).
+</ParamField>
+<ParamField path="imix" type="float" default="0.0">
+  Mix ratio between Sketch-map (0.0) and MDS (1.0).
+</ParamField>
+<ParamField path="dist_matrix" type="np.ndarray" default="None">
+  Pre-computed HD distance matrix for optimization.
+</ParamField>
+<ParamField path="verbose" type="bool" default="False">
+  Print optimization progress and final stress.
+</ParamField>
+
+### Returns
+
+<ResponseField name="embedding" type="np.ndarray">
+  Optimized coordinates of shape $(N, n\_components)$.
+</ResponseField>
+<ResponseField name="stress" type="float">
+  Final scalar $\chi^2$ stress.
+</ResponseField>
+<ResponseField name="per_point_errors" type="np.ndarray">
+  Contribution of each point to the total stress (only if `verbose=True`).
+</ResponseField>
+
+---
+
+## D. Out-of-Sample Projection: `project_out_of_sample`
+
+Maps new data points into an existing low-dimensional embedding.
+
+```python
+from dimredpy.sketchmap import project_out_of_sample
+
+result = project_out_of_sample(samples, landmarks_hd, landmarks_ld, weights=None, 
+                               metric=None, fun_hd=(6.0, 8.0, 8.0), 
+                               fun_ld=(6.0, 2.0, 8.0), grid=(1.0, 21, 201), 
+                               cg_steps=0, gt=0.0, similarity=False, 
+                               imix=0.0, use_gpu=False, verbose=False)
+```
+
+### Parameters
+
+<ParamField path="samples" type="np.ndarray" required>
+  New high-dim points $(M, D)$ to project. *Note: Memory-safe! Automatic VRAM/RAM batching is implemented internally to prevent OOMs on millions of points.*
+</ParamField>
+<ParamField path="landmarks_hd" type="np.ndarray" required>
+  Coordinates of original landmarks $(K, D)$.
+</ParamField>
+<ParamField path="landmarks_ld" type="np.ndarray" required>
+  Embedding of the landmarks $(K, d)$.
+</ParamField>
+<ParamField path="weights" type="np.ndarray" default="None">
+  Landmark weights (from selection).
+</ParamField>
+<ParamField path="metric" type="Metric" default="None">
+  HD distance metric (defaults to Euclidean).
+</ParamField>
+<ParamField path="fun_hd" type="tuple" default="(6.0, 8.0, 8.0)">
+  Sigmoid parameters $(\sigma, A, B)$ for HD spaces.
+</ParamField>
+<ParamField path="fun_ld" type="tuple" default="(6.0, 2.0, 8.0)">
+  Sigmoid parameters $(\sigma, A, B)$ for LD spaces.
+</ParamField>
+<ParamField path="grid" type="tuple" default="(1.0, 21, 201)">
+  `(width, coarse, fine)` for initial 2D search.
+</ParamField>
+<ParamField path="cg_steps" type="int" default="0">
+  **Crucial:** Refinement steps after the initial grid search. In CPU mode, acts as `maxiter` for Scipy CG. In GPU mode (`use_gpu=True`), any value > 0 triggers exactly **100 steps of continuous Adam optimization** to slide points into their exact geometric basins (matching the old C++ `-cgmin` flag). If `0`, points remain locked to a discrete grid!
+</ParamField>
+<ParamField path="gt" type="float" default="0.0">
+  Global threshold (legacy `-gt` flag).
+</ParamField>
+<ParamField path="similarity" type="bool" default="False">
+  If True, `samples` are HD distances to landmarks.
+</ParamField>
+<ParamField path="imix" type="float" default="0.0">
+  Mix ratio between Sketch-map and MDS stress.
+</ParamField>
+<ParamField path="use_gpu" type="bool" default="False">
+  Enables parallel projection using PyTorch CUDA (with automatic batched processing for massive trajectories).
+</ParamField>
+<ParamField path="verbose" type="bool" default="False">
+  Print progress for large-scale projections.
+</ParamField>
+
+### Returns
+
+<ResponseField name="embedding" type="np.ndarray">
+  Projected coordinates of shape $(M, n\_components)$.
+</ResponseField>
+<ResponseField name="error" type="np.ndarray">
+  Per-sample projection stress at the optimum.
+</ResponseField>
+<ResponseField name="nearest_distance" type="np.ndarray">
+  HD distance to the nearest landmark for each sample.
+</ResponseField>

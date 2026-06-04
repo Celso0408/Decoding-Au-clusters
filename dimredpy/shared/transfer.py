@@ -295,10 +295,10 @@ class Warp(TransferFunction):
     def _dg(self, y):
         """Derivative of g with respect to y."""
         g_val = self._g(y)
-        # d/dy g(y)  by chain rule
         sx = (1.0 - y) ** self._p9
-        denom = (sx - 1.0) * (y - 1.0) * self._p8
-        return g_val / denom
+        denom = (sx - 1.0) * (1.0 - y) * self._p8
+        # Add small eps to denom to prevent div by zero at y=0 where sx=1
+        return (g_val * sx) / np.maximum(denom, 1e-15)
 
     def f(self, x):
         x = np.asarray(x, dtype=float)

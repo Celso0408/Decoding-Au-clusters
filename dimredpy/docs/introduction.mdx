@@ -1,0 +1,48 @@
+---
+title: "Introduction"
+description: "A unified, high-performance Python framework for Nonlinear Dimensionality Reduction (NLDR) and MBAR thermodynamic analysis."
+icon: "hand-wave"
+---
+
+<Frame>
+  <img src="/images/hero.png" alt="DimRedPy Data Manifold Visualization" />
+</Frame>
+
+**DimRedPy** is designed to be **domain-agnostic**, providing a consistent API for complex scientific data analysis while leveraging modern backends like PyTorch, openTSNE, umap-learn, and NVIDIA RAPIDS.
+
+## 🏛 Framework Overview
+
+DimRedPy is organized into several specialized sub-packages, all accessible via the `dimredpy` namespace.
+
+<CardGroup cols={2}>
+  <Card title="Sketch-map" icon="map" href="/modules/sketchmap">
+    Core MDS and Sketch-map algorithms with PyTorch out-of-sample projection.
+  </Card>
+  <Card title="FIt-SNE" icon="chart-scatter" href="/modules/fitsne">
+    FFT-accelerated interpolation-based t-SNE capable of scaling to millions of points.
+  </Card>
+  <Card title="UMAP" icon="chart-network" href="/modules/umap">
+    Uniform Manifold Approximation and Projection with Mahalanobis support.
+  </Card>
+  <Card title="MBAR" icon="chart-area" href="/modules/mbar">
+    Multistate Bennett Acceptance Ratio for thermodynamic free-energy surface calculation.
+  </Card>
+</CardGroup>
+
+### Shared Utilities
+
+Behind the core algorithms, DimRedPy provides a highly optimized suite of tools for data preparation, metrics, and structural analysis.
+
+| Sub-package | Core Purpose | Primary Imports |
+|---|---|---|
+| `dimredpy.shared.descriptors` | Geometric analysis tools for 3D point clouds and trajectories. | `coordination_histogram`, `radius_of_gyration`, `hausdorff_chirality_measure` |
+| `dimredpy.shared.metrics` | Custom distance metric objects supporting pairwise computations and PBC. | `EuclideanMetric`, `PBCMetric`, `SphericalMetric` |
+| `dimredpy.shared.transfer` | Mathematical kernels used by Sketch-map to transform distances. | `Sigmoid`, `Compress`, `XSigmoid`, `make_transfer` |
+| `dimredpy.shared.io` | Memory-efficient loaders and writers for simulation trajectories. | `load_spatial_coordinates`, `load_tabular_data` |
+| `dimredpy.shared.analysis` | Tools for measuring the quality of a dimensionality reduction mapping. | `distance_histogram`, `preservation_score` |
+
+<br />
+
+<Tip>
+Ready to dive in? Check out the [Installation](/installation) guide to get started.
+</Tip>

@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from dimredpy.shared import distance_histogram, preservation_score
+from dimredpy.shared import distance_histogram, preservation_score, stress_per_pair
 from dimredpy.shared import PBCMetric
 
 def test_distance_histogram_1d():
@@ -40,6 +40,25 @@ def test_preservation_score_basic():
     
     score = preservation_score(X, Y, fun_hd=None, fun_ld=None)
     assert score > 0
+
+def test_stress_per_pair():
+    """Test pairwise stress matrix computation."""
+    X = np.array([[0,0], [1,0], [0,1]])
+    Y = np.array([[0,0], [0.1,0], [0,0.1]])
+    
+    stress_mat = stress_per_pair(X, Y)
+    assert stress_mat.shape == (3, 3)
+    # The matrix should be symmetric
+    assert np.allclose(stress_mat, stress_mat.T)
+    # Diagonal should be exactly zero
+    assert np.allclose(np.diag(stress_mat), 0.0)
+    
+    # Test with weights
+    w = np.array([1.0, 2.0, 3.0])
+    stress_mat_w = stress_per_pair(X, Y, weights=w)
+    assert stress_mat_w.shape == (3, 3)
+    # Weight scaling: stress_w[0, 1] = 2.0 * stress[0, 1]
+    assert np.isclose(stress_mat_w[0, 1], 2.0 * stress_mat[0, 1])
 
 def test_preservation_score_functions():
     """Test preservation score with transfer functions."""

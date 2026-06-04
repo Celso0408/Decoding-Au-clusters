@@ -10,6 +10,6 @@ Reference:
     for Dimension Reduction", JOSS 3(29), 861 (2018).
 """
 
-from .umap_embed import umap_embed
+from .umap_embed import umap_embed, umap_project, umap_inverse_project
 
-__all__ = ["umap_embed"]
+__all__ = ["umap_embed", "umap_project", "umap_inverse_project"]

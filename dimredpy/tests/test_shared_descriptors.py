@@ -1,7 +1,8 @@
 import numpy as np
 import pytest
 from dimredpy.shared import (
-    coordination_histogram, effective_coordination_number,
+    coordination_histogram, coordination_histogram_trajectory,
+    effective_coordination_number, average_neighbor_distance,
     radius_of_gyration, hausdorff_chirality_measure,
     radial_distribution_function, projection_center,
     compute_trajectory_descriptors
@@ -73,3 +74,28 @@ def test_compute_trajectory_descriptors_exhaustive():
     assert res["ecn"].shape == (5,)
     assert res["rg"].shape == (5,)
     assert res["hcm"].shape == (5,)
+
+def test_coordination_histogram_trajectory():
+    traj = np.random.rand(4, 8, 3)
+    hists = coordination_histogram_trajectory(traj, cutoff=0.5, max_neighbors=4)
+    assert hists.shape == (4, 5)
+    assert np.allclose(hists.sum(axis=1), 1.0)
+
+def test_average_neighbor_distance():
+    pos = np.array([[0,0,0], [1,0,0], [2,0,0]], dtype=float)
+    d_av = average_neighbor_distance(pos, cutoff=1.5)
+    # distance between adjacent is 1.0. 1.0, 1.0, and 2.0 (but 2.0 is > 1.5).
+    # neighbor pairs within 1.5 are (0,1) and (1,2) with distance 1.0.
+    assert np.isclose(d_av, 1.0)
+
+def test_effective_coordination_number_edge_cases():
+    # ECN with empty/single atom positions
+    assert effective_coordination_number(np.zeros((0, 3))) == 0.0
+    assert effective_coordination_number(np.zeros((1, 3))) == 0.0
+
+def test_projection_center_edge_cases():
+    # If values are above threshold, it should return NaN
+    values = np.array([1.0, 2.0, 3.0])
+    weights = np.array([0.5, 0.5, 0.5])
+    pc = projection_center(values, weights, threshold=0.0)
+    assert np.isnan(pc)

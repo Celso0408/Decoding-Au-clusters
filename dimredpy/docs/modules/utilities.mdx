@@ -1,0 +1,24 @@
+---
+title: "Utilities"
+description: "Shared operations, structural descriptors, metrics, and file I/O operations."
+---
+
+The `dimredpy.shared` sub-package contains highly optimized auxiliary functions for dataset preparation and mathematical operations.
+
+### 1. Structural Descriptors (`dimredpy.shared.descriptors`)
+Contains fast algorithms to translate atomic trajectories (3D Cartesian coordinates) into rotationally and translationally invariant features.
+
+* `compute_trajectory_descriptors`: Calculate Effective Coordination Number (ECN), Radius of Gyration (Rg), and Hausdorff Chirality Measure (HCM).
+
+### 2. Metrics (`dimredpy.shared.metrics`)
+Evaluation utilities for validating embeddings.
+* `trustworthiness`: Evaluates how well local neighborhoods are preserved.
+* `continuity`: Evaluates how well high-dimensional distances are maintained.
+
+### 3. File I/O (`dimredpy.shared.io`)
+Memory-efficient parsers for common computational chemistry file formats.
+* `load_spatial_coordinates`: Read massive `.xyz` trajectory files into chunked numpy arrays.
+
+### 4. Transfer Functions (`dimredpy.shared.transfer`)
+Mathematical functions used by Sketch-map and other dimensionality reduction algorithms for mapping distances.
+* `make_transfer`: Generates sigmoid, step, and piecewise linear distance transforms.

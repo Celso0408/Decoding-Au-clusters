@@ -1,0 +1,82 @@
+---
+title: "Distance Metrics"
+description: "Custom distance metric objects supporting pairwise computations and periodic boundaries."
+icon: "ruler"
+---
+
+In many physical systems, periodic boundary conditions (PBC) or spherical representations require specialized distance logic. The `metrics` module provides object-oriented distance implementations that cleanly integrate into DimRedPy's reduction algorithms.
+
+```python
+from dimredpy.shared.metrics import (
+    EuclideanMetric, PBCMetric, SphericalMetric, DotMetric, get_metric
+)
+
+# Instantiate a periodic boundary metric (10.0 Å box)
+metric = PBCMetric(period=10.0)
+
+# Compute pairwise distances
+dist_matrix = metric.pairwise(dataset)
+```
+
+## API Interfaces
+
+All metric classes inherit from `Metric` and implement the following standard methods:
+
+<ParamField path="dist(a, b)" type="method">
+  Calculates the scalar distance between two vectors `a` and `b`.
+</ParamField>
+<ParamField path="diff(a, b)" type="method">
+  Returns the exact displacement vector $b - a$. This is explicitly PBC-aware where applicable.
+</ParamField>
+<ParamField path="pairwise(X)" type="method">
+  Generates a full pairwise distance matrix of shape `(N, N)` for a given dataset `X` of shape `(N, D)`.
+</ParamField>
+<ParamField path="pairwise_vec(X, Y)" type="method">
+  Calculates a pairwise distance matrix of shape `(M, K)` between two distinct sets of vectors.
+</ParamField>
+
+---
+
+## Metric Classes
+
+### `EuclideanMetric`
+Standard Euclidean distance in $\mathbb{R}^n$. *(Takes no initialization parameters).*
+
+### `PBCMetric`
+Periodic Boundary Conditions (toroidal distance) for periodic simulation boxes.
+
+<ParamField path="period" type="float | np.ndarray" required>
+  Period $L_i$ representing the periodic box length for each dimension.
+</ParamField>
+
+### `SphericalMetric`
+Geodesic (great-circle) distance on a hyper-sphere. The last dimension is explicitly treated as the azimuthal/periodic dimension.
+
+<ParamField path="period" type="float | np.ndarray" required>
+  Period $L_i$ representing the cycle length for the spherical coordinate system.
+</ParamField>
+
+### `DotMetric`
+Similarity metric computing the negated logarithm of the dot product: $d(a, b) = -\ln(a \cdot b)$. Highly useful for probabilistic embeddings. *(Takes no initialization parameters).*
+
+---
+
+## Metric Factory
+
+### `get_metric`
+A helper factory function to rapidly instantiate the correct metric object dynamically based on parameters. This is often used to map CLI style arguments directly to Python objects.
+
+```python
+metric = get_metric(period=0.0, sphere_period=0.0, dot=False)
+```
+
+<ParamField path="period" type="float" default="0.0">
+  If $> 0.0$, returns a `PBCMetric` with the specified period.
+</ParamField>
+<ParamField path="sphere_period" type="float" default="0.0">
+  If $> 0.0$, returns a `SphericalMetric` with the specified spherical period.
+</ParamField>
+<ParamField path="dot" type="bool" default="False">
+  If `True`, returns a `DotMetric`.
+</ParamField>
+**Returns:** If all are default, returns the standard `EuclideanMetric`.
