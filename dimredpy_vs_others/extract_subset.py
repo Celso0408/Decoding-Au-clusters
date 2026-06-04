@@ -7,9 +7,9 @@ script_dir = Path(__file__).parent.absolute()
 repo_root = script_dir.parent
 
 # Paths
-source_file = repo_root / "experiments" / "full_trajectory.xyz.CN_for_SketchMap"
+source_file = repo_root / "Au13_study" / "reproduce_paper" / "data" / "full_trajectory.xyz.CN_for_SketchMap"
 target_file = script_dir / "subset_10000.txt"
-cache_file = repo_root / "experiments" / "results" / "data_cache.npy"
+cache_file = repo_root / "Au13_study" / "reproduce_paper" / "data" / "dataset_high_dim.npy"
 
 print(f"Looking for data at {source_file}...")
 
