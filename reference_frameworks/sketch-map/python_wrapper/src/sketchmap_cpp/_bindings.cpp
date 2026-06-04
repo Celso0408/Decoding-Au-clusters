@@ -1,3 +1,4 @@
+#include <cmath>
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
 #include <pybind11/stl.h>
@@ -5,7 +6,6 @@
 #include "dimreduce.hpp"
 #include "rndgen.hpp"
 
-#include <cmath>
 #include <limits>
 #include <sstream>
 #include <stdexcept>

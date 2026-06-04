@@ -7,7 +7,7 @@
 #include "matrix-full-blas.hpp"
 using namespace tbblas;
 namespace toolbox{
-template <> void mult<double,double>(const FMatrix<double>& b, const FMatrix<double>& c, FMatrix<double>& a)
+template <> inline void mult<double,double>(const FMatrix<double>& b, const FMatrix<double>& c, FMatrix<double>& a)
 {
     //B and C are exchanged, because of BLAS using fortran row/col convention
 #ifdef BENCHMARK
@@ -34,7 +34,7 @@ template <> void mult<double,double>(const FMatrix<double>& b, const FMatrix<dou
 #endif
 }
 
-template <> void 
+template <> inline void 
 mult<std::complex<double>,std::complex<double> >
         (const FMatrix<std::complex<double> >& b, const FMatrix<std::complex<double> >& c, FMatrix<std::complex<double> >& a)
 {

@@ -8,6 +8,19 @@
 #define __RNDGEN_DEC_H
 
 #include "tbdefs.hpp"
+
+#ifdef _WIN32
+#include <stdint.h>
+static uint64_t _drand48_state = 0x1234ABCD330EULL;
+inline void srand48(long seedval) {
+    _drand48_state = ((uint64_t)seedval << 16) | 0x330EULL;
+}
+inline double drand48() {
+    _drand48_state = (_drand48_state * 0x5DEECE66DULL + 0xBULL) & 0xFFFFFFFFFFFFULL;
+    return (double)_drand48_state / 281474976710656.0;
+}
+#endif
+
 /****************************************************
  * Declarations for templates for random number gen *
  * More complex generators (gaussian or correlated) *

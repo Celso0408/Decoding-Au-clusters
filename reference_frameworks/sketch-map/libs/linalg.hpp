@@ -12,6 +12,16 @@
 namespace tblapack{
     typedef std::complex<double> complex;
     extern "C" {
+#ifdef _WIN32
+#define dgesv scipy_dgesv_
+#define dgesvd scipy_dgesvd_
+#define dsyev scipy_dsyev_
+#define dsyevx scipy_dsyevx_
+#define zgeev scipy_zgeev_
+#define dgeev scipy_dgeev_
+#define dgetrf scipy_dgetrf_
+#define dgetri scipy_dgetri_
+#else
 #define dgesv dgesv_
 #define dgesvd dgesvd_
 #define dsyev dsyev_
@@ -20,6 +30,7 @@ namespace tblapack{
 #define dgeev dgeev_
 #define dgetrf dgetrf_
 #define dgetri dgetri_
+#endif
 
     int  dgesv (int* n, 
         int* nrhs, double* a, 

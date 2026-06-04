@@ -1,0 +1,62 @@
+#ifndef CUSTOM_MUTEX_H
+#define CUSTOM_MUTEX_H
+
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0600
+#endif
+#include <windows.h>
+
+namespace std {
+    class mutex {
+    private:
+        CRITICAL_SECTION cs;
+    public:
+        mutex() { InitializeCriticalSection(&cs); }
+        ~mutex() { DeleteCriticalSection(&cs); }
+        mutex(const mutex&) = delete;
+        mutex& operator=(const mutex&) = delete;
+
+        void lock() { EnterCriticalSection(&cs); }
+        void unlock() { LeaveCriticalSection(&cs); }
+        bool try_lock() { return TryEnterCriticalSection(&cs) != 0; }
+    };
+
+    template <class Mutex>
+    class lock_guard {
+    private:
+        Mutex& mtx;
+    public:
+        explicit lock_guard(Mutex& m) : mtx(m) { mtx.lock(); }
+        ~lock_guard() { mtx.unlock(); }
+        lock_guard(const lock_guard&) = delete;
+        lock_guard& operator=(const lock_guard&) = delete;
+    };
+
+    struct once_flag {
+        volatile long status = 0; // 0 = uninitialized, 1 = in progress, 2 = done
+    };
+
+    template <class Callable, class... Args>
+    void call_once(once_flag& flag, Callable&& f, Args&&... args) {
+        if (flag.status == 2) return;
+        while (true) {
+            long old_status = InterlockedCompareExchange(&flag.status, 1, 0);
+            if (old_status == 2) {
+                return;
+            } else if (old_status == 0) {
+                try {
+                    std::forward<Callable>(f)(std::forward<Args>(args)...);
+                    flag.status = 2;
+                } catch (...) {
+                    flag.status = 0;
+                    throw;
+                }
+                return;
+            } else {
+                Sleep(1);
+            }
+        }
+    }
+}
+
+#endif // CUSTOM_MUTEX_H

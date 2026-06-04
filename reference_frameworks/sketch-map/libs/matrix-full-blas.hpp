@@ -13,8 +13,13 @@
 namespace tbblas {
 extern "C" {
     typedef std::complex<double> complex;
+#ifdef _WIN32
+#define dgemm scipy_dgemm_
+#define zgemm scipy_zgemm_
+#else
 #define dgemm dgemm_
 #define zgemm zgemm_
+#endif
     int dgemm(char *transa, char* transb, int* m, 
               int *n, int *k, double* alpha, 
               double * a, int *lda, double* b, 
