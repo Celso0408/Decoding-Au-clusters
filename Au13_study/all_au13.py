@@ -1,6 +1,32 @@
 # %%
+"""
+Au13 Study: Benchmarking Dimensionality Reduction Frameworks for Gold Nanoclusters
+==================================================================================
+
+This script comprehensively evaluates three advanced non-linear dimensionality 
+reduction (NLDR) frameworks—FIt-SNE, UMAP, and Sketch-map—on a large-scale 
+trajectory (2.16 Million frames) of Au13 nanoclusters across different charge 
+states (-1, 0, +1). 
+
+The Pipeline Automates:
+-----------------------
+1. Generating 2D coordinate projections using optimized hyperparameter spaces.
+   - UMAP
+   - FIt-SNE
+   - Sketch-map
+2. Calculating MBAR probability free-energy surfaces (FES) at 300K.
+3. Rendering visualization plots.
+
+Environment Integration:
+------------------------
+For Google Colab users, the script automatically clones the `dimredpy` framework 
+directly from the GitHub repository (Celso0408/Decoding-Au-clusters) and 
+installs it locally, while saving the heavy trajectory outputs securely 
+to Google Drive.
+"""
 # !pip install -e ..
 # !pip install numpy pandas matplotlib scikit-learn pymbar openTSNE umap-learn scipy
+# !pip install cuml-cu12 --extra-index-url=https://pypi.nvidia.com --quiet 2>/dev/null || true
 # ==============================================================================
 # INITIALIZATION AND SETUP
 # ==============================================================================
@@ -34,6 +60,18 @@ except ImportError:
 if IN_COLAB:
     from google.colab import drive
     drive.mount('/content/drive')
+    
+    # Automatically clone the repo into Colab to use dimredpy without uploading
+    repo_url = "https://github.com/Celso0408/Decoding-Au-clusters.git"
+    clone_dir = "/content/Decoding-Au-clusters"
+    if not os.path.exists(clone_dir):
+        print(f"-> Cloning repository from {repo_url}...")
+        os.system(f"git clone {repo_url} {clone_dir}")
+        print("-> Installing dimredpy and dependencies...")
+        os.system(f"pip install -e {clone_dir}")
+    
+    sys.path.insert(0, clone_dir)
+    
     base_dir = '/content/drive/MyDrive/Au_experiment'
     sys.path.append(base_dir)
     data_dir = base_dir
@@ -41,6 +79,7 @@ if IN_COLAB:
     results_dir_fitsne = os.path.join(base_dir, "outputs", "fitsne_results")
     results_dir_sketch = os.path.join(base_dir, "outputs", "sketchmap_results")
     results_dir_mbar = os.path.join(base_dir, "outputs", "mbar_results")
+    optimal_dir = os.path.join(base_dir, "outputs", "optimal")
     plots_dir = os.path.join(base_dir, "outputs", "plots")
 else:
     base_dir = r"g:\mp\Decoding-Au-clusters\Au13_study"
@@ -50,15 +89,12 @@ else:
     results_dir_fitsne = os.path.join(data_dir, "fitsne_results")
     results_dir_sketch = os.path.join(data_dir, "sketchmap_results")
     results_dir_mbar = os.path.join(data_dir, "mbar_results")
+    optimal_dir = os.path.join(data_dir, "optimal")
     plots_dir = os.path.join(reproduce_dir, "plots")
 
 # Ensure required directories exist
-os.makedirs(data_dir, exist_ok=True)
-os.makedirs(results_dir_umap, exist_ok=True)
-os.makedirs(results_dir_fitsne, exist_ok=True)
-os.makedirs(results_dir_sketch, exist_ok=True)
-os.makedirs(results_dir_mbar, exist_ok=True)
-os.makedirs(plots_dir, exist_ok=True)
+for d in [data_dir, results_dir_umap, results_dir_fitsne, results_dir_sketch, results_dir_mbar, optimal_dir, plots_dir]:
+    os.makedirs(d, exist_ok=True)
 
 # Now import dimredpy framework components
 from dimredpy.umap_embed import umap_embed
@@ -420,8 +456,6 @@ print("-> STEP 3 Completed.")
 # DYNAMIC EVALUATION: FIND OPTIMAL EMBEDDINGS
 # ==============================================================================
 print("\n=== DYNAMIC EVALUATION: Finding Optimal Embeddings ===")
-optimal_dir = os.path.join(base_dir, "outputs", "optimal")
-os.makedirs(optimal_dir, exist_ok=True)
 
 def evaluate_method(method_name, results_dir, prefix, data_filename="embedding.dat"):
     print(f"\n-> Dynamically evaluating {method_name} combinations...")
@@ -506,7 +540,7 @@ def read_potential_energies(charge_state, K, T):
     return U_kt
 
 
-# ─── Data layout (from get_coords_dimred.sh) ─────────────────────────────────
+# ─── Data layout────────────────────────────────
 # Full embedding has 2,160,000 rows ordered as:
 #   rows       1 –   720,000 → charge: minus
 #   rows 720,001 – 1,440,000 → charge: neutral
@@ -516,7 +550,7 @@ def read_potential_energies(charge_state, K, T):
 # Per-temperature replica files {k}.x / {k}.y each have 60,000 lines
 #   (3 morphologies × 20,000 snapshots merged in temperature order)
 # K = 12 temperatures, T = niterations = 60,000 snapshots per temperature
-# ──────────────────────────────────────────────────────────────────────────────
+# ───────────────────────────────────────────────
 
 ROWS_PER_CHARGE = 720_000   # rows 0:720000 = minus, 720000:1440000 = neutral, etc.
 ROWS_PER_MORPH  = 240_000   # 3 morphologies per charge
@@ -706,7 +740,8 @@ for variant_name, embeddings_dict in [("math", optimal_embeddings), ("paper", pa
     if len(embeddings) > 0:
         fig, axes = plt.subplots(len(embeddings), 1, figsize=(7, 6 * len(embeddings)))
         if len(embeddings) == 1: axes = [axes]
-        fig.subplots_adjust(hspace=0.32)
+        # hspace=0.0 merges the plots to form one general border with simple separating lines
+        fig.subplots_adjust(hspace=0.0)
         
         for ax, method in zip(axes, embeddings.keys()):
             emb_full = embeddings[method]
@@ -726,17 +761,25 @@ for variant_name, embeddings_dict in [("math", optimal_embeddings), ("paper", pa
                            s=12, c=color, alpha=0.90,
                            linewidths=0, zorder=3, rasterized=True)
     
-            ax.set_title(f"{method} coordinates ({variant_name})", fontsize=12, pad=10, loc="center")
-            for spine in ax.spines.values(): spine.set_visible(False)
+            # Place method name as the ylabel to prevent overlap when hspace=0
+            ax.set_ylabel(f"{method}", fontsize=14, fontweight='bold', labelpad=15)
+            
+            # Keep spines visible to form the borders and separating lines
+            for spine in ax.spines.values():
+                spine.set_visible(True)
+                spine.set_color('#333333')
+                spine.set_linewidth(1.0)
+                
             ax.set_xticks([]); ax.set_yticks([])
     
         handles = [
-            Line2D([0],[0], marker="o", color="w", markerfacecolor="#b0b0b0", markersize=5, label="Full projection"),
+            Line2D([0],[0], marker="o", color="w", markerfacecolor="#b0b0b0", markersize=5, label="Full trajectory"),
             Line2D([0],[0], marker="o", color="w", markerfacecolor=CHARGE_COLORS["cationic"], markersize=10, label=CHARGE_LABELS["cationic"]),
             Line2D([0],[0], marker="o", color="w", markerfacecolor=CHARGE_COLORS["neutral"], markersize=10, label=CHARGE_LABELS["neutral"]),
             Line2D([0],[0], marker="o", color="w", markerfacecolor=CHARGE_COLORS["anionic"], markersize=10, label=CHARGE_LABELS["anionic"]),
         ]
-        axes[0].legend(handles=handles, fontsize=9, frameon=False, loc="upper left", ncol=1, handletextpad=0.2)
+        # One simple legend on the first plot without a hard border, positioned neatly
+        axes[0].legend(handles=handles, fontsize=10, frameon=False, loc="upper left", bbox_to_anchor=(0.02, 0.98), ncol=1, handletextpad=0.5)
         
         out_path = os.path.join(plots_dir, f"Fig3_nldr_projections_{variant_name}.png")
         fig.savefig(out_path, bbox_inches="tight", dpi=300, facecolor='white')
@@ -774,9 +817,21 @@ def plot_mbar_combined(fig_num, method_name, method_key, variant_name):
         x_raw, y_raw, f_raw = data[:, 0], data[:, 1], data[:, 2]
 
         valid_mask = f_raw != SENTINEL_VALUE
-        f_proc = np.where(valid_mask, f_raw, f_raw[valid_mask].max()) + SHIFT_PARAM
+        f_min = f_raw[valid_mask].min()
+        
+        # 1. Zero-shift the free energy so the minimum is exactly 0
+        # (MBAR free energies are defined up to an arbitrary constant)
+        f_shifted = f_raw - f_min
+        
+        # 2. Apply the paper's heuristic visibility compression
+        # This compresses huge energy barriers into the visual [-1.5, 0.0] range
+        f_proc = np.where(valid_mask, f_shifted, f_shifted[valid_mask].max()) + SHIFT_PARAM
         log_prob = np.log10(SHIFT_PARAM / f_proc)
-        z_min = log_prob.min()
+        
+        # 3. Clamp to [-1.5, 0.0] and mask out invalid bins
+        log_prob[~valid_mask] = -1.5
+        log_prob = np.clip(log_prob, -1.5, 0.0)
+        z_min = -1.5
 
         xi = np.linspace(x_raw.min(), x_raw.max(), 2000)
         yi = np.linspace(y_raw.min(), y_raw.max(), 2000)
@@ -789,10 +844,19 @@ def plot_mbar_combined(fig_num, method_name, method_key, variant_name):
         ax.contour(xi_g, yi_g, zi, levels=np.arange(z_min + 0.1, -0.1, 0.08), colors='black', linewidths=0.2, alpha=0.5)
 
         charge_map = {"plus": "cationic", "minus": "anionic"}
-        ax.set_title(f"{lbl} {CHARGE_LABELS[charge_map[charge]]}", fontsize=12, pad=10)
+        
+        # Place the method name and the Au_13(+/-) label together above the box
+        ax.set_title(f"{lbl} {method_name} - {CHARGE_LABELS[charge_map[charge]]}", fontsize=12, pad=10)
         ax.set_xticks([]); ax.set_yticks([])
 
-        cbar_ax = ax.inset_axes([0.70, 0.04, 0.28, 0.03])
+        # Ensure clear borders around the plots
+        for spine in ax.spines.values():
+            spine.set_visible(True)
+            spine.set_color('#333333')
+            spine.set_linewidth(1.0)
+
+        # Adjust colorbar inset to prevent overlapping with the right/bottom border
+        cbar_ax = ax.inset_axes([0.65, 0.06, 0.30, 0.03])
         cbar = fig.colorbar(im, cax=cbar_ax, orientation='horizontal')
         cbar.set_label(r"Log(P)", fontsize=9, labelpad=2)
         cbar.ax.tick_params(labelsize=8)
