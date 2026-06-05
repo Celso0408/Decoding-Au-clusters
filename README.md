@@ -21,7 +21,7 @@ The repository is modularized into four main components:
 
 ### 1. `dimredpy/` (The Core Framework)
 The standalone python package containing the unified implementations.
-*   **Sketch-map**: Pure-Python port of the 2011 Ceriotti algorithm using SciPy/PyTorch optimization.
+*   **Sketch-map**: Pure-Python port of the Sketchmap algorithm using SciPy/PyTorch optimization.
 *   **FIt-SNE**: Wrappers for `openTSNE` and GPU `cuML` with automatic parameter resolution.
 *   **UMAP**: Wrapped interface using `umap-learn` and GPU `cuML`.
 *   **MBAR**: Integration with `pymbar` for projecting free-energy surfaces.
